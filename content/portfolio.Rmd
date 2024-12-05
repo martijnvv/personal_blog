@@ -21,5 +21,5 @@ Would you like to get in touch with me to share ideas, work on fun projects toge
 ## Clients
 
 ```{r regular, echo=FALSE}
-blogdown::shortcode("gallery", dir="/img/portfolio/")
+blogdown::shortcode("gallery", dir = "/img/portfolio/")
 ```
