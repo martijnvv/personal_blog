@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>google-analytics4 on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/tags/google-analytics4/</link>
+    <link>/tags/google-analytics4/</link>
     <description>Recent content in google-analytics4 on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/google-analytics4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/google-analytics4/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Updates to Google Consent Management</title>
-      <link>https://martijnvv.github.io/personal_blog/updates-to-google-consent-management/</link>
+      <link>/updates-to-google-consent-management/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/updates-to-google-consent-management/</guid>
+      <guid>/updates-to-google-consent-management/</guid>
       <description>Updates to Google Consent Management In March 2024, a new European privacy regulation will be implemented. This will have an impact on how we collect and process data.
 Why is this important?
 A new European regulation (Digital Markets Act) requires big tech to protect its users. They are responsible for respecting and collecting user consent As a result, we need to update our way of collecting data in GTM to &amp;ldquo;Consent Mode v2&amp;rdquo; All Google Advertising tracking will go through GA4 Consent Management will look different in GTM, as a result of the update If we don&amp;rsquo;t use this new technique, we cannot effectively use Google advertising products, starting march 2024 Coincidentally, Google Chrome will stop accepting 3rd party cookies end of March 2024 too, which means the urgency to shift is even higher What do we need to do to migrate?</description>
@@ -20,20 +20,20 @@ A new European regulation (Digital Markets Act) requires big tech to protect its
     
     <item>
       <title>Understanding Composable CDP&#39;s</title>
-      <link>https://martijnvv.github.io/personal_blog/understanding-composable-cdp/</link>
+      <link>/understanding-composable-cdp/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/understanding-composable-cdp/</guid>
+      <guid>/understanding-composable-cdp/</guid>
       <description>Understanding Composable CDP’s One of the new hot topics in tech is the “Composable CDP.” Databricks is sharing a good definition of a Composable CDP in their article written together with Hightouch and Snowplow Analytics.
 “A Composable CDP consists of the same components as their off-the-shelf counterparts; Data Collection, Data Storage and Modeling, and Data Activation. By implementing a best-in-class product at each layer of the Composable CDP, organizations can achieve a far more extensible CDP solution that can solve problems well beyond the common use cases of off-the-shelf CDPs.</description>
     </item>
     
     <item>
       <title>10 Things you need to know about the new Google Analytics 4</title>
-      <link>https://martijnvv.github.io/personal_blog/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
+      <link>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
+      <guid>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
       <description>10 Things you need to know about the new Google Analytics 4On July 31st 2019, Google introduced a “new” analytics solution they called Google Analytics 4. Google Analytics 4 is Google’s answer to the changing digital landscape we are dealing with as analysts. Google Analytics 4 will replace the current Google Universal Analytics in the future.
 In this article I will share 10 things you need to know about the new Google Analytics 4 tool.</description>
     </item>

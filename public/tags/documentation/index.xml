@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>documentation on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/tags/documentation/</link>
+    <link>/tags/documentation/</link>
     <description>Recent content in documentation on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to create Google Tag Manager documentation with R</title>
-      <link>https://martijnvv.github.io/personal_blog/create-google-tag-manager-documentation-with-r/</link>
+      <link>/create-google-tag-manager-documentation-with-r/</link>
       <pubDate>Thu, 09 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/create-google-tag-manager-documentation-with-r/</guid>
+      <guid>/create-google-tag-manager-documentation-with-r/</guid>
       <description>Create Google Tag Manager documentation with RCreating digital data documentation can be a painstaking, boring, but extremely useful endeavor. Knowing what digital data is available to you and others can be helpful to understand the potential of your data set, as well as provide context to analysis, reporting and other ways to leverage data.
 To take some of the effort out of creating documentation about the contents of your Google Tag Manager account, I have created a script that pulls data out of the environment and outputs a simple Excel file, which you can share with stakeholders.</description>
     </item>

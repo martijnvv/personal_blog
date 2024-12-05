@@ -1,4 +1,6 @@
 baseurl = "https://martijnvv.github.io/personal_blog/"
+relativeURLs = true
+canonifyURLs = true
 languageCode = "en-us"
 title = "Martijn van Vreeden"
 theme = "beautifulhugo"

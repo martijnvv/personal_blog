@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>r on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/tags/r/</link>
+    <link>/tags/r/</link>
     <description>Recent content in r on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collecting Spotify data with R</title>
-      <link>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</link>
+      <link>/collecting-spotify-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</guid>
+      <guid>/collecting-spotify-data-with-r/</guid>
       <description>This post is part of a series of posts to analyse the digital me.
 Collecting Spotify data with RSpotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.
 To get started, you wil need to R packages to access the data and process it afterwards.</description>
@@ -20,19 +20,19 @@ To get started, you wil need to R packages to access the data and process it aft
     
     <item>
       <title>Visualising Google Analytics internal search data with R</title>
-      <link>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</link>
+      <link>/visualising-google-analytics-internal-search-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</guid>
+      <guid>/visualising-google-analytics-internal-search-data-with-r/</guid>
       <description>Visualising Google Analytics internal search data with RIt’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis.</description>
     </item>
     
     <item>
       <title>Analysing Google Location data with R</title>
-      <link>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</link>
+      <link>/analysing-google-location-data/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</guid>
+      <guid>/analysing-google-location-data/</guid>
       <description>This post is part of a series of posts to analyse the digital me.
 Analyse Google Location data with RGoogle is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!
 In this blog I will explore the location data Google has collected about me since 2016.</description>
@@ -40,10 +40,10 @@ In this blog I will explore the location data Google has collected about me sinc
     
     <item>
       <title>Visualize and analyse IMDB ratings with R (part 2)</title>
-      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
+      <link>/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
+      <guid>/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
       <description>Visualize and analyse IMDB ratings with R (part 2)This post is part of a series of posts to analyse the digital me.
 In my previous post about analysing IMDB ratings in this series I explored some of the data I collected about my movie preferences, also compared to the ratings other IMDB raters.
 In this post I will dig a little deeper to learn more about my own personal movie preferences.</description>
@@ -51,10 +51,10 @@ In this post I will dig a little deeper to learn more about my own personal movi
     
     <item>
       <title>Visualize and analyse IMDB ratings with R</title>
-      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</link>
+      <link>/visualize-and-analyse-imdb-ratings-with-r/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</guid>
+      <guid>/visualize-and-analyse-imdb-ratings-with-r/</guid>
       <description>This post is part of a series of posts to analyze the digital me.
 Visualize and analyse IMDB ratings with RIn my previous post in this series I shared how I collect and store my personal ratings data from IMDB and enrich it with a few important variables about the movie.
 In this post I will explore the data to learn about my movie preferences. I will be using some R packages to structure the data properly and other packages to build plots:</description>
@@ -62,10 +62,10 @@ In this post I will explore the data to learn about my movie preferences. I will
     
     <item>
       <title>Getting my IMDB ratings with R and Rvest</title>
-      <link>https://martijnvv.github.io/personal_blog/getting-my-imdb-ratings-with-r-and-rvest/</link>
+      <link>/getting-my-imdb-ratings-with-r-and-rvest/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/getting-my-imdb-ratings-with-r-and-rvest/</guid>
+      <guid>/getting-my-imdb-ratings-with-r-and-rvest/</guid>
       <description>This post is part of a series of posts to analyse the digital me.
 Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.</description>
     </item>

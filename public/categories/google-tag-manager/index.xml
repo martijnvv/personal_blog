@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>google tag manager on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</link>
+    <link>/categories/google-tag-manager/</link>
     <description>Recent content in google tag manager on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/categories/google-tag-manager/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/google-tag-manager/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Updates to Google Consent Management</title>
-      <link>https://martijnvv.github.io/personal_blog/updates-to-google-consent-management/</link>
+      <link>/updates-to-google-consent-management/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/updates-to-google-consent-management/</guid>
+      <guid>/updates-to-google-consent-management/</guid>
       <description>Updates to Google Consent Management In March 2024, a new European privacy regulation will be implemented. This will have an impact on how we collect and process data.
 Why is this important?
 A new European regulation (Digital Markets Act) requires big tech to protect its users. They are responsible for respecting and collecting user consent As a result, we need to update our way of collecting data in GTM to &amp;ldquo;Consent Mode v2&amp;rdquo; All Google Advertising tracking will go through GA4 Consent Management will look different in GTM, as a result of the update If we don&amp;rsquo;t use this new technique, we cannot effectively use Google advertising products, starting march 2024 Coincidentally, Google Chrome will stop accepting 3rd party cookies end of March 2024 too, which means the urgency to shift is even higher What do we need to do to migrate?</description>
@@ -20,29 +20,29 @@ A new European regulation (Digital Markets Act) requires big tech to protect its
     
     <item>
       <title>Google Tag Manager Server-side</title>
-      <link>https://martijnvv.github.io/personal_blog/google-tag-manager-server-side-advantages-and-concerns/</link>
+      <link>/google-tag-manager-server-side-advantages-and-concerns/</link>
       <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/google-tag-manager-server-side-advantages-and-concerns/</guid>
+      <guid>/google-tag-manager-server-side-advantages-and-concerns/</guid>
       <description>Google Tag Manager Server-sideGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.</description>
     </item>
     
     <item>
       <title>How to add Google Tag Manager to Hugo static website</title>
-      <link>https://martijnvv.github.io/personal_blog/how-to-add-google-tag-manager-to-hugo-static-website/</link>
+      <link>/how-to-add-google-tag-manager-to-hugo-static-website/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/how-to-add-google-tag-manager-to-hugo-static-website/</guid>
+      <guid>/how-to-add-google-tag-manager-to-hugo-static-website/</guid>
       <description>How to add Google Tag Manager to a Hugo static websiteIn this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website. As a digital analytics consultant I can appreciate the value a good Google Tag Manager (GTM) implementation can have for your business or even to optimize your user’s blog experience.
 How to add the standard Google Tag Manager container to a Hugo websiteTo make sure that Google Tag Manager is enabled, we will have to include the Google Tag Manager container.</description>
     </item>
     
     <item>
       <title>How to create Google Tag Manager documentation with R</title>
-      <link>https://martijnvv.github.io/personal_blog/create-google-tag-manager-documentation-with-r/</link>
+      <link>/create-google-tag-manager-documentation-with-r/</link>
       <pubDate>Thu, 09 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/create-google-tag-manager-documentation-with-r/</guid>
+      <guid>/create-google-tag-manager-documentation-with-r/</guid>
       <description>Create Google Tag Manager documentation with RCreating digital data documentation can be a painstaking, boring, but extremely useful endeavor. Knowing what digital data is available to you and others can be helpful to understand the potential of your data set, as well as provide context to analysis, reporting and other ways to leverage data.
 To take some of the effort out of creating documentation about the contents of your Google Tag Manager account, I have created a script that pulls data out of the environment and outputs a simple Excel file, which you can share with stakeholders.</description>
     </item>

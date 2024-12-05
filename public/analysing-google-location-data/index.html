@@ -12,13 +12,13 @@
   <meta property="og:description" content="This time I will explore my Google Location data, data that Google is collecting from my devices">
   <meta name="twitter:description" content="This time I will explore my Google Location data, data that Google is collecting from my devices">
   <meta name="author" content="Martijn van Vreeden"/>
-  <link href='https://martijnvv.github.io/personal_blog/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="https://martijnvv.github.io/personal_blog/img/logo.jpg" />
-  <meta name="twitter:image" content="https://martijnvv.github.io/personal_blog/img/logo.jpg" />
+  <link href='../img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="/img/logo.jpg" />
+  <meta name="twitter:image" content="/img/logo.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@martijnvv" />
   <meta name="twitter:creator" content="@martijnvv" />
-  <meta property="og:url" content="https://martijnvv.github.io/personal_blog/analysing-google-location-data/" />
+  <meta property="og:url" content="/analysing-google-location-data/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Martijn van Vreeden" />
   <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
@@ -40,7 +40,7 @@
 		'pageKind': 'page',
 		'pageId': '1ea0ccabf5ae02842e888b06af362433',
 		'pageTitle': 'Analysing Google Location data with R',
-		'pagePermalink': 'https:\/\/martijnvv.github.io\/personal_blog\/analysing-google-location-data\/',
+		'pagePermalink': '\/analysing-google-location-data\/',
 		'pageType': 'post',
 		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'digital me','pageTags':'ggplot2|r|google|location','pageType2': 'post',
 		'pageLanguage': 'en'
@@ -53,7 +53,7 @@
 	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
 	
 
-<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvv.github.io/personal_blog/analysing-google-location-data/" />
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="../analysing-google-location-data/" />
   <script type="text/javascript">
           var stylesheet = document.createElement('link');
           stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
@@ -61,16 +61,16 @@
           stylesheet.type = 'text/css';
           document.getElementsByTagName('head')[0].appendChild(stylesheet);
    </script> 
-  <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
   <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
     
   <script type="application/ld+json">
 		{
 			"@context":"http://schema.org/",
 			"@type":"BlogPosting",
-			"mainEntityOfPage":"https:\/\/martijnvv.github.io\/personal_blog\/analysing-google-location-data\/",
+			"mainEntityOfPage":"\/analysing-google-location-data\/",
 			"editor": "Martijn van Vreeden",
-			"url":"https:\/\/martijnvv.github.io\/personal_blog\/analysing-google-location-data\/","headline":"Analysing Google Location data with R","description":"This time I will explore my Google Location data, data that Google is collecting from my devices",
+			"url":"\/analysing-google-location-data\/","headline":"Analysing Google Location data with R","description":"This time I will explore my Google Location data, data that Google is collecting from my devices",
 			"articleSection":"digital me",
 			"timeRequired": "PT6M",
 			"inLanguage" : "en",
@@ -118,7 +118,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="https://martijnvv.github.io/personal_blog/">Martijn van Vreeden</a>
+      <a class="navbar-brand" href="../">Martijn van Vreeden</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -126,13 +126,13 @@
         
           
             <li>
-              <a title="About me" href="/personal_blog/about-me/">About me</a>
+              <a title="About me" href="../about-me/">About me</a>
             </li>
           
         
           
             <li>
-              <a title="Clients" href="/personal_blog/portfolio/">Clients</a>
+              <a title="Clients" href="../portfolio/">Clients</a>
             </li>
           
         
@@ -162,11 +162,11 @@
     <div class="avatar-container">
       <div class="avatar-img-border">
         
-          <a title="Martijn van Vreeden" href="https://martijnvv.github.io/personal_blog/">
+          <a title="Martijn van Vreeden" href="../">
 		 <figure>
 			<picture>
-				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
-		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+				<source srcset="../img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="../img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
 			</picture>
 		</figure>	
           </a>
@@ -214,7 +214,7 @@
         
 
 
-<p><em>This post is part of a series of posts to <a href="/meet-the-digital-me/">analyse the digital me</a>.</em></p>
+<p><em>This post is part of a series of posts to <a href="../meet-the-digital-me/">analyse the digital me</a>.</em></p>
 <div id="analyse-google-location-data-with-r" class="section level1">
 <h1>Analyse Google Location data with R</h1>
 <p>Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!</p>
@@ -290,8 +290,8 @@ df %&gt;%
 
 <figure>
 	<picture>
-	  <source srcset="/img/location/weekly.webp" type="image/webp">
-	<img src="/img/location/weekly.jpg" alt="Weekly datapoints" defer>
+	  <source srcset="../img/location/weekly.webp" type="image/webp">
+	<img src="../img/location/weekly.jpg" alt="Weekly datapoints" defer>
 	</picture>
 	<figcaption>
 	<p class="caption">Weekly datapoints</p>
@@ -332,8 +332,8 @@ ggplot(activities_2, aes(x = main_activity, group = main_activity)) +
 
 <figure>
 	<picture>
-	  <source srcset="/img/location/activity.webp" type="image/webp">
-	<img src="/img/location/activity.jpg" alt="Main activities in 2017" defer>
+	  <source srcset="../img/location/activity.webp" type="image/webp">
+	<img src="../img/location/activity.jpg" alt="Main activities in 2017" defer>
 	</picture>
 	<figcaption>
 	<p class="caption">Main activities in 2017</p>
@@ -369,8 +369,8 @@ ggmap(amersfoort) +
 
 <figure>
 	<picture>
-	  <source srcset="/img/location/provincie.webp" type="image/webp">
-	<img src="/img/location/provincie.jpg" alt="Location history data points in Amersfoort" defer>
+	  <source srcset="../img/location/provincie.webp" type="image/webp">
+	<img src="../img/location/provincie.jpg" alt="Location history data points in Amersfoort" defer>
 	</picture>
 	<figcaption>
 	<p class="caption">Location history data points in Amersfoort</p>
@@ -394,8 +394,8 @@ ggmap(amersfoort) +
 
 <figure>
 	<picture>
-	  <source srcset="/img/location/amersfoort.webp" type="image/webp">
-	<img src="/img/location/amersfoort.jpg" alt="Location history data points in Amersfoort" defer>
+	  <source srcset="../img/location/amersfoort.webp" type="image/webp">
+	<img src="../img/location/amersfoort.jpg" alt="Location history data points in Amersfoort" defer>
 	</picture>
 	<figcaption>
 	<p class="caption">Location history data points in Amersfoort</p>
@@ -419,13 +419,13 @@ ggmap(amersfoort) +
               
                 <span class="post-meta" style="text-align:center">Tags: 
                   
-                    #<a href="https://martijnvv.github.io/personal_blog/tags/ggplot2/" class="post-meta-tag-article">ggplot2</a>&nbsp;
+                    #<a href="../tags/ggplot2/" class="post-meta-tag-article">ggplot2</a>&nbsp;
                   
-                    #<a href="https://martijnvv.github.io/personal_blog/tags/r/" class="post-meta-tag-article">r</a>&nbsp;
+                    #<a href="../tags/r/" class="post-meta-tag-article">r</a>&nbsp;
                   
-                    #<a href="https://martijnvv.github.io/personal_blog/tags/google/" class="post-meta-tag-article">google</a>&nbsp;
+                    #<a href="../tags/google/" class="post-meta-tag-article">google</a>&nbsp;
                   
-                    #<a href="https://martijnvv.github.io/personal_blog/tags/location/" class="post-meta-tag-article">location</a>&nbsp;
+                    #<a href="../tags/location/" class="post-meta-tag-article">location</a>&nbsp;
                   
                 </span>
               
@@ -439,28 +439,28 @@ ggmap(amersfoort) +
     <ul class="share">
       
       <li>
-        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvv.github.io%2fpersonal_blog%2fanalysing-google-location-data%2f&amp;text=Analysing%20Google%20Location%20data%20with%20R&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+        <a class="fs2" href="//twitter.com/share?url=%2fanalysing-google-location-data%2f&amp;text=Analysing%20Google%20Location%20data%20with%20R&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
           <i class="icon-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvv.github.io%2fpersonal_blog%2fanalysing-google-location-data%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=%2fanalysing-google-location-data%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
           <i class="icon-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvv.github.io%2fpersonal_blog%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+        <a class="fs2" href="//reddit.com/submit?url=%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
           <i class="icon-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvv.github.io%2fpersonal_blog%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
           <i class="icon-linkedin"></i>
         </a>
       </li>
@@ -474,12 +474,12 @@ ggmap(amersfoort) +
 	  <ul class="pager blog-pager">
         
           <li class="previous">
-            <a href="https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/" data-toggle="tooltip" data-placement="top" title="Visualize and analyse IMDB ratings with R (part 2)">&larr; Previous Post</a>
+            <a href="../visualize-and-analyse-imdb-ratings-with-r-part-2/" data-toggle="tooltip" data-placement="top" title="Visualize and analyse IMDB ratings with R (part 2)">&larr; Previous Post</a>
           </li>
         
         
           <li class="next">
-            <a href="https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/" data-toggle="tooltip" data-placement="top" title="Visualising Google Analytics internal search data with R">Next Post &rarr;</a>
+            <a href="../visualising-google-analytics-internal-search-data-with-r/" data-toggle="tooltip" data-placement="top" title="Visualising Google Analytics internal search data with R">Next Post &rarr;</a>
           </li>
         
       </ul>
@@ -522,12 +522,12 @@ ggmap(amersfoort) +
             </li>
         </ul>
         <p class="credits copyright text-muted">
-              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+              <a href="../cookie-policy/" rel="nofollow">Privacy policy</a>
           &nbsp;&bull;&nbsp;
           2023
           
             &nbsp;&bull;&nbsp;
-            <a href="https://martijnvv.github.io/personal_blog/" rel="nofollow">Martijn van Vreeden</a>
+            <a href="../" rel="nofollow">Martijn van Vreeden</a>
           
         </p>
       </div>
@@ -536,9 +536,9 @@ ggmap(amersfoort) +
 </footer>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="https://martijnvv.github.io/personal_blog/js/main.js"></script>
-	<script src="https://martijnvv.github.io/personal_blog/js/highlight.min.js"></script>
-	<script src="https://martijnvv.github.io/personal_blog/js/purecookie.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/highlight.min.js"></script>
+	<script src="../js/purecookie.js"></script>
 	<script> hljs.initHighlightingOnLoad(); </script>
 	
 	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>

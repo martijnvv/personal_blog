@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>google-analytics on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/tags/google-analytics/</link>
+    <link>/tags/google-analytics/</link>
     <description>Recent content in google-analytics on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/google-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/google-analytics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Composable CDP&#39;s</title>
-      <link>https://martijnvv.github.io/personal_blog/understanding-composable-cdp/</link>
+      <link>/understanding-composable-cdp/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/understanding-composable-cdp/</guid>
+      <guid>/understanding-composable-cdp/</guid>
       <description>Understanding Composable CDP’s One of the new hot topics in tech is the “Composable CDP.” Databricks is sharing a good definition of a Composable CDP in their article written together with Hightouch and Snowplow Analytics.
 “A Composable CDP consists of the same components as their off-the-shelf counterparts; Data Collection, Data Storage and Modeling, and Data Activation. By implementing a best-in-class product at each layer of the Composable CDP, organizations can achieve a far more extensible CDP solution that can solve problems well beyond the common use cases of off-the-shelf CDPs.</description>
     </item>
     
     <item>
       <title>Understanding retention with customer feedback data</title>
-      <link>https://martijnvv.github.io/personal_blog/understanding-retention-with-customer-feedback-data/</link>
+      <link>/understanding-retention-with-customer-feedback-data/</link>
       <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/understanding-retention-with-customer-feedback-data/</guid>
+      <guid>/understanding-retention-with-customer-feedback-data/</guid>
       <description>Understanding retention with customer feedback dataTo get a better understanding of customer behavior in relation to the quality of the product and services a company provides, we often use customer feedback forms. We all know the concepts of NPS, CES or other ways of getting an understanding of customer satisfaction. What are the biggest differences and which one predicts retention most reliably? Let’s find out.
 To get started, let’s run by the most popular methods available to measure customer satisfaction.</description>
     </item>
     
     <item>
       <title>10 Things you need to know about the new Google Analytics 4</title>
-      <link>https://martijnvv.github.io/personal_blog/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
+      <link>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
+      <guid>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
       <description>10 Things you need to know about the new Google Analytics 4On July 31st 2019, Google introduced a “new” analytics solution they called Google Analytics 4. Google Analytics 4 is Google’s answer to the changing digital landscape we are dealing with as analysts. Google Analytics 4 will replace the current Google Universal Analytics in the future.
 In this article I will share 10 things you need to know about the new Google Analytics 4 tool.</description>
     </item>
     
     <item>
       <title>Optimizing the Youtube Shortcode for Hugo</title>
-      <link>https://martijnvv.github.io/personal_blog/optimizing-the-youtube-shortcode-for-hugo/</link>
+      <link>/optimizing-the-youtube-shortcode-for-hugo/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/optimizing-the-youtube-shortcode-for-hugo/</guid>
+      <guid>/optimizing-the-youtube-shortcode-for-hugo/</guid>
       <description>How to optimize the Youtube Shortcode for HugoThe Youtube embed shortcode for Hugo allows you to embed Youtube videos in your Hugo pages. Which is a pretty neat feature they provide to you out-of-the-box. The shortcode allows you to add two additional parameters that can be managed from the standard settings:
 Unique Youtube video IDallowfullscreen (which you can set to “true”, which allows users to show the video in full screen mode)However, there are a ton of additional parameters you can include to customize your Youtube video embed.</description>
     </item>
     
     <item>
       <title>Visualising Google Analytics internal search data with R</title>
-      <link>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</link>
+      <link>/visualising-google-analytics-internal-search-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</guid>
+      <guid>/visualising-google-analytics-internal-search-data-with-r/</guid>
       <description>Visualising Google Analytics internal search data with RIt’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis.</description>
     </item>
     
