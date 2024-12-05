@@ -1,4 +1,4 @@
-name: Deploy Hugo Site to GitHub Pages
+name: Deploy Hugo Site with Blogdown to GitHub Pages
 
 on:
   push:
@@ -13,12 +13,25 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install dependencies
+        run: |
+          install.packages('blogdown')
+          install.packages('remotes')
+          remotes::install_github('rstudio/blogdown')
+
+      - name: Build site with Blogdown
+        run: |
+          blogdown::build_site()
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
 
-      - name: Build the site
+      - name: Build the site with Hugo
         run: hugo --minify
 
       - name: Deploy to GitHub Pages
