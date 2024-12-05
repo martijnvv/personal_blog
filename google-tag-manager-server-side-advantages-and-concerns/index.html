@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+  <title>Google Tag Manager Server-side</title>
+  <meta property="og:title" content="Google Tag Manager Server-side" />
+  <meta name="twitter:title" content="Google Tag Manager Server-side" />
+  <meta name="description" content="Google Tag Manager Server-sideGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.">
+  <meta property="og:description" content="Google Tag Manager Server-sideGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.">
+  <meta name="twitter:description" content="Google Tag Manager Server-sideGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the …">
+  <meta name="author" content="Martijn van Vreeden"/>
+  <link href='https://martijnvanvreeden.nl/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@martijnvv" />
+  <meta name="twitter:creator" content="@martijnvv" />
+  <meta property="og:url" content="https://martijnvanvreeden.nl/google-tag-manager-server-side-advantages-and-concerns/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martijn van Vreeden" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">  
+<link href='https://www.googletagmanager.com' rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href='https://www.googletagmanager.com'>  <script>
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'pagePublishDate': '2021-11-16',
+		'pageModifiedDate': '2021-11-16','pageReadingTimeMinutes':  6 ,
+		'pageReadingTimeSeconds': 304 ,
+		'pageWordCount': 1116 ,
+		'pageFuzzyWordCount': 1200 ,
+		'pageKind': 'page',
+		'pageId': 'd77b2dc04b39c3974982e0d03bca67f7',
+		'pageTitle': 'Google Tag Manager Server-side',
+		'pagePermalink': 'https:\/\/martijnvanvreeden.nl\/google-tag-manager-server-side-advantages-and-concerns\/',
+		'pageType': 'post',
+		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'google tag manager','pageTags':'google tag manager','pageType2': 'post',
+		'pageLanguage': 'en'
+	 });
+  </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
+	
+
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvanvreeden.nl/google-tag-manager-server-side-advantages-and-concerns/" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"https:\/\/martijnvanvreeden.nl\/google-tag-manager-server-side-advantages-and-concerns\/",
+			"editor": "Martijn van Vreeden",
+			"url":"https:\/\/martijnvanvreeden.nl\/google-tag-manager-server-side-advantages-and-concerns\/","headline":"Google Tag Manager Server-side","description":"Google Tag Manager Server-side\rGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.",
+			"articleSection":"google tag manager",
+			"timeRequired": "PT6M",
+			"inLanguage" : "en",
+			"wordCount":  1116 ,
+			"datePublished" : "2021-11-16T00:00:00",
+			"dateModified" : "2021-11-16T00:00:00",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name":"Google Tag Manager Server-side",
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>
+</head>
+
+
+  <body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMSG6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://martijnvanvreeden.nl/">Martijn van Vreeden</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About me" href="/about-me/">About me</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Clients" href="/portfolio/">Clients</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="GitHub" href="https://github.com/martijnvv">GitHub</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="LinkedIn" href="https://www.linkedin.com/in/martijnvanvreeden/">LinkedIn</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Twitter" href="https://twitter.com/martijnvv">Twitter</a>
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Martijn van Vreeden" href="https://martijnvanvreeden.nl/">
+		 <figure>
+			<picture>
+				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+			</picture>
+		</figure>	
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    <div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post" id="content-item">
+		
+	  
+        
+
+
+<div id="google-tag-manager-server-side" class="section level1">
+<h1>Google Tag Manager Server-side</h1>
+<p>Google Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.</p>
+<p>If you are interested in a how-to guide to setting up Google Tag Manager Server-side, I can highly recommend you to take a look at the following video (25 mins) by Simo Ahava. He explains the basic steps of setting things up. If you are keen on having a more detailed way of learning how to run GTM SS, check out <a href="https://www.teamsimmer.com/checkout/server-side-tagging/course-page/">his online course at Team Simmer</a>.</p>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/6OGbOh216mU?enablejsapi=1&color=white&end=92&modestbranding=1" allowfullscreen></iframe>
+</div>
+
+<div id="what-is-server-side-tracking" class="section level2">
+<h2>What is server-side tracking?</h2>
+<p>With server-side tag management, you can introduce a server on which you are able to manage the distribution of data to third parties. Instead of using a plethora of javascript trackers on a website which gives third parties a lot of freedom to collect the data they feel fits the needs of their end-users, you will be in full control to choose which data you want to share with which technology.</p>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/gtm-serverside.webp" type="image/webp">
+	<img src="/img/gtm-serverside.jpg" alt="Server-side tag management" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">Server-side tag management</p>
+	</figcaption>
+</figure>
+<p>This server-side setup has many advantages and some concerns as well. I will discuss all of these in the following chapters.</p>
+</div>
+<div id="advantages-of-google-tag-manager-server-side" class="section level2">
+<h2>Advantages of Google Tag Manager Server-side</h2>
+<p>Using a server-side tag management solution has several big advantages over client-side tracking. And those advantages are expected to grow over time. With all the focus on privacy and GDPR to better manage and respect the wishes of users, the way we collect and manage data will become more important over time. Also, increasing measures by providers of browsers like Apple and Firefox, to safeguard the data and rights of users, will impact the way we collect and manage data.</p>
+<div id="reduce-load-on-page" class="section level3">
+<h3>Reduce load on page</h3>
+<p>Up until the use of server-side tracking, we would collect data in the client (the browser). Most of the vendors would use javascript trackers to manage their data collection. This means whenever a new vendor like Google, Facebook, Affiliate would like to collect data, they would ask the developer of the website to implement a javascript library. When many of the javascript libraries would be loaded on the website, it would slow down the way the website loads. Even though over time the performance of these javascript libraries would improve, every bit counts.</p>
+<p>With the introduction of server-side tracking, only one tracker would be introduced to the website. All the third party vendors would then receive the data through that one single item via the server. This would significantly reduce the amount of work to be done in the browser and improve the performance of the website. This is easily the biggest benefit of server-side tracking for the website owner and the end-user of the website. Speed is good :-)</p>
+</div>
+<div id="have-full-control-of-the-data" class="section level3">
+<h3>Have full control of the data</h3>
+<p>When javascript libraries are added to the website to collect data, it is often not very well understand what type of functionalities are activated. Many javascript libraries collect more than you may know. Over time, the javascript library can also be updated, without the website owner knowing about it. By using server-side data-collection, you have a 100% control over all the data that you are sending to the vendor. This means no more surprise updates and reducing the risk of data leaks significantly.</p>
+</div>
+<div id="cleanup-of-payload" class="section level3">
+<h3>Cleanup of payload</h3>
+<p>Once you have full control of the data, you can also easily control the data you are sending. You can easily redact some privacy sensitive data you may not want to share with some vendors. Consider the removing IP addresses, email addresses from url’s or other dimensions before sending the data forward.</p>
+</div>
+</div>
+<div id="concerns-related-to-google-tag-manager-server-side" class="section level2">
+<h2>Concerns related to Google Tag Manager Server-side</h2>
+<p>Let’s not pretend that server-side is all perfect. There are some concerns and a downside to using a server-side tag management solution. I’ll share some of the main concerns and additional responsibilities you need to be aware of.</p>
+<div id="cirmumvent-adblockers" class="section level3">
+<h3>Cirmumvent adblockers</h3>
+<p>Adblockers are ensuring users who don’t want to be tracked a safe passage. Whenever a website runs, the adblocker will scan for javascript libraries traditionally loaded for advertising and tracking purposes. With server-side tracking we won’t have to load those javascript libraries anymore. Which means adblockers can’t detect them anymore.</p>
+<p>This may seem like a big advantage. More users will be tracked and data quality will increase! However, these users are expecting to not be tracked. Respecting your user’s wishes is a major concern for any ethical business. This means you need to be respectful through thorough consent management systems instead.</p>
+</div>
+<div id="lack-of-transparency" class="section level3">
+<h3>Lack of transparency</h3>
+<p>Without having all those javascript trackers on your website, it is going to be harder to show users which tools and vendors you are using to collect data. Anything can be happening on the server. You could send the data to one vendor or twenty!</p>
+<p>This lack of transparency is a potential concern. By being transparent about your data collection in a clear and up-to-date cookie policy and privacy policy, you can share what data you are sending to which vendor.</p>
+</div>
+<div id="cost" class="section level3">
+<h3>Cost</h3>
+<p>Google Tag Manager is a free product. If you only use the client-side version of Google Tag Manager, you won’t have to pay for their services (unless you upgrade to a paid 360 account). With server-side tracking, you will have to deal with the cost of running the server. Everytime you collect a datapoint and send it to the endpoint of the server, it will manage the data and send it to whoever you like. The costs for the server are your additional cost. For most businesses these costs will not be higher than 150 euros a month.</p>
+</div>
+<div id="lack-of-availability-of-endpoint-by-vendors" class="section level3">
+<h3>Lack of availability of endpoint by vendors</h3>
+<p>As you now know, server-side data-collection gives you great control over the data you are sharing with vendors. It’s also a relatively new technology that is gaining traction only since Google introduced their server-side solution. This means many vendors haven’t introduced the option of sending data to them via the server. In addition, not all vendors will be very excited about handing over control of the data collection to the server. They are losing freedom and flexibility by doing so.</p>
+<p>Smart vendors will see server-side tag management as an opportunity. They can offer website-owners more control over the data and will show they are aware of the privacy concerns of their customers. Hopefully several of the vendors will open up resources to develop the endpoints needed to collect the data server-side.</p>
+</div>
+</div>
+</div>
+
+      </article>
+              
+                <span class="post-meta" style="text-align:center">Tags: 
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/google-tag-manager/" class="post-meta-tag-article">google tag manager</a>&nbsp;
+                  
+                </span>
+              
+		
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box">
+    <ul class="share">
+      
+      <li>
+        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgoogle-tag-manager-server-side-advantages-and-concerns%2f&amp;text=Google%20Tag%20Manager%20Server-side&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+          <i class="icon-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvanvreeden.nl%2fgoogle-tag-manager-server-side-advantages-and-concerns%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+          <i class="icon-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgoogle-tag-manager-server-side-advantages-and-concerns%2f&amp;title=Google%20Tag%20Manager%20Server-side" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+          <i class="icon-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgoogle-tag-manager-server-side-advantages-and-concerns%2f&amp;title=Google%20Tag%20Manager%20Server-side" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+          <i class="icon-linkedin"></i>
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+	  <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://martijnvanvreeden.nl/understanding-retention-with-customer-feedback-data/" data-toggle="tooltip" data-placement="top" title="Understanding retention with customer feedback data">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://martijnvanvreeden.nl/what-is-happening-in-digital-analytics/" data-toggle="tooltip" data-placement="top" title="What&#39;s happening in Digital Analytics">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+	  
+    </div>
+  </div>
+</div>
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		
+              <li>
+                <a href="https://twitter.com/martijnvv" title="Twitter" rel="noreferrer" aria-label="Twitter">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-twitter gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/martijnvanvreeden" title="LinkedIn" rel="noreferrer" aria-label="LinkedIn">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-linkedin gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          2023
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://martijnvanvreeden.nl/" rel="nofollow">Martijn van Vreeden</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/main.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/highlight.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/purecookie.js"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>
+  </body>
+</html>
+

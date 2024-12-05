@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>imdb on Martijn van Vreeden</title>
+    <link>https://martijnvanvreeden.nl/categories/imdb/</link>
+    <description>Recent content in imdb on Martijn van Vreeden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Oct 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/categories/imdb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualize and analyse IMDB ratings with R (part 2)</title>
+      <link>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
+      <description>Visualize and analyse IMDB ratings with R (part 2)This post is part of a series of posts to analyse the digital me.
+In my previous post about analysing IMDB ratings in this series I explored some of the data I collected about my movie preferences, also compared to the ratings other IMDB raters.
+In this post I will dig a little deeper to learn more about my own personal movie preferences.</description>
+    </item>
+    
+    <item>
+      <title>Visualize and analyse IMDB ratings with R</title>
+      <link>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r/</link>
+      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r/</guid>
+      <description>This post is part of a series of posts to analyze the digital me.
+Visualize and analyse IMDB ratings with RIn my previous post in this series I shared how I collect and store my personal ratings data from IMDB and enrich it with a few important variables about the movie.
+In this post I will explore the data to learn about my movie preferences. I will be using some R packages to structure the data properly and other packages to build plots:</description>
+    </item>
+    
+    <item>
+      <title>Getting my IMDB ratings with R and Rvest</title>
+      <link>https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/</guid>
+      <description>This post is part of a series of posts to analyse the digital me.
+Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.</description>
+    </item>
+    
+  </channel>
+</rss>

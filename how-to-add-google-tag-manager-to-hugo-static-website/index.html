@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+  <title>How to add Google Tag Manager to Hugo static website</title>
+  <meta property="og:title" content="How to add Google Tag Manager to Hugo static website" />
+  <meta name="twitter:title" content="How to add Google Tag Manager to Hugo static website" />
+  <meta name="description" content="In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website.">
+  <meta property="og:description" content="In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website.">
+  <meta name="twitter:description" content="In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website.">
+  <meta name="author" content="Martijn van Vreeden"/>
+  <link href='https://martijnvanvreeden.nl/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@martijnvv" />
+  <meta name="twitter:creator" content="@martijnvv" />
+  <meta property="og:url" content="https://martijnvanvreeden.nl/how-to-add-google-tag-manager-to-hugo-static-website/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martijn van Vreeden" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">  
+<link href='https://www.googletagmanager.com' rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href='https://www.googletagmanager.com'>  <script>
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'pagePublishDate': '2020-04-16',
+		'pageModifiedDate': '2020-04-16','pageReadingTimeMinutes':  10 ,
+		'pageReadingTimeSeconds': 572 ,
+		'pageWordCount': 2099 ,
+		'pageFuzzyWordCount': 2100 ,
+		'pageKind': 'page',
+		'pageId': 'cb5abef7c06445894d538542f8063a45',
+		'pageTitle': 'How to add Google Tag Manager to Hugo static website',
+		'pagePermalink': 'https:\/\/martijnvanvreeden.nl\/how-to-add-google-tag-manager-to-hugo-static-website\/',
+		'pageType': 'post',
+		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'google tag manager','pageTags':'google tag manager|hugo','pageType2': 'post',
+		'pageLanguage': 'en'
+	 });
+  </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
+	
+
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvanvreeden.nl/how-to-add-google-tag-manager-to-hugo-static-website/" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"https:\/\/martijnvanvreeden.nl\/how-to-add-google-tag-manager-to-hugo-static-website\/",
+			"editor": "Martijn van Vreeden",
+			"url":"https:\/\/martijnvanvreeden.nl\/how-to-add-google-tag-manager-to-hugo-static-website\/","headline":"How to add Google Tag Manager to Hugo static website","description":"In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website.",
+			"articleSection":"google tag manager",
+			"timeRequired": "PT10M",
+			"inLanguage" : "en",
+			"wordCount":  2099 ,
+			"datePublished" : "2020-04-16T00:00:00",
+			"dateModified" : "2020-04-16T00:00:00",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name":"How to add Google Tag Manager to Hugo static website",
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>
+</head>
+
+
+  <body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMSG6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://martijnvanvreeden.nl/">Martijn van Vreeden</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About me" href="/about-me/">About me</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Clients" href="/portfolio/">Clients</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="GitHub" href="https://github.com/martijnvv">GitHub</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="LinkedIn" href="https://www.linkedin.com/in/martijnvanvreeden/">LinkedIn</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Twitter" href="https://twitter.com/martijnvv">Twitter</a>
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Martijn van Vreeden" href="https://martijnvanvreeden.nl/">
+		 <figure>
+			<picture>
+				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+			</picture>
+		</figure>	
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    <div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post" id="content-item">
+		
+	  
+        
+
+
+<div id="how-to-add-google-tag-manager-to-a-hugo-static-website" class="section level1">
+<h1>How to add Google Tag Manager to a Hugo static website</h1>
+<p>In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website. As a digital analytics consultant I can appreciate the value a good Google Tag Manager (GTM) implementation can have for your business or even to optimize your user’s blog experience.</p>
+<div id="how-to-add-the-standard-google-tag-manager-container-to-a-hugo-website" class="section level2">
+<h2>How to add the standard Google Tag Manager container to a Hugo website</h2>
+<p>To make sure that Google Tag Manager is enabled, we will have to include the Google Tag Manager container. This is a piece of standard javascript that allows us to start using Google Tag Manager on our website in the most basic sense. This javascript tracking code will be included in the head section of the website and a small iframe version of the snippet will be included right after the opening body tag. The iframe version allows us to enable basic Google Tag Manager functionalities on browsers that don’t have javascript enabled.</p>
+<div id="what-does-the-google-tag-manager-container-do" class="section level3">
+<h3>What does the Google Tag Manager container do?</h3>
+<p>The Google Tag Manager container enables the Google Tag Manager basic functionalities by including a reference to the Google Tag Manager javascript library. This allows you to manage tags from Google Tag Manager and trigger them on your website.</p>
+</div>
+<div id="include-google-tag-manager-partial-in-your-website" class="section level3">
+<h3>Include Google Tag Manager partial in your website</h3>
+<p>In order to run Google Tag Manager on your website, I’ve created a Hugo partial that you can include in your Hugo partials folder. The partials folder is usually located in the themes folder. Select your theme in this folder to find the layouts folder. That’s where you’ll find the partials folder. In my case it is: <code>\themes\beautifulhugo\layouts\partials</code></p>
+<p>In this folder, add the file called gtm.html from <a href="https://github.com/martijnvv/GTM-integration-Hugo">my Github repository</a>. It is the partial that will be needed to included the proper code to run Google Tag Manager.</p>
+<p>The partial includes three components:</p>
+<ul>
+<li>The basic Google Tag Manager snippet</li>
+<li>A prefetch and preconnect functionality to improve the loading time of the code</li>
+<li>A datalayer component to leverage additional data in Google Tag Manager</li>
+</ul>
+<p>Don’t worry, I’m going to cover all three components in this article.</p>
+</div>
+<div id="include-the-code-in-your-current-website-partials-and-basic-layout" class="section level3">
+<h3>Include the code in your current website partials and basic layout</h3>
+<p>You will have to reference the Google Tag Manager partial in your current setup for it the become part of the sourcecode of your page.
+Have a closer look at your partials folder. Look for the partial called <code>head.html</code>. You will have to include the following reference to the Google Tag Manager partial to include it.</p>
+<p><code>{{ if .Site.Params.gtm_id}}{{- partial "gtm.html" . }}{{ end }}</code></p>
+<p>You should add it anywhere between the <code>&lt;head&gt;</code> tags.</p>
+<p>To include the additional iframe version of Google Tag Manager, we will have to update an additional file. Go to your <code>\themes\beautifulhugo\layouts\_default</code> folder and open the <code>baseof.html</code> file. Right below the <code>&lt;body&gt;</code> element, include the following code snippet.</p>
+<p><code>{{ if .Site.Params.gtm_id}}&lt;noscript&gt;&lt;iframe src="//www.googletagmanager.com/ns.html?id={{ .Site.Params.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;{{ end }}</code></p>
+</div>
+<div id="updating-your-config.toml-file" class="section level3">
+<h3>Updating your config.toml file</h3>
+<p>You may want to enable or disable the Google Tag Manager code altogether. That’s why we will add an additional site parameters to the config.toml file which will enable or disable the code and allow you to easily change the Google Tag Manager unique ID.</p>
+<p>First, create a Google Tag Manager container on the Google Tag Manager website. Check out the video below to learn how to do this.</p>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/P4suvDuj0kI?enablejsapi=1&color=white&modestbranding=1" allowfullscreen></iframe>
+</div>
+
+<p>Once you have created your container, grab the unique container ID from the code snippet (should start with GTM-).
+In your config.toml file, add an additional parameter called gtm_id. Add the container ID as a value, like in the image below.</p>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/gtm/params.webp" type="image/webp">
+	<img src="/img/gtm/params.jpg" alt="GTM parameter config.toml" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">GTM parameter config.toml</p>
+	</figcaption>
+</figure>
+<p>After you added the additional param, the GTM container code will be included in your website. Let’s test if that worked.</p>
+</div>
+<div id="testing-the-implementation" class="section level3">
+<h3>Testing the implementation</h3>
+<p>Now it’s time to build your website and see Google Tag Manager in action. If all went well, you should see the Google Tag Manager code being load in your browser. Here are a few ways to validate if the code is included properly:</p>
+<ul>
+<li>Check your browser developer console</li>
+<li>Use a browser extension to check if it worked</li>
+<li>Enable preview mode in Google Tag Manager</li>
+</ul>
+<div id="check-your-browser-developer-console" class="section level4">
+<h4>Check your browser developer console</h4>
+<p>Load the page of your website where Google Tag Manager is included and hit F12. This will open the DevTools panel. When you go to the Network tab and reload the page, all the elements of the page will be shown here. Look for one that starts with <code>gtm.js</code> (or use the filter option). If it is in there, you have successfully implemented Google Tag Manager on the page.</p>
+</div>
+<div id="use-a-browser-extension" class="section level4">
+<h4>Use a browser extension</h4>
+<p>Your second option is to use a browser plugin. They will provide you with a similar insight, but might be a bit more user-friendly. These are a few to chose from:</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk?hl=nl">Tag assistant (by Google)</a></li>
+<li><a href="https://www.thyngster.com/tools/gtm-debug-extension/">GTM debug extension (by GTM expert David Vallejo)</a></li>
+</ul>
+<p>Once you’ve installed either one of these extensions, it will be easy to validate if your implementation worked.</p>
+</div>
+<div id="enable-preview-mode-in-google-tag-manager" class="section level4">
+<h4>Enable preview mode in Google Tag Manager</h4>
+<p>If you are a bit familiar with how Google Tag Manager works, this is a great way to check if Google Tag Manager is implemented on your website. Simply go to the Google Tag Manager and click on the container you are looking to implement.In the right top corner you will find a button saying “preview”. Click on this and wait until the orange panel appears. The previewer is now enabled on your browser.</p>
+<p>Now go to your website. You should now see a preview panel appear at the bottom of your screen. If this is the case, you have implemented the Google Tag Manager container successfully. Below is a video explaining the debug functionality in more detail.</p>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/uUAKkgQGBT0?enablejsapi=1&color=white&modestbranding=1" allowfullscreen></iframe>
+</div>
+
+</div>
+</div>
+</div>
+<div id="make-sure-google-tag-manager-loads-fast" class="section level2">
+<h2>Make sure Google Tag Manager loads fast</h2>
+<p>Google Tag Manager is loading a 3rd party javascript library in your website. <a href="https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/">This will impact the performance of your website.</a> Depending on how you use Google Tag Manager, it can be slowing your website down. That’s why we take some additional measures to decrease the negative impact on performance and keep your website lightning fast.</p>
+<div id="add-preconnect-and-prefetch-features-for-better-performance" class="section level3">
+<h3>Add preconnect and prefetch features for better performance</h3>
+<p>In a previous article I shared some recommendations to <a href="https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/">make your Hugo website load super-fast</a>. One of those tips was to use dns-prefetch and preconnect to increase the performance of your javascript files. This is what we’ll do for our Google Tag Manager javascript library as well.</p>
+<p>In the gtm.html partial, I already included some additional code to help you achieve this.</p>
+<p><code>{{ if .Site.Params.gtm_id}}&lt;link href="https://www.googletagmanager.com" rel="preconnect" crossorigin&gt;   &lt;link rel="dns-prefetch" href="https://www.googletagmanager.com"&gt;{{ end }}</code></p>
+</div>
+</div>
+<div id="add-a-standard-datalayer-to-google-tag-manager" class="section level2">
+<h2>Add a standard datalayer to Google Tag Manager</h2>
+<p>If you have walked through the steps in this article up until now, you have probably successfully implemented the basic Google Tag Manager script. If you want to move your analytics and online marketing efforts to the next level, continue reading. The next part is about the datalayer, where the real magic happens.</p>
+<div id="what-is-a-datalayer-and-why-is-it-important" class="section level3">
+<h3>What is a datalayer and why is it important?</h3>
+<p>To put it shortly, a datalayer is a data structure which ideally holds all data that you want to process and pass from your website (or other digital context) to other applications that you have linked to. We use a datalayer to decouple information that is shown on a page or website in some way and provide it to our tools in an easy to digest format.</p>
+<p>You can often see important information on a page that you want to use in analysics or online marketing tools, like the price of a product, name of a product or author of an article. We use the datalayer to capture that type of information and send it to Google Tag Manager in a simple format. If you want to read a more detailed explanation or definition of the datalayer, I recommend <a href="https://www.simoahava.com/analytics/data-layer/">an article by Google Tag Manager expert Simo Ahava</a>.</p>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/gtm/google-tag-manager-data-layer.webp" type="image/webp">
+	<img src="/img/gtm/google-tag-manager-data-layer.jpg" alt="GTM datalayer example" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">GTM datalayer example</p>
+	</figcaption>
+</figure>
+</div>
+<div id="how-can-you-use-the-datalayer" class="section level3">
+<h3>How can you use the datalayer?</h3>
+<p>The datalayer has several important purposes:</p>
+<ul>
+<li>to help understand what is shown on a page</li>
+<li>be a translation of the content of the page into a structured format</li>
+<li>function as a datastructure to pass important information to other tools</li>
+</ul>
+<p>From a technical perspective, it is possible to scrape most of this data from each page, from with Google Tag Manager itself. However, this can be very time-consuming, have a negative impact on website performance and error prone (the page and elements on a page may change). That’s why we usually decouple the elements a user sees on a page from what we need in our dataset.</p>
+<p>Tracking solutions like Google Analytics, Facebook advertising and many others can use the data in the datalayer to access certain information. The tags can be triggered based on specific logic from the datalayer or populate themselves with the data for analysis. For a more detailed article about this mechanism, please check out the article from <a href="https://www.bounteous.com/insights/2013/10/15/unlock-data-layer-non-developers-guide-google-tag-manager/">Bounteous about datalayers</a>.</p>
+</div>
+</div>
+<div id="include-hugo-variables-in-the-datalayer" class="section level2">
+<h2>Include Hugo variables in the datalayer</h2>
+<p>Hugo comes with tons of useful variables to include in a datalayer. The most relevant variables for the datalayer can be found in the <a href="https://gohugo.io/variables/page/">Page Variables section</a> of the Hugo documentation.</p>
+<p>There are several page related variables in the Hugo Page Variables overview I want to include in the datalayer:</p>
+<ul>
+<li>.Title - the title of the page</li>
+<li>.Permalink - A less beautified page title (ie. /tags/tagname/)</li>
+<li>.FuzzyWordCount - the approximate wordcount of the page</li>
+<li>.WordCount - the number of words on a page</li>
+<li>.ReadingTime - the estimated time to read the content in minutes</li>
+<li>.ExpiryDate - to show when the content expires</li>
+<li>.PublishDate - to show the date of publication of the article</li>
+<li>.Lastmod - to show the date the article was last modified</li>
+<li>.Language - tells us what language the page is in (for multilingual sites)</li>
+<li>.IsTranslated - shows if there are alternative languages available (for multilingual sites)</li>
+<li>.Kind - to show what type of page is shown (ie home, page, etc.)</li>
+<li>.Type - the type of content of a page (ie post, page, etc.)</li>
+<li>.File.UniqueID - An unique page ID</li>
+</ul>
+<p>All of these variables are provided by Hugo out-of-the-box. We can add these variables to our datalayer to use in our Google Tag Manager solution.</p>
+<p>In addition, there are also a few very common variables I have included in the basic datalayer. These variables are often generated when you create a new article:</p>
+<ul>
+<li>page category</li>
+<li>page author</li>
+<li>page tags</li>
+</ul>
+<p>In addition to these variables, I’ve also included some extra ones I will be using.</p>
+<ul>
+<li>Reading time in seconds (minutes can be a bit too rounded)</li>
+<li>Page type 2 - where I use .Type and .Kind to create a combined variable for page types</li>
+</ul>
+<p>The datalayer that is created based on the page variables will look something like this:</p>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/gtm/datalayer_basic.webp" type="image/webp">
+	<img src="/img/gtm/datalayer_basic.jpg" alt="GTM basic datalayer" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">GTM basic datalayer</p>
+	</figcaption>
+</figure>
+<p>By adding an additional parameter to your config.toml file, the entire datalayer will be included in your website.</p>
+<p><code>gtm_datalayer = "basic"</code></p>
+<p>The new configuration should look something like this:</p>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/gtm/params_basic_datalayer.webp" type="image/webp">
+	<img src="/img/gtm/params_basic_datalayer.jpg" alt="GTM basic datalayer config.toml" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">GTM basic datalayer config.toml</p>
+	</figcaption>
+</figure>
+<p>The variables in the datalayer are based on Pages variables in Hugo. On some pages, some of the variables will be missing (ie homepage). This happens because not all pages variables from Hugo are available for all page types.</p>
+</div>
+<div id="update-4-5-2021---support-for-proxy-google-tag-manager-web-container" class="section level2">
+<h2>Update 4-5-2021 - Support for Proxy Google Tag Manager Web Container</h2>
+<p>With the introduction of GTM server side, it is now easier to render the gtm.js file from your own serverside endpoint. This will allow for even better performance and less dependency of the Google servers. Instead of loading the gtm.js file from <a href="https://www.googletagmanager.com" class="uri">https://www.googletagmanager.com</a>, you can now do this from any custom (sub)domain. This update is also reflected in the GTM template for Hugo.</p>
+<p>The additional site param “gtm_endpoint” is now part of the config.toml and template. Simply add the custom domain (ie gtm.martijnvanvreeden.nl) to this parameter to include tracking from your own domain.</p>
+<p>For example:</p>
+<p><code>gtm_endpoint = "gtm.martijnvanvreeden.nl"</code></p>
+<p>For a detailed outline of Serverside Google Tag Manager, please check out <a href="https://www.simoahava.com/analytics/server-side-tagging-google-tag-manager/">Simo Ahava’s blog on this SSGTM</a>.</p>
+<p>If you wish to continue to use the standard webcontainer version of GTM, simply exclude the parameter from the config.toml.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Hopefully this article will help you configure Google Tag Manager on your Hugo website. I’ve currently included the instruction for the first few steps. In the future, I may include additional ways to enrich the datalayer or an article on how to leverage the datalayer for Google Tag Manager and Google Analytics use.</p>
+<p>If you have any questions, feel free to reach out via <a href="https://twitter.com/martijnvv">Twitter</a> or <a href="mail@martijnvanvreeden.nl">Mail</a>.</p>
+</div>
+</div>
+
+      </article>
+              
+                <span class="post-meta" style="text-align:center">Tags: 
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/google-tag-manager/" class="post-meta-tag-article">google tag manager</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/hugo/" class="post-meta-tag-article">hugo</a>&nbsp;
+                  
+                </span>
+              
+		
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box">
+    <ul class="share">
+      
+      <li>
+        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvanvreeden.nl%2fhow-to-add-google-tag-manager-to-hugo-static-website%2f&amp;text=How%20to%20add%20Google%20Tag%20Manager%20to%20Hugo%20static%20website&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+          <i class="icon-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvanvreeden.nl%2fhow-to-add-google-tag-manager-to-hugo-static-website%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+          <i class="icon-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvanvreeden.nl%2fhow-to-add-google-tag-manager-to-hugo-static-website%2f&amp;title=How%20to%20add%20Google%20Tag%20Manager%20to%20Hugo%20static%20website" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+          <i class="icon-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvanvreeden.nl%2fhow-to-add-google-tag-manager-to-hugo-static-website%2f&amp;title=How%20to%20add%20Google%20Tag%20Manager%20to%20Hugo%20static%20website" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+          <i class="icon-linkedin"></i>
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+	  <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://martijnvanvreeden.nl/10-things-you-need-to-know-about-the-new-google-app-web-analytics/" data-toggle="tooltip" data-placement="top" title="10 Things you need to know about the new Google Analytics 4">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://martijnvanvreeden.nl/understanding-retention-with-customer-feedback-data/" data-toggle="tooltip" data-placement="top" title="Understanding retention with customer feedback data">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+	  
+    </div>
+  </div>
+</div>
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		
+              <li>
+                <a href="https://twitter.com/martijnvv" title="Twitter" rel="noreferrer" aria-label="Twitter">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-twitter gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/martijnvanvreeden" title="LinkedIn" rel="noreferrer" aria-label="LinkedIn">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-linkedin gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          2023
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://martijnvanvreeden.nl/" rel="nofollow">Martijn van Vreeden</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/main.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/highlight.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/purecookie.js"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>
+  </body>
+</html>
+

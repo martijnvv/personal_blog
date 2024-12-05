@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on Martijn van Vreeden</title>
+    <link>https://martijnvanvreeden.nl/tags/api/</link>
+    <description>Recent content in api on Martijn van Vreeden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Collecting Spotify data with R</title>
+      <link>https://martijnvanvreeden.nl/collecting-spotify-data-with-r/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/collecting-spotify-data-with-r/</guid>
+      <description>This post is part of a series of posts to analyse the digital me.
+Collecting Spotify data with RSpotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.
+To get started, you wil need to R packages to access the data and process it afterwards.</description>
+    </item>
+    
+    <item>
+      <title>Visualising Google Analytics internal search data with R</title>
+      <link>https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/</guid>
+      <description>Visualising Google Analytics internal search data with RIt’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis.</description>
+    </item>
+    
+    <item>
+      <title>Getting my IMDB ratings with R and Rvest</title>
+      <link>https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/</guid>
+      <description>This post is part of a series of posts to analyse the digital me.
+Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+  <title>Getting my IMDB ratings with R and Rvest</title>
+  <meta property="og:title" content="Getting my IMDB ratings with R and Rvest" />
+  <meta name="twitter:title" content="Getting my IMDB ratings with R and Rvest" />
+  <meta name="description" content="This post is part of a series of posts to analyse the digital me.
+Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.">
+  <meta property="og:description" content="This post is part of a series of posts to analyse the digital me.
+Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.">
+  <meta name="twitter:description" content="This post is part of a series of posts to analyse the digital me.
+Getting my IMDB ratings with R and RvestI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of …">
+  <meta name="author" content="Martijn van Vreeden"/>
+  <link href='https://martijnvanvreeden.nl/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@martijnvv" />
+  <meta name="twitter:creator" content="@martijnvv" />
+  <meta property="og:url" content="https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martijn van Vreeden" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">  
+<link href='https://www.googletagmanager.com' rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href='https://www.googletagmanager.com'>  <script>
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'pagePublishDate': '2017-09-25',
+		'pageModifiedDate': '2017-09-25','pageReadingTimeMinutes':  5 ,
+		'pageReadingTimeSeconds': 251 ,
+		'pageWordCount': 920 ,
+		'pageFuzzyWordCount': 1000 ,
+		'pageKind': 'page',
+		'pageId': 'ec871143afa8080c1ecb800171e822cd',
+		'pageTitle': 'Getting my IMDB ratings with R and Rvest',
+		'pagePermalink': 'https:\/\/martijnvanvreeden.nl\/getting-my-imdb-ratings-with-r-and-rvest\/',
+		'pageType': 'post',
+		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'imdb','pageTags':'api|imdb|r|rvest|webscraping','pageType2': 'post',
+		'pageLanguage': 'en'
+	 });
+  </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
+	
+
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"https:\/\/martijnvanvreeden.nl\/getting-my-imdb-ratings-with-r-and-rvest\/",
+			"editor": "Martijn van Vreeden",
+			"url":"https:\/\/martijnvanvreeden.nl\/getting-my-imdb-ratings-with-r-and-rvest\/","headline":"Getting my IMDB ratings with R and Rvest","description":"This post is part of a series of posts to analyse the digital me.\nGetting my IMDB ratings with R and Rvest\rI’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years.",
+			"articleSection":"imdb",
+			"timeRequired": "PT5M",
+			"inLanguage" : "en",
+			"wordCount":  920 ,
+			"datePublished" : "2017-09-25T00:00:00",
+			"dateModified" : "2017-09-25T00:00:00",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name":"Getting my IMDB ratings with R and Rvest",
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>
+</head>
+
+
+  <body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMSG6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://martijnvanvreeden.nl/">Martijn van Vreeden</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About me" href="/about-me/">About me</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Clients" href="/portfolio/">Clients</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="GitHub" href="https://github.com/martijnvv">GitHub</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="LinkedIn" href="https://www.linkedin.com/in/martijnvanvreeden/">LinkedIn</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Twitter" href="https://twitter.com/martijnvv">Twitter</a>
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Martijn van Vreeden" href="https://martijnvanvreeden.nl/">
+		 <figure>
+			<picture>
+				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+			</picture>
+		</figure>	
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    <div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post" id="content-item">
+		
+	  
+        
+
+
+<p><em>This post is part of a series of posts to <a href="/meet-the-digital-me/">analyse the digital me</a>.</em></p>
+<div id="getting-my-imdb-ratings-with-r-and-rvest" class="section level1">
+<h1>Getting my IMDB ratings with R and Rvest</h1>
+<p>I’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years. The star rating system is pretty effective to see if I already watched a certain movie and what I thought of it.</p>
+<div id="getting-my-imdb-ratings-into-a-dataframe-with-r" class="section level2">
+<h2>Getting my IMDB ratings into a dataframe with R</h2>
+<p>My IMDB ratings are protected by my login, which makes it a bit more complated to get to my reviewed pages. I made them public for all to see by <a href="https://www.imdb.com/help/show_leaf?userprofile">changing a setting</a>. You can see my ratings on this <a href="https://www.imdb.com/user/ur25468061/ratings?opfrule=httpDefault">user list page</a>.
+Unfortunately there isn’t a way to pull in my ratings and movie details through an API. This means I have to scrape the data from the IMDB website and structure it myself. I’m using R packages <a href="https://cran.r-project.org/web/packages/rvest/rvest.pdf">RVest</a> and <a href="https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html">Magrittr</a> for this. To clean and structure the data I use <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">data.table</a> and <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a>.</p>
+<pre class="r"><code>library(&quot;rvest&quot;)
+library(&quot;magrittr&quot;)
+library(&#39;data.table&#39;)
+library(&#39;dplyr&#39;)</code></pre>
+<p>I first load the packages I need before I start scraping</p>
+<pre class="r"><code>userId &lt;- &quot;ur25468061&quot;
+startQuery &lt;- c(&quot;1&quot;)</code></pre>
+<p>I break down the url of the public list I want to scrape (<a href="https://www.imdb.com/user/ur25468061/ratings?start=1&amp;view=detail&amp;sort=ratings_date:desc&amp;defaults=1&amp;my_ratings=restrict">https://www.imdb.com/user/ <strong>ur25468061</strong> /ratings?start= <strong>1</strong> &amp;view=detail&amp;sort=ratings_date:desc&amp;defaults=1&amp;my_ratings=restrict</a>). I can easily change the user ID (ur25468061) and number of page (1) to get different data from a different list or page.</p>
+<pre class="r"><code>df_imdb&lt;-data.frame()
+for(v in startQuery){
+  paste0(&quot;http://www.imdb.com/user/&quot;,userId,&quot;/ratings?start=&quot;, v, &quot;&amp;view=detail&amp;sort=ratings_date:desc&quot;) -&gt; download_url
+  export_html &lt;- read_html(download_url)
+  html_nodes(export_html, &quot;.year_type&quot;) %&gt;% html_text() -&gt; info100Year
+  export_html %&gt;% html_nodes( &quot;.info&quot;) %&gt;% html_nodes(&quot;b&quot;) %&gt;% html_nodes(&quot;a&quot;) %&gt;% html_text() -&gt; info100Title
+  export_html %&gt;% html_nodes( &quot;.info&quot;) %&gt;% html_nodes(&quot;b&quot;) %&gt;% html_nodes(&quot;a&quot;)  %&gt;% html_attr(&#39;href&#39;)  -&gt; info100URL
+  as.numeric(export_html %&gt;% html_nodes( &quot;.rating-your&quot;) %&gt;% html_nodes(&quot;.value&quot;) %&gt;% html_text()) -&gt; info100Rating
+  export_html %&gt;% html_nodes( &quot;.item_description&quot;) %&gt;% html_text() -&gt; info100Desc
+  export_html %&gt;% html_nodes( &quot;.list&quot;) %&gt;% html_nodes( &quot;.image&quot;) %&gt;% html_nodes( &quot;.hover-over-image&quot;) %&gt;% html_nodes(&quot;img&quot;) %&gt;% html_attr(&#39;src&#39;)  -&gt; info100Images
+  gsub(&quot;(|)&quot;,&quot;&quot;,info100Year, fixed=TRUE) -&gt; info100Year
+  paste0(&quot;http://www.imdb.com&quot;, info100URL) -&gt; info100URL
+  sapply(strsplit(info100URL, &#39;/&#39;), function(x) x[5]) -&gt; info100id
+  
+  df &lt;- data.frame(&quot;title&quot; = info100Title, &quot;year&quot; = info100Year, &quot;description&quot; = info100Desc, &quot;myRating&quot; = info100Rating, &quot;url&quot; = info100URL, &quot;id&quot; = info100id, stringsAsFactors = FALSE)
+  df_imdb&lt;-rbind(df_imdb,df)
+}
+sapply(strsplit(df_imdb$year, &#39; &#39;), function(x) x[2]) -&gt; df_imdb$type
+df_imdb$type[is.na(df_imdb$type)] &lt;- &quot;Movie&quot;
+as.numeric(sapply(strsplit(df_imdb$year, &#39; &#39;), function(x) x[1])) -&gt; df_imdb$year</code></pre>
+<p>I now run a simple for loop through my pages (in this example just page 1) for my userlist. I collect several variables about the movies I have watched:</p>
+<ul>
+<li>Year of release</li>
+<li>Title</li>
+<li>URL of the movie on IMDB</li>
+<li>My rating on IMDB</li>
+<li>Short description of movie</li>
+<li>A URL of an image of the movie</li>
+<li>IMDB movie ID</li>
+<li>Type of IMDB item (I also reviewed some tv-series)</li>
+</ul>
+<p>As you may see webscraping requires a lot of cleaning data to make it look dataframe perfect and ready to analyse. What I end up with is a pretty cool dataframe of most recently rated movies with a bunch of variables for me to analyse.</p>
+</div>
+<div id="scraping-additional-movie-data" class="section level2">
+<h2>Scraping additional movie data</h2>
+<p>The dataframe is already pretty full of data to analyse. However, I would like some more details about the movies to analyse:</p>
+<ul>
+<li>Total number of IMDB ratings</li>
+<li>Average IMDB rating of all users</li>
+<li>Top cast members</li>
+<li>Director of the movie</li>
+<li>Movie genres</li>
+</ul>
+<p>Based on the IMDB movie ID’s I collected in the previous dataframe I can get all this data from movie pages on IMDB. All movie pages include the IMDB movie ID in the url: <a href="https://www.imdb.com/title/tt3501112/">https://www.imdb.com/title/ <strong>tt3501112</strong> /</a></p>
+<pre class="r"><code>df_imdb$id -&gt; imdb_movie_id
+
+df_imdb_movie &lt;- data.frame()
+for(i in imdb_movie_id){
+    read_html(paste0(&quot;http://www.imdb.com/title/&quot;,i,&quot;/&quot;)) -&gt; lego
+    
+  # verschil tussen http://www.imdb.com/title/tt2782844/ en http://www.imdb.com/title/tt2072233/
+    as.numeric(gsub(&quot;,&quot;, &quot;&quot;, lego %&gt;% html_nodes(&quot;.imdbRating .small&quot;) %&gt;% html_text)) -&gt; imdb_num_ratings
+    as.numeric(lego %&gt;% html_nodes(&quot;.imdbRating strong&quot;) %&gt;% html_text) -&gt; imdb_rating
+    #lego %&gt;% html_nodes(&quot;.title_wrapper .subtext&quot;) %&gt;% html_text() -&gt; imdb_time_html
+    #gsub(&quot; &quot;, &quot;&quot;, sapply(strsplit(imdb_time_html, &#39;\n&#39;), function(x) x[4]), fixed = TRUE) -&gt; imdb_time_string
+    #strsplit(imdb_time_string, &quot;h|min&quot;) -&gt; imdb_time_hours
+    #as.numeric(do.call( rbind, imdb_time_hours)[,1]) * 60 + as.numeric(do.call( rbind, imdb_time_hours)[,2]) -&gt; imdb_time_minutes
+    
+    #create row of cast, normally 15
+    list(t(unlist(lego %&gt;%  html_nodes(&quot;#titleCast .itemprop span&quot;) %&gt;%  html_text()))) -&gt; imdb_cast
+    paste(unlist(imdb_cast), collapse=&#39;|&#39;) -&gt; imdb_cast
+    lego %&gt;% html_nodes(&quot;.credit_summary_item .itemprop&quot;) %&gt;% html_text() -&gt; imdb_director
+    imdb_director[1] -&gt; imdb_director
+    list(gsub(&quot;Genres:| &quot;, &quot;&quot;, lego %&gt;% html_nodes(xpath = &quot;//*[@id=\&quot;titleStoryLine\&quot;]/div[4]&quot;) %&gt;% html_nodes(&quot;a&quot;) %&gt;% html_text())) -&gt; imdb_genres
+    paste(unlist(imdb_genres), collapse=&#39;|&#39;) -&gt; imdb_genres
+    df1 &lt;- data.table(&quot;imdb_rating&quot; = imdb_rating, &quot;imdb_ratings&quot; = imdb_num_ratings ,&quot;imdb_director&quot; = imdb_director, &quot;id&quot; = i, &quot;imdb_cast&quot; = imdb_cast, &quot;imdb_genres&quot; = imdb_genres ,stringsAsFactors = FALSE)
+    df_imdb_movie&lt;-rbind(df_imdb_movie,df1)
+}</code></pre>
+<p>I created another loop to collect data for all the movies in my previous table. Now I merge the two dataframes to turn them into one big, beautiful dataframe.</p>
+<pre class="r"><code>df3 = merge(df_imdb, df_imdb_movie, by.x=c(&quot;id&quot;), by.y=c(&quot;id&quot;))</code></pre>
+</div>
+<div id="next-steps-to-start-analysing-my-imdb-data" class="section level2">
+<h2>Next steps to start analysing my IMDB data</h2>
+<p>I run these queries daily for the most recently added movies and update my dataframe with the new additions. Afterwards, I save my dataframe to a SQL table (no cloud for me yet, I’m too old-school). This way, I will continue to update my database of reviewed movies.</p>
+<p>You can send your data to a SQL table with the R package <a href="https://cran.r-project.org/web/packages/RMySQL/index.html">RMySQL</a>. It takes a few lines of R code to read or write your SQL table</p>
+<pre class="r"><code># Load the package
+library(&#39;RMySQL&#39;)
+
+#Initiate database connection
+con &lt;- dbConnect(MySQL(),
+                 user = &#39;-----&#39;,
+                 password = &#39;-----&#39;,
+                 host = &#39;-----&#39;,
+                 dbname=&#39;-----&#39;)
+#read table
+dbReadTable(conn = con, name = &#39;imdb&#39;)
+
+#write table
+dbWriteTable(conn = con, name = &#39;imdb&#39;, value = DATAFRAMENAME)</code></pre>
+<p>In my next post I will explore the dataset and learn some more about my movie likes and dislikes!</p>
+</div>
+</div>
+
+      </article>
+              
+                <span class="post-meta" style="text-align:center">Tags: 
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/api/" class="post-meta-tag-article">api</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/imdb/" class="post-meta-tag-article">imdb</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/r/" class="post-meta-tag-article">r</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/rvest/" class="post-meta-tag-article">rvest</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/webscraping/" class="post-meta-tag-article">webscraping</a>&nbsp;
+                  
+                </span>
+              
+		
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box">
+    <ul class="share">
+      
+      <li>
+        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgetting-my-imdb-ratings-with-r-and-rvest%2f&amp;text=Getting%20my%20IMDB%20ratings%20with%20R%20and%20Rvest&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+          <i class="icon-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvanvreeden.nl%2fgetting-my-imdb-ratings-with-r-and-rvest%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+          <i class="icon-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgetting-my-imdb-ratings-with-r-and-rvest%2f&amp;title=Getting%20my%20IMDB%20ratings%20with%20R%20and%20Rvest" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+          <i class="icon-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvanvreeden.nl%2fgetting-my-imdb-ratings-with-r-and-rvest%2f&amp;title=Getting%20my%20IMDB%20ratings%20with%20R%20and%20Rvest" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+          <i class="icon-linkedin"></i>
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+	  <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://martijnvanvreeden.nl/meet-the-digital-me/" data-toggle="tooltip" data-placement="top" title="Meet the digital me | Martijn van Vreeden">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r/" data-toggle="tooltip" data-placement="top" title="Visualize and analyse IMDB ratings with R">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+	  
+    </div>
+  </div>
+</div>
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		
+              <li>
+                <a href="https://twitter.com/martijnvv" title="Twitter" rel="noreferrer" aria-label="Twitter">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-twitter gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/martijnvanvreeden" title="LinkedIn" rel="noreferrer" aria-label="LinkedIn">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-linkedin gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          2023
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://martijnvanvreeden.nl/" rel="nofollow">Martijn van Vreeden</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/main.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/highlight.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/purecookie.js"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>
+  </body>
+</html>
+

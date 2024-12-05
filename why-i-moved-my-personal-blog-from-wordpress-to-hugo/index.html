@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+  <title>Why I moved my personal blog from Wordpress to Hugo</title>
+  <meta property="og:title" content="Why I moved my personal blog from Wordpress to Hugo" />
+  <meta name="twitter:title" content="Why I moved my personal blog from Wordpress to Hugo" />
+  <meta name="description" content="My Wordpress website was a painfully heavy, bloathed website. No need for all the gadgets and features, which I don&#39;t use anyway">
+  <meta property="og:description" content="My Wordpress website was a painfully heavy, bloathed website. No need for all the gadgets and features, which I don&#39;t use anyway">
+  <meta name="twitter:description" content="My Wordpress website was a painfully heavy, bloathed website. No need for all the gadgets and features, which I don&#39;t use anyway">
+  <meta name="author" content="Martijn van Vreeden"/>
+  <link href='https://martijnvanvreeden.nl/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://martijnvanvreeden.nl/img/hugo-io-logo.jpg" />
+  <meta name="twitter:image" content="https://martijnvanvreeden.nl/img/hugo-io-logo.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@martijnvv" />
+  <meta name="twitter:creator" content="@martijnvv" />
+  <meta property="og:url" content="https://martijnvanvreeden.nl/why-i-moved-my-personal-blog-from-wordpress-to-hugo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martijn van Vreeden" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">  
+<link href='https://www.googletagmanager.com' rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href='https://www.googletagmanager.com'>  <script>
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'pagePublishDate': '2020-01-03',
+		'pageModifiedDate': '2020-01-03','pageReadingTimeMinutes':  4 ,
+		'pageReadingTimeSeconds': 197 ,
+		'pageWordCount': 721 ,
+		'pageFuzzyWordCount': 800 ,
+		'pageKind': 'page',
+		'pageId': '347d419e7322654ba5cfbb8f4a25317d',
+		'pageTitle': 'Why I moved my personal blog from Wordpress to Hugo',
+		'pagePermalink': 'https:\/\/martijnvanvreeden.nl\/why-i-moved-my-personal-blog-from-wordpress-to-hugo\/',
+		'pageType': 'post',
+		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'digital me','pageTags':'hugo|me','pageType2': 'post',
+		'pageLanguage': 'en'
+	 });
+  </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
+	
+
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvanvreeden.nl/why-i-moved-my-personal-blog-from-wordpress-to-hugo/" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"https:\/\/martijnvanvreeden.nl\/why-i-moved-my-personal-blog-from-wordpress-to-hugo\/",
+			"editor": "Martijn van Vreeden",
+			"url":"https:\/\/martijnvanvreeden.nl\/why-i-moved-my-personal-blog-from-wordpress-to-hugo\/","headline":"Why I moved my personal blog from Wordpress to Hugo","description":"My Wordpress website was a painfully heavy, bloathed website. No need for all the gadgets and features, which I don\u0027t use anyway",
+			"articleSection":"digital me",
+			"timeRequired": "PT4M",
+			"inLanguage" : "en",
+			"wordCount":  721 ,
+			"datePublished" : "2020-01-03T00:00:00",
+			"dateModified" : "2020-01-03T00:00:00",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name":"Why I moved my personal blog from Wordpress to Hugo",
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>
+</head>
+
+
+  <body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMSG6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://martijnvanvreeden.nl/">Martijn van Vreeden</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About me" href="/about-me/">About me</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Clients" href="/portfolio/">Clients</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="GitHub" href="https://github.com/martijnvv">GitHub</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="LinkedIn" href="https://www.linkedin.com/in/martijnvanvreeden/">LinkedIn</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Twitter" href="https://twitter.com/martijnvv">Twitter</a>
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Martijn van Vreeden" href="https://martijnvanvreeden.nl/">
+		 <figure>
+			<picture>
+				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+			</picture>
+		</figure>	
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    <div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post" id="content-item">
+		
+        <img src="https://martijnvanvreeden.nl/img/hugo-io-logo.webp" alt="Why I moved my personal blog from Wordpress to Hugo" class="img-title" />
+        
+	  
+        
+
+
+<div id="why-i-moved-my-personal-blog-from-wordpress-to-hugo" class="section level1">
+<h1>Why I moved my personal blog from Wordpress to Hugo</h1>
+<p>It was one of those rare moments in my freelance career when I had some extra time on my hands. Eager to work on a website and tinker with some code. I was looking at my personal website (which you’re on right now). It was still built on Wordpress, with a basic theme and some useful features. In reality, I wasn’t using much of the power that Wordpress holds. I didn’t use many of the extensions and plugins available and hardly any of the other features that were running on my website. Despite me not using the features, the website was pretty heavy on css and javascript libraries. Just a waste of bandwith and performance.</p>
+<p>I figured that based on my limited requirements, I could almost build a simple website based on some static HTML pages instead. After browsing the web looking for light-weight alternatives to Wordpress, I learned about <a href="https://gohugo.io/">Hugo</a> and <a href="https://www.staticgen.com/">static website generators</a>.</p>
+<div id="introducing-hugo" class="section level2">
+<h2>Introducing Hugo</h2>
+<p>Hugo considers itself to be “The world’s fastest framework for building websites”. Pretty bold claim, but as I looked into it some more I got kind of impressed. As a bonus, there are some additional benefits to using Hugo as a framework:</p>
+<ul>
+<li>It integrates seemlessly with R, based on the <a href="https://bookdown.org/home/">Bookdown</a> R package. And I like to write blogs with R code!</li>
+<li>Hugo provides some useful basic plugins for features like an image gallery or comments plugin</li>
+<li>Hugo is flexible, easy to configure and works based on templates you can edit to your hearts content</li>
+<li>Hugo has an active open source community, ready to help out</li>
+<li>Hugo provides sufficient options for templates. Not as many as a cms, but sufficient nonetheless</li>
+<li>No underlying software to maintain</li>
+<li>Easier access to the code under the hood</li>
+<li>Security. No hacks into databases and other vulnerabilities</li>
+<li>Write offline. You don’t have to login to your CMS admin to create pages</li>
+<li>No server-side functionality which is needed for contact forms, comments, and search</li>
+</ul>
+</div>
+<div id="my-need-for-speed" class="section level2">
+<h2>My need for speed</h2>
+<p>One of my biggest frustrations with Wordpress must have been that it was stuffed with all these features and gizmos you never use, but they take up a lot of bandwith for users and make your website run slower than it has to be. It kind of reminded me of this scene from Psych. Shawn’s dad was clearly a wise man.</p>
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/jv_etThFN4A?enablejsapi=1&color=white&end=92&modestbranding=1" allowfullscreen></iframe>
+</div>
+
+</div>
+<div id="why-hugo-is-super-fast" class="section level2">
+<h2>Why Hugo is super fast</h2>
+<p>Website performance matters. Even if I would selfishly ignore all other human visitors to my website, I would be supporting <a href="https://developers.google.com/web/fundamentals/performance/why-performance-matters">Google’s mission to make the web faster</a> and help myself <a href="https://yoast.com/how-site-speed-influences-seo/">climb the ranks of Google</a>.</p>
+<p>Hugo is not a content management system (CMS). It is a static website generator. This means that it doesn’t reference a database to populate the page, but it creates each page individually and outputs the HTML you need. Whenever you want to write a new article, you write the content and Hugo will build the page. Hugo will include all the required references to CSS, javascript files and add other things required to render the page.</p>
+<p>A static website generator like Hugo pre-renders pages and is generally faster than a classic CMS, which has to reference MySQL databases and process code when the browser loads.</p>
+</div>
+<div id="disadvantages-to-using-hugo" class="section level2">
+<h2>Disadvantages to using Hugo</h2>
+<p>To be fair, Hugo does have some disadvantages in comparison to a CMS like Wordpress. Here are a few reasons you may want to consider sticking to your Wordpress environment:</p>
+<ul>
+<li>Wordpress can be a code-free environment. If you are not very code savvy, this might be a big plus</li>
+<li>The number of <a href="https://themes.gohugo.io/">design templates for Hugo</a> is limited to a couple of hundred. You may not find the one you like</li>
+<li>You may need some fancy features that Hugo doesn’t support yet with <a href="https://gohugo.io/content-management/shortcodes/">their shortcodes</a></li>
+</ul>
+</div>
+<div id="getting-started-with-hugo" class="section level2">
+<h2>Getting started with Hugo</h2>
+<p>In case you’re interested in learning more about building your own website with Hugo, here are some of the resources I have used to build my website:</p>
+<ul>
+<li><a href="https://gohugo.io/">Hugo Website</a> - useful as a startingpoint and general reference</li>
+<li><a href="https://hackernoon.com/rise-of-static-site-generators-and-the-destiny-of-cms-e2b8ff0d5fcc">The rise of static website generators</a> - Read about the pros and cons of CMS vs static website generators</li>
+<li><a href="https://bookdown.org/yihui/blogdown/">Blogdown book</a> - This only book shares instructions on how to build your Hugo site with R</li>
+<li><a href="https://www.youtube.com/watch?v=CjTLN-FXiFA">Blogdown Video</a> - instruction video about using R and Hugo</li>
+</ul>
+</div>
+</div>
+
+      </article>
+              
+                <span class="post-meta" style="text-align:center">Tags: 
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/hugo/" class="post-meta-tag-article">hugo</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/me/" class="post-meta-tag-article">me</a>&nbsp;
+                  
+                </span>
+              
+		
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box">
+    <ul class="share">
+      
+      <li>
+        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvanvreeden.nl%2fwhy-i-moved-my-personal-blog-from-wordpress-to-hugo%2f&amp;text=Why%20I%20moved%20my%20personal%20blog%20from%20Wordpress%20to%20Hugo&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+          <i class="icon-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvanvreeden.nl%2fwhy-i-moved-my-personal-blog-from-wordpress-to-hugo%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+          <i class="icon-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvanvreeden.nl%2fwhy-i-moved-my-personal-blog-from-wordpress-to-hugo%2f&amp;title=Why%20I%20moved%20my%20personal%20blog%20from%20Wordpress%20to%20Hugo" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+          <i class="icon-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvanvreeden.nl%2fwhy-i-moved-my-personal-blog-from-wordpress-to-hugo%2f&amp;title=Why%20I%20moved%20my%20personal%20blog%20from%20Wordpress%20to%20Hugo" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+          <i class="icon-linkedin"></i>
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+	  <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://martijnvanvreeden.nl/collecting-spotify-data-with-r/" data-toggle="tooltip" data-placement="top" title="Collecting Spotify data with R">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://martijnvanvreeden.nl/optimizing-the-youtube-shortcode-for-hugo/" data-toggle="tooltip" data-placement="top" title="Optimizing the Youtube Shortcode for Hugo">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+	  
+    </div>
+  </div>
+</div>
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		
+              <li>
+                <a href="https://twitter.com/martijnvv" title="Twitter" rel="noreferrer" aria-label="Twitter">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-twitter gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/martijnvanvreeden" title="LinkedIn" rel="noreferrer" aria-label="LinkedIn">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-linkedin gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          2023
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://martijnvanvreeden.nl/" rel="nofollow">Martijn van Vreeden</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/main.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/highlight.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/purecookie.js"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>
+  </body>
+</html>
+

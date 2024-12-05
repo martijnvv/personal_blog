@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+  <title>Analysing Google Location data with R</title>
+  <meta property="og:title" content="Analysing Google Location data with R" />
+  <meta name="twitter:title" content="Analysing Google Location data with R" />
+  <meta name="description" content="This time I will explore my Google Location data, data that Google is collecting from my devices">
+  <meta property="og:description" content="This time I will explore my Google Location data, data that Google is collecting from my devices">
+  <meta name="twitter:description" content="This time I will explore my Google Location data, data that Google is collecting from my devices">
+  <meta name="author" content="Martijn van Vreeden"/>
+  <link href='https://martijnvanvreeden.nl/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:image" content="https://martijnvanvreeden.nl/img/logo.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@martijnvv" />
+  <meta name="twitter:creator" content="@martijnvv" />
+  <meta property="og:url" content="https://martijnvanvreeden.nl/analysing-google-location-data/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martijn van Vreeden" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">  
+<link href='https://www.googletagmanager.com' rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href='https://www.googletagmanager.com'>  <script>
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push({
+		'pagePublishDate': '2018-08-11',
+		'pageModifiedDate': '2018-08-11','pageReadingTimeMinutes':  6 ,
+		'pageReadingTimeSeconds': 306 ,
+		'pageWordCount': 1122 ,
+		'pageFuzzyWordCount': 1200 ,
+		'pageKind': 'page',
+		'pageId': '1ea0ccabf5ae02842e888b06af362433',
+		'pageTitle': 'Analysing Google Location data with R',
+		'pagePermalink': 'https:\/\/martijnvanvreeden.nl\/analysing-google-location-data\/',
+		'pageType': 'post',
+		'pageTranslated':  false ,'pageAuthor': 'Martijn van Vreeden','pageCategory':'digital me','pageTags':'ggplot2|r|google|location','pageType2': 'post',
+		'pageLanguage': 'en'
+	 });
+  </script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NMSG6Q');</script>
+	
+
+<meta name="generator" content="Hugo 0.110.0"><link rel="canonical" href="https://martijnvanvreeden.nl/analysing-google-location-data/" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"https:\/\/martijnvanvreeden.nl\/analysing-google-location-data\/",
+			"editor": "Martijn van Vreeden",
+			"url":"https:\/\/martijnvanvreeden.nl\/analysing-google-location-data\/","headline":"Analysing Google Location data with R","description":"This time I will explore my Google Location data, data that Google is collecting from my devices",
+			"articleSection":"digital me",
+			"timeRequired": "PT6M",
+			"inLanguage" : "en",
+			"wordCount":  1122 ,
+			"datePublished" : "2018-08-11T00:00:00",
+			"dateModified" : "2018-08-11T00:00:00",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name":"Analysing Google Location data with R",
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>
+</head>
+
+
+  <body>
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMSG6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://martijnvanvreeden.nl/">Martijn van Vreeden</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About me" href="/about-me/">About me</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Clients" href="/portfolio/">Clients</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="GitHub" href="https://github.com/martijnvv">GitHub</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="LinkedIn" href="https://www.linkedin.com/in/martijnvanvreeden/">LinkedIn</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Twitter" href="https://twitter.com/martijnvv">Twitter</a>
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Martijn van Vreeden" href="https://martijnvanvreeden.nl/">
+		 <figure>
+			<picture>
+				<source srcset="/img/martijn-van-vreeden.webp" type="image/webp">
+		  		<img class="avatar-img" loading="lazy" defer src="/img/martijn-van-vreeden.jpg" alt="Martijn van Vreeden" height="100px" width="100px"/>
+			</picture>
+		</figure>	
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+    
+
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    <div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post" id="content-item">
+		
+	  
+        
+
+
+<p><em>This post is part of a series of posts to <a href="/meet-the-digital-me/">analyse the digital me</a>.</em></p>
+<div id="analyse-google-location-data-with-r" class="section level1">
+<h1>Analyse Google Location data with R</h1>
+<p>Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!</p>
+<p>In this blog I will explore the location data Google has collected about me since 2016.</p>
+<p>I will be using some R packages to structure the data properly and other packages to build plots:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/ggmap/index.html">ggmap</a></li>
+<li><a href="https://cran.r-project.org/web/packages/tidyverse/index.html">tidyverse</a></li>
+<li><a href="https://cran.r-project.org/web/packages/anytime/index.html">anytime</a></li>
+<li><a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a></li>
+<li><a href="https://cran.r-project.org/web/packages/hrbrthemes/index.html">hrbrthemes</a></li>
+<li><a href="https://cran.r-project.org/web/packages/jsonlite/index.html">jsonlite</a></li>
+</ul>
+<pre class="r"><code>library(jsonlite)
+library(tidyverse)
+library(lubridate)
+library(anytime)
+library(hrbrthemes)
+library(ggmap)</code></pre>
+<div id="get-google-location-data-in-r" class="section level2">
+<h2>Get Google Location data in R</h2>
+<p>To analyse the Google Location data, we need to grab it from Google first. You can do this through <a href="https://takeout.google.com/settings/takeout">Google Takeout</a>, Google’s service to help you download all your data that they’ve collected from you in the past. Select only the Location History data and click “next” to download your file. I ended up with a pretty big json file with about 100MB of data.</p>
+<p>I saved it to my R project folder. So now I’m good to start my analysis.</p>
+<p>First point of action, is to load the JSON file into R and create a dataframe.</p>
+<pre class="r"><code>#load data
+system.time(df_list &lt;- fromJSON(&quot;dfs/Locatiegeschiedenis.json&quot;))
+df &lt;- df_list$location
+head(df)</code></pre>
+<p>I want to clean up the dataframe a bit, to make sure I can use it for my analysis and plots. I will also create a few new columns to make life easier.</p>
+<pre class="r"><code>#create columns for dates
+as.POSIXct(as.numeric(df$timestampMs)/1000, tz=&#39;GMT&#39;, origin=&#39;1970-01-01&#39;) -&gt; df$time
+as.Date(df$time) -&gt; df$date
+isoweek(df$date) -&gt; df$week
+isoyear(df$date) -&gt; df$year
+
+#Create proper lat lon columns for ggmap
+df$lat &lt;- df$latitudeE7 / 1e7
+df$lon &lt;- df$longitudeE7 / 1e7</code></pre>
+</div>
+<div id="some-summary-data" class="section level2">
+<h2>Some summary data</h2>
+<p>Now let’s have a quick look at the dataset.</p>
+<pre class="r"><code>#return some summary data
+n_count &lt;- nrow(df) #number of rows in dataframe / number of location pings
+n_count
+n_days &lt;- df$date %&gt;%
+  n_distinct() #number of days in dataframe
+n_days
+n_avg_day &lt;- round(n_count/n_days,2) #average number of datapoints per day
+n_avg_day
+round(n_avg_day / 24,2) #average number of datapoints per hour</code></pre>
+<p>Looking at this data, I was kind of surprised by the amount of data Google is collecting. Almost a datapoint per 2 minutes, for days when they were collecting data!</p>
+<div id="number-of-datapoints-per-month" class="section level3">
+<h3>Number of datapoints per month</h3>
+<p>It’s time to visualise some of the data I’ve got in the dataframe. A first view will be of the number of datapoints per week. I will be using the <a href="https://cran.r-project.org/web/packages/tidyverse/index.html">Tidyverse package</a>, together with <a href="https://cran.r-project.org/web/packages/hrbrthemes/index.html">hrbrthemes</a>, to create some easy-to-read plots.</p>
+<pre class="r"><code>#colors for fill and lines in ggplot
+col1 = &quot;#9ecae1&quot; #light blue
+
+#The actual weekly data plot
+df %&gt;% 
+  group_by(week,year) %&gt;%
+  summarise(n = n()) %&gt;%
+  ggplot( aes(x=week, y = n)) +
+  geom_bar(stat= &quot;identity&quot;,fill=col1) +
+  facet_grid(facets = year ~ .) +
+  theme_ipsum_rc(grid=&quot;XY&quot;, axis_text_size=12, axis_title_size = 12)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  scale_x_continuous(breaks = c(1:52)) +
+  labs(x = &quot;week of year&quot;, y = &quot;number of times tracked&quot;, title=&quot;Number of times tracked per week by Google Location&quot;)</code></pre>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/location/weekly.webp" type="image/webp">
+	<img src="/img/location/weekly.jpg" alt="Weekly datapoints" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">Weekly datapoints</p>
+	</figcaption>
+</figure>
+<p>As you can see, Google has been collecting data since mid-2016, with a gap in 2018. I disabled Google Location tracking during that time. Unfortunately, some of my favorite apps seem to depend on it, so I had to turn it back on again. At its peak, Google was collecting almost 100.000 datapoint a week in 2017. It also seems like I may not be very active in the last few months of the year, since fewer datapoints are required to pinpoint my location.</p>
+</div>
+<div id="activities-in-google-location" class="section level3">
+<h3>Activities in Google Location</h3>
+<p>As you could see in the dataframe, Google also includes data about the activity I am doing, for each datapoint. They are often set to NULL, but let’s see what Google can tell me about my activity. Because this is such a big dataset, I’m going to limit this visualisation to 2017 and only show the first available activity for each datapoint / row.</p>
+<pre class="r"><code>loc3 &lt;- with(df, subset(df, df$time &gt; as.POSIXct(&#39;2017-01-01 0:00:01&#39;)))
+loc3 &lt;- with(df, subset(loc3, df$time &lt; as.POSIXct(&#39;2017-12-31 23:59:59&#39;)))
+activities &lt;- loc3$activity
+
+list.condition &lt;- sapply(activities, function(x) !is.null(x[[1]]))
+activities  &lt;- activities[list.condition]
+
+df3 &lt;- do.call(&quot;bind_rows&quot;, activities)
+main_activity &lt;- sapply(df3$activity, function(x) x[[1]][1][[1]][1])
+activities_2 &lt;- data.frame(main_activity = main_activity, 
+                           time = as.POSIXct(as.numeric(df3$timestampMs)/1000, origin = &quot;1970-01-01&quot;))
+ggplot(activities_2, aes(x = main_activity, group = main_activity)) + 
+  geom_bar(fill=col1)  + 
+  guides(fill = FALSE) +
+  scale_y_continuous(breaks= scales::pretty_breaks(n=6),expand=c(0,0), limits=c(0, 40000)) +
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Activity&quot;,
+    y = &quot;Count&quot;,
+    title = &quot;Main activities in 2017&quot;,
+    caption = &quot;Associated activity for recorded positions in 2017. 
+    Because Google records activity probabilities for each position, 
+    only the activity with highest likelihood were chosen for each position.&quot;
+  )</code></pre>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/location/activity.webp" type="image/webp">
+	<img src="/img/location/activity.jpg" alt="Main activities in 2017" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">Main activities in 2017</p>
+	</figcaption>
+</figure>
+</div>
+</div>
+<div id="locations-from-the-google-location-data" class="section level2">
+<h2>Locations from the Google Location data</h2>
+<p>The most interesting part about Google location data is all of the… location data. So let’s see where I have been the past few years. I use the <a href="https://cran.r-project.org/web/packages/ggmap/index.html">ggmap package</a> to visualise my Google Maps plots.</p>
+<p>I live in the Netherlands, in a pretty place called <a href="https://www.tripadvisor.com/Tourism-g188613-Amersfoort-Vacations.html">Amersfoort</a>. And I often have to go to other cities in the Netherlands for work. You will also see I often go cycling around the province.</p>
+<p>###Locations visited nearby
+This first plot will show you where I have been according to the Google Location data.
+Building a map plot is pretty straightforward once you have a proper dataframe with latitude and longitude columns. There are a few steps to go through:
+* Get the map with a location and zoom level with the get_map function
+* Create the plot with the ggmap function and overlay your data</p>
+<pre class="r"><code>#get map from Google Maps
+amersfoort &lt;- get_map(location = &#39;Amersfoort&#39;, zoom = 11)
+
+#Generate the plot
+ggmap(amersfoort) + 
+  geom_point(data = df, aes(x = lon, y = lat), alpha = 0.1, color = &quot;red&quot;, size=0.2) + 
+  theme(legend.position = &quot;right&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Longitude&quot;, 
+    y = &quot;Latitude&quot;, 
+    title = &quot;Location history data points in Amersfoort&quot;,
+    caption = &quot;\nA simple point plot shows recorded positions.&quot;)</code></pre>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/location/provincie.webp" type="image/webp">
+	<img src="/img/location/provincie.jpg" alt="Location history data points in Amersfoort" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">Location history data points in Amersfoort</p>
+	</figcaption>
+</figure>
+<div id="velocity-of-travel" class="section level3">
+<h3>Velocity of travel</h3>
+<p>I can also visualise something similar to the previous map, but including the page I was travelling in.</p>
+<pre class="r"><code>ggmap(amersfoort) + 
+  geom_point(data = df, aes(x = lon, y = lat, color = velocity), alpha = 0.5, size=0.2) + 
+  theme(legend.position = &quot;right&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Longitude&quot;, 
+    y = &quot;Latitude&quot;, 
+    title = &quot;Location history data points in Amersfoort&quot;,
+    caption = &quot;\nA simple point plot shows recorded positions.&quot;)</code></pre>
+
+
+
+
+<figure>
+	<picture>
+	  <source srcset="/img/location/amersfoort.webp" type="image/webp">
+	<img src="/img/location/amersfoort.jpg" alt="Location history data points in Amersfoort" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">Location history data points in Amersfoort</p>
+	</figcaption>
+</figure>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>I might do a followup post in the future on this dataset, because there is a lot of fun stuff in the to discover about my behaviour:</p>
+<ul>
+<li>What’s my average walking pace?</li>
+<li>What are my favorite destinations when cycling?</li>
+<li>Do I walk faster in the morning than the evening?</li>
+<li>When am I most active during the week?</li>
+</ul>
+</div>
+</div>
+
+      </article>
+              
+                <span class="post-meta" style="text-align:center">Tags: 
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/ggplot2/" class="post-meta-tag-article">ggplot2</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/r/" class="post-meta-tag-article">r</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/google/" class="post-meta-tag-article">google</a>&nbsp;
+                  
+                    #<a href="https://martijnvanvreeden.nl/tags/location/" class="post-meta-tag-article">location</a>&nbsp;
+                  
+                </span>
+              
+		
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box">
+    <ul class="share">
+      
+      <li>
+        <a class="fs2" href="//twitter.com/share?url=https%3a%2f%2fmartijnvanvreeden.nl%2fanalysing-google-location-data%2f&amp;text=Analysing%20Google%20Location%20data%20with%20R&amp;via=martijnvv" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+          <i class="icon-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmartijnvanvreeden.nl%2fanalysing-google-location-data%2f" target="_blank" title="Share on Facebook" rel="noreferrer" aria-label="share article on facebook">
+          <i class="icon-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//reddit.com/submit?url=https%3a%2f%2fmartijnvanvreeden.nl%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on Reddit" rel="noreferrer" aria-label="share article on reddit">
+          <i class="icon-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a class="fs2" href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmartijnvanvreeden.nl%2fanalysing-google-location-data%2f&amp;title=Analysing%20Google%20Location%20data%20with%20R" target="_blank" title="Share on LinkedIn" rel="noreferrer" aria-label="share article on linkedin">
+          <i class="icon-linkedin"></i>
+        </a>
+      </li>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+	  <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r-part-2/" data-toggle="tooltip" data-placement="top" title="Visualize and analyse IMDB ratings with R (part 2)">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/" data-toggle="tooltip" data-placement="top" title="Visualising Google Analytics internal search data with R">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+	  
+    </div>
+  </div>
+</div>
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		
+              <li>
+                <a href="https://twitter.com/martijnvv" title="Twitter" rel="noreferrer" aria-label="Twitter">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-twitter gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/martijnvanvreeden" title="LinkedIn" rel="noreferrer" aria-label="LinkedIn">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-linkedin gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          2023
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://martijnvanvreeden.nl/" rel="nofollow">Martijn van Vreeden</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/main.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/highlight.min.js"></script>
+	<script src="https://martijnvanvreeden.nl/js/purecookie.js"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>
+  </body>
+</html>
+
