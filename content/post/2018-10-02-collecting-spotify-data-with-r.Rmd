@@ -1,0 +1,288 @@
+---
+title: Collecting Spotify data with R
+author: Martijn van Vreeden
+date: '2018-10-02'
+slug: collecting-spotify-data-with-r
+categories:
+  - digital me
+  - spotify
+tags:
+  - api
+  - r
+  - spotify
+description: 'Collecting your Spotify data to analyse and visualise with R' 
+content_summary: 'Spotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse. To get started, you wil need to R packages to access the data and process it afterwards.'
+---
+_This post is part of a series of posts to [analyse the digital me](/meet-the-digital-me/)._
+
+# Collecting Spotify data with R
+
+Spotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.
+
+To get started, you wil need to R packages to access the data and process it afterwards.
+
+```{r start, echo=TRUE, message=FALSE, warning=FALSE}
+library('httr')
+library('jsonlite')
+library('dplyr')
+library('tidyr')
+library('zoo')
+library('purrr')
+library('RCurl')
+```
+
+You will also need access to the Spotify API, which is granted through a Client ID and Client Secret. You can get these by using your Spotify account and go to the [Developers Page at Spotify](https://developer.spotify.com/dashboard/). 
+
+Once you have your client data, you are ready to get access to the data with R.
+You will need to get a token the first time, after that, you can store it in a local file to ensure you don't have to go back to the popup screen each time to get another one.
+
+``` {r secret, echo=FALSE, message=FALSE, warning=FALSE}
+user_code_value <- 'AQBTEKmG_pIo-AFC9iCwGnYpjhbdkDtDQGkaDtdJCospmaWbVKCMB-AbQM4OGoz-TiLXiw55oskw7OM1XL6AgvNyFOVIPTpe8SPv_gqRHWC4hcMwwYxhIHQ0FQzTHuCJoibU7jTdQ4I8pfmV4Su8OsLlnZQhn4ehHtKPbuqQgznYMZ9Fi2rurUki95sqQRPUkCrj5cpSoaKqliNS_S3GQxI9zflZyQCVcAskYHt3w9hkoo38mLPNa3y7g7T-BkSuMqu5E3VuuPAS'
+website_uri <- 'http://www.martijnvanvreeden.nl/'
+client_id <- '8ba082c150b146b8b4b4ce28b679df05'
+sp_client_id = '8ba082c150b146b8b4b4ce28b679df05'
+sp_client_secret = '1134f9b46c924e87beeb28e4a0da56e9'
+
+```
+
+```{r access, echo=TRUE, message=FALSE, warning=FALSE}
+if(!file.exists(".spotify")){
+    print("no file")
+
+    #to get token FIRST TIME
+    browseURL(paste0('https://accounts.spotify.com/authorize?client_id=',client_id,'&response_type=code&redirect_uri=',website_uri,'/&scope=user-read-recently-played'),browser = getOption("browser"), encodeIfNeeded = FALSE)
+    
+    #add new token
+    user_code <- user_code_value
+    
+    #construct body of POST request FIRST TIME
+    request_body <- list(grant_type='authorization_code',
+                         code=user_code,
+                         redirect_uri=website_uri, #input your domain name
+                         client_id = sp_client_id, #input your Spotify Client ID
+                         client_secret = sp_client_secret) #input your Spotify Client Secret
+    
+    #get user tokens FIRST TIME
+    user_token <- httr::content(httr::POST('https://accounts.spotify.com/api/token',
+                                           body=request_body,
+                                           encode='form'))
+    
+    user_token$access_token -> token
+    auth_header <- httr::add_headers('Authorization'= paste('Bearer',token))
+    write(user_token$refresh_token, ".spotify")
+
+}
+
+if(file.exists(".spotify")) {
+    print("we have file")
+  
+    #REFRESH
+    scan(file = ".spotify", what= list(id="")) -> red
+    as.character(red) -> refresh_code
+    request_body_refresh <- list(grant_type='refresh_token',
+                            refresh_token=refresh_code,
+                            redirect_uri=website_uri,
+                            client_id = sp_client_id,
+                            client_secret = sp_client_secret)
+    
+    #get user tokens REFRESH
+    user_token_refresh <- httr::content(httr::POST('https://accounts.spotify.com/api/token',
+                                           body=request_body_refresh,
+                                           encode='form'))
+    user_token_refresh$access_token -> token
+}
+
+#THIS RUNS EVERYTIME
+auth_header <- httr::add_headers('Authorization'= paste('Bearer',token))
+recently_played <- httr::content(httr::GET('https://api.spotify.com/v1/me/player/recently-played',
+                        query=list(limit=50,time_range='long_range'),auth_header))
+```
+
+The script returns a recently played list of trackes of maximum of 50. Unfortunately, Spotify doesn't allow you to get all of your historical data. It is easy to run this script on a server hourly or daily to collect fresh data and update your dataset.
+
+## Get Spotify track data
+
+Now that we have collected the 50 most recently played tracks, we will create a clean dataframe that we can store and analyse.
+
+```{r track_data, echo=TRUE, message=FALSE, warning=FALSE}
+# generate the proper data.frame
+toJSON(recently_played$items) -> df1
+fromJSON(df1) %>% as.data.frame -> df2
+df2$track -> df_track
+df_track$name -> track_name
+df_track$duration_ms -> track_duration_ms
+df_track$id -> track_id
+df_track$popularity -> track_popularity
+df_track$album$name -> track_album
+df_track$explicit -> track_explicit
+as.list(df_track$external_urls) -> track_href
+placeholder <- data.frame(list(height=1:3),list(url=1:3),list(width=1:3))
+df_track$album$images[!lengths(df_track$album$images)] <- list(placeholder)
+
+lapply(df_track$album$images, "[[", 2) -> album_images
+lapply(album_images, "[[", 1) -> album_image_big
+lapply(album_images, "[[", 3) -> album_image_small
+df_track$album$id -> track_album_id
+df2$played_at -> track_played_at
+
+df_track$artists -> track_artists
+lapply(track_artists, "[[", 4) -> track_artist_name
+lapply(track_artist_name, `[[`, 1) -> track_artist_name
+lapply(track_artists, "[[", 3) -> track_artist_id
+lapply(track_artist_id, `[[`, 1) -> track_artist_id
+
+do.call(rbind.data.frame, Map('c', track_id, track_name, track_album_id, track_album, track_artist_id, track_popularity, track_duration_ms, track_explicit, album_image_big, album_image_small, track_played_at)) -> track_details
+colnames(track_details) <- c("track_id", "track_name", "track_album_id", "track_album", "artist_id", "track_popularity", "track_duration_ms", "track_explicit", "album_image_big", 'album_image_small', "track_played_at" )
+```
+
+This generates a clean dataframe with all the track data I need to analyse and visualise my Spotify data.
+
+Some of the useful data is:
+
+* The unique track ID used by Spotify to identify each song or version of a song
+The unique artist ID used by Spotify to identify the artist performing the track
+* The track duration in ms
+* Album data (Album ID, image url)
+* Etc.
+
+```{r track_data_head, echo=TRUE, message=FALSE, warning=FALSE}
+head(track_details,5)
+```
+
+## Get Spotify artist data
+
+I also want to add data about the artist to my dataset. So from each of the tracks in my dataset, I will collect the artist ID and add them to my following query to collect the corresponding artist data
+
+```{r artist_data, echo=TRUE, message=FALSE, warning=FALSE}
+#prepare to get data about artists
+response = POST(
+  'https://accounts.spotify.com/api/token',
+  accept_json(),
+  authenticate(sp_client_id, sp_client_secret),
+  body = list(grant_type = 'client_credentials'),
+  encode = 'form',
+  verbose()
+)
+token1 <- content(response)$access_token
+
+#get list of artist ID's from recently played list
+paste(as.character(track_artist_id),collapse=",",sep="") -> artist_comma
+
+#query open api data
+HeaderValue = paste0('Bearer ', token1)
+URI = paste0('https://api.spotify.com/v1/artists?ids=', artist_comma)
+response2 = GET(url = URI, add_headers(Authorization = HeaderValue))
+artist_details = content(response2)
+
+toJSON(artist_details) -> df4
+fromJSON(df4) %>% as.data.frame -> df5
+
+df6 <- data.frame(df5$artists.followers)
+as.numeric(df6$total) -> artist_followers
+df5$artists.popularity -> artist_popularity
+df5$artists.id -> artist_id
+df5$artists.genres -> artist_genres
+df5$artists.name -> artist_names
+
+lapply(df5$artists.images, `[`,1,2) -> track_artist_image
+
+df6_6 <- data.frame(df5$artists.external_urls)
+df6_6$spotify -> artist_url
+
+do.call(rbind.data.frame, Map('c', artist_id, artist_popularity, artist_followers, artist_names, artist_url, track_artist_image)) -> artist_details
+colnames(artist_details) <- c("artist_id", "artist_popularity", "artist_followers", "artist_name" ,"artist_url", "track_artist_image")
+sapply(artist_genres, paste0 , collapse = "|") -> artist_details$artist_genres
+
+head(artist_details,5)
+```
+
+This data gives me insight in the artist:
+
+* Name
+* Popularity (on a scale from 1 to 100)
+* Followers (users following the artist, another KPI for popularity)
+* Image URL
+
+One of the few caveats I have found in the Spotify data is that tracks are not assigned genres, but artists are. This means that there is no way to define the genre of a song, unless, you connect it to the performing artist. This is not always accurate for eclectic artists performing multiple genres.
+
+## Get Spotify track audio details
+
+Spotify provides very detailed data for each individual track. [The Spotify Insights blog](https://newsroom.spotify.com/) has some cool posts on this topic. There are more technical details on audio analysis in the [Spotify API documentation](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/).
+
+To get the Audio details for the tracks, we will use the track_id variable from our track dataframe and get more detailed data.
+
+```{r track_audiodetails, echo=TRUE, message=FALSE, warning=FALSE}
+#get list of track ID's from recently played list
+paste(as.character(track_id),collapse=",",sep="") -> track_comma
+
+URI2 = paste0('https://api.spotify.com/v1/audio-features/?ids=', track_comma)
+response3 = GET(url = URI2, add_headers(Authorization = HeaderValue))
+track_special_details = content(response3)
+
+toJSON(track_special_details) -> df9
+fromJSON(df9) %>% as.data.frame -> df10
+unnest(df10) ->df10
+df10$audio_features.id -> track_special_id
+#https://developer.spotify.com/web-api/get-audio-features/
+as.numeric(df10$audio_features.key) -> track_special_key
+as.numeric(df10$audio_features.mode) -> track_special_mode
+as.numeric(df10$audio_features.acousticness) -> track_special_acousticness
+as.numeric(df10$audio_features.danceability) -> track_special_danceability
+as.numeric(df10$audio_features.energy) -> track_special_energy
+as.numeric(df10$audio_features.tempo) -> track_special_tempo
+as.numeric(df10$audio_features.speechiness) -> track_special_speechiness
+as.numeric(df10$audio_features.instrumentalness) -> track_special_instrumentalness
+as.numeric(df10$audio_features.liveness) -> track_special_liveliness
+as.numeric(df10$audio_features.valence) -> track_special_valence
+df10$audio_features.uri -> track_features_uri
+df10$audio_features.track_href -> track_features_href
+
+do.call(rbind.data.frame, Map('c', track_special_id, track_special_key, track_special_mode, track_special_acousticness, track_special_danceability, track_special_energy, track_special_speechiness, track_special_tempo, track_special_instrumentalness, track_special_liveliness, track_special_valence)) -> track_special_details
+colnames(track_special_details) <- c("track_id", "track_key", "track_special_mode", "track_auccoustiness", "track_danceability", "track_energy", "track_speechiness", "track_tempo", "track_special_instrumentalness", "track_special_liveliness", "track_special_valence")
+head(track_special_details,5)
+```
+
+This is definitely the detailed data under the hood of Spotify's engine. It provides very detailed information about the type of track I listened to including:
+
+* Danceability
+* Liveliness
+* Energy
+* Key
+* Etc.
+
+It allows me to analyse the type of music I listen to on different times of the week.
+
+## Merging it to one flat dataframe
+To make it easier to use, I will use our three dataframes and merge them into one big dataframe. I will also clean up some of the data for future use.
+
+```{r data_merge, echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+# merge 3 data.frames to have one big one for all tracks
+merged1 <- track_details %>% 
+  mutate(track_played_at = as.POSIXct(track_played_at, 
+                                tz = "CET", 
+                                format = "%Y-%m-%dT%H:%M:%S"))  %>%
+  left_join(artist_details, by="artist_id")
+
+merged <- merged1 %>%  left_join(track_special_details, by="track_id")
+#kill duplicates
+subset(merged,!duplicated(merged$track_played_at)) -> merged
+
+as.numeric(as.character(merged$track_speechiness)) -> merged$track_speechiness
+as.numeric(as.character(merged$track_danceability)) -> merged$track_danceability
+as.numeric(as.character(merged$track_popularity)) -> merged$track_popularity
+as.numeric(as.character(merged$track_duration_ms)) -> merged$track_duration_ms
+as.numeric(as.character(merged$artist_popularity)) -> merged$artist_popularity
+as.numeric(as.character(merged$artist_followers)) -> merged$artist_followers
+as.numeric(as.character(merged$track_key)) -> merged$track_key
+as.numeric(as.character(merged$track_special_mode)) -> merged$track_special_mode
+as.numeric(as.character(merged$track_auccoustiness)) -> merged$track_auccoustiness
+as.numeric(as.character(merged$track_energy)) -> merged$track_energy
+as.numeric(as.character(merged$track_tempo)) -> merged$track_tempo
+as.numeric(as.character(merged$track_special_instrumentalness)) -> merged$track_special_instrumentalness
+as.numeric(as.character(merged$track_special_liveliness)) -> merged$track_special_liveliness
+as.numeric(as.character(merged$track_special_valence)) -> merged$track_special_valence
+```
+
+This joined dataframe provides me with all the details I need to analyse and visualise my Spotify listening behaviour.
+
+_This post is part of a series of posts to [analyse the digital me](/meet-the-digital-me/)._

@@ -1,0 +1,171 @@
+---
+title: How to add Google Tag Manager to Hugo static website
+author: Martijn van Vreeden
+date: '2020-04-16'
+slug: how-to-add-google-tag-manager-to-hugo-static-website
+categories:
+  - google tag manager
+tags:
+  - google tag manager
+  - hugo
+description: "In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website."
+content_summary: "In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website." 
+---
+
+
+
+<div id="how-to-add-google-tag-manager-to-a-hugo-static-website" class="section level1">
+<h1>How to add Google Tag Manager to a Hugo static website</h1>
+<p>In this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website. As a digital analytics consultant I can appreciate the value a good Google Tag Manager (GTM) implementation can have for your business or even to optimize your user’s blog experience.</p>
+<div id="how-to-add-the-standard-google-tag-manager-container-to-a-hugo-website" class="section level2">
+<h2>How to add the standard Google Tag Manager container to a Hugo website</h2>
+<p>To make sure that Google Tag Manager is enabled, we will have to include the Google Tag Manager container. This is a piece of standard javascript that allows us to start using Google Tag Manager on our website in the most basic sense. This javascript tracking code will be included in the head section of the website and a small iframe version of the snippet will be included right after the opening body tag. The iframe version allows us to enable basic Google Tag Manager functionalities on browsers that don’t have javascript enabled.</p>
+<div id="what-does-the-google-tag-manager-container-do" class="section level3">
+<h3>What does the Google Tag Manager container do?</h3>
+<p>The Google Tag Manager container enables the Google Tag Manager basic functionalities by including a reference to the Google Tag Manager javascript library. This allows you to manage tags from Google Tag Manager and trigger them on your website.</p>
+</div>
+<div id="include-google-tag-manager-partial-in-your-website" class="section level3">
+<h3>Include Google Tag Manager partial in your website</h3>
+<p>In order to run Google Tag Manager on your website, I’ve created a Hugo partial that you can include in your Hugo partials folder. The partials folder is usually located in the themes folder. Select your theme in this folder to find the layouts folder. That’s where you’ll find the partials folder. In my case it is: <code>\themes\beautifulhugo\layouts\partials</code></p>
+<p>In this folder, add the file called gtm.html from <a href="https://github.com/martijnvv/GTM-integration-Hugo">my Github repository</a>. It is the partial that will be needed to included the proper code to run Google Tag Manager.</p>
+<p>The partial includes three components:</p>
+<ul>
+<li>The basic Google Tag Manager snippet</li>
+<li>A prefetch and preconnect functionality to improve the loading time of the code</li>
+<li>A datalayer component to leverage additional data in Google Tag Manager</li>
+</ul>
+<p>Don’t worry, I’m going to cover all three components in this article.</p>
+</div>
+<div id="include-the-code-in-your-current-website-partials-and-basic-layout" class="section level3">
+<h3>Include the code in your current website partials and basic layout</h3>
+<p>You will have to reference the Google Tag Manager partial in your current setup for it the become part of the sourcecode of your page.
+Have a closer look at your partials folder. Look for the partial called <code>head.html</code>. You will have to include the following reference to the Google Tag Manager partial to include it.</p>
+<p><code>{{ if .Site.Params.gtm_id}}{{- partial "gtm.html" . }}{{ end }}</code></p>
+<p>You should add it anywhere between the <code>&lt;head&gt;</code> tags.</p>
+<p>To include the additional iframe version of Google Tag Manager, we will have to update an additional file. Go to your <code>\themes\beautifulhugo\layouts\_default</code> folder and open the <code>baseof.html</code> file. Right below the <code>&lt;body&gt;</code> element, include the following code snippet.</p>
+<p><code>{{ if .Site.Params.gtm_id}}&lt;noscript&gt;&lt;iframe src="//www.googletagmanager.com/ns.html?id={{ .Site.Params.gtm_id }}" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;{{ end }}</code></p>
+</div>
+<div id="updating-your-config.toml-file" class="section level3">
+<h3>Updating your config.toml file</h3>
+<p>You may want to enable or disable the Google Tag Manager code altogether. That’s why we will add an additional site parameters to the config.toml file which will enable or disable the code and allow you to easily change the Google Tag Manager unique ID.</p>
+<p>First, create a Google Tag Manager container on the Google Tag Manager website. Check out the video below to learn how to do this.</p>
+{{% youtube id="P4suvDuj0kI" enablejsapi="true" modestbranding="true" color="white" %}}
+<p>Once you have created your container, grab the unique container ID from the code snippet (should start with GTM-).
+In your config.toml file, add an additional parameter called gtm_id. Add the container ID as a value, like in the image below.</p>
+{{% webp alt="GTM parameter config.toml" image="/img/gtm/params.jpg" %}}
+<p>After you added the additional param, the GTM container code will be included in your website. Let’s test if that worked.</p>
+</div>
+<div id="testing-the-implementation" class="section level3">
+<h3>Testing the implementation</h3>
+<p>Now it’s time to build your website and see Google Tag Manager in action. If all went well, you should see the Google Tag Manager code being load in your browser. Here are a few ways to validate if the code is included properly:</p>
+<ul>
+<li>Check your browser developer console</li>
+<li>Use a browser extension to check if it worked</li>
+<li>Enable preview mode in Google Tag Manager</li>
+</ul>
+<div id="check-your-browser-developer-console" class="section level4">
+<h4>Check your browser developer console</h4>
+<p>Load the page of your website where Google Tag Manager is included and hit F12. This will open the DevTools panel. When you go to the Network tab and reload the page, all the elements of the page will be shown here. Look for one that starts with <code>gtm.js</code> (or use the filter option). If it is in there, you have successfully implemented Google Tag Manager on the page.</p>
+</div>
+<div id="use-a-browser-extension" class="section level4">
+<h4>Use a browser extension</h4>
+<p>Your second option is to use a browser plugin. They will provide you with a similar insight, but might be a bit more user-friendly. These are a few to chose from:</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk?hl=nl">Tag assistant (by Google)</a></li>
+<li><a href="https://www.thyngster.com/tools/gtm-debug-extension/">GTM debug extension (by GTM expert David Vallejo)</a></li>
+</ul>
+<p>Once you’ve installed either one of these extensions, it will be easy to validate if your implementation worked.</p>
+</div>
+<div id="enable-preview-mode-in-google-tag-manager" class="section level4">
+<h4>Enable preview mode in Google Tag Manager</h4>
+<p>If you are a bit familiar with how Google Tag Manager works, this is a great way to check if Google Tag Manager is implemented on your website. Simply go to the Google Tag Manager and click on the container you are looking to implement.In the right top corner you will find a button saying “preview”. Click on this and wait until the orange panel appears. The previewer is now enabled on your browser.</p>
+<p>Now go to your website. You should now see a preview panel appear at the bottom of your screen. If this is the case, you have implemented the Google Tag Manager container successfully. Below is a video explaining the debug functionality in more detail.</p>
+{{% youtube id="uUAKkgQGBT0" enablejsapi="true" modestbranding="true" color="white" %}}
+</div>
+</div>
+</div>
+<div id="make-sure-google-tag-manager-loads-fast" class="section level2">
+<h2>Make sure Google Tag Manager loads fast</h2>
+<p>Google Tag Manager is loading a 3rd party javascript library in your website. <a href="https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/">This will impact the performance of your website.</a> Depending on how you use Google Tag Manager, it can be slowing your website down. That’s why we take some additional measures to decrease the negative impact on performance and keep your website lightning fast.</p>
+<div id="add-preconnect-and-prefetch-features-for-better-performance" class="section level3">
+<h3>Add preconnect and prefetch features for better performance</h3>
+<p>In a previous article I shared some recommendations to <a href="https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/">make your Hugo website load super-fast</a>. One of those tips was to use dns-prefetch and preconnect to increase the performance of your javascript files. This is what we’ll do for our Google Tag Manager javascript library as well.</p>
+<p>In the gtm.html partial, I already included some additional code to help you achieve this.</p>
+<p><code>{{ if .Site.Params.gtm_id}}&lt;link href="https://www.googletagmanager.com" rel="preconnect" crossorigin&gt;   &lt;link rel="dns-prefetch" href="https://www.googletagmanager.com"&gt;{{ end }}</code></p>
+</div>
+</div>
+<div id="add-a-standard-datalayer-to-google-tag-manager" class="section level2">
+<h2>Add a standard datalayer to Google Tag Manager</h2>
+<p>If you have walked through the steps in this article up until now, you have probably successfully implemented the basic Google Tag Manager script. If you want to move your analytics and online marketing efforts to the next level, continue reading. The next part is about the datalayer, where the real magic happens.</p>
+<div id="what-is-a-datalayer-and-why-is-it-important" class="section level3">
+<h3>What is a datalayer and why is it important?</h3>
+<p>To put it shortly, a datalayer is a data structure which ideally holds all data that you want to process and pass from your website (or other digital context) to other applications that you have linked to. We use a datalayer to decouple information that is shown on a page or website in some way and provide it to our tools in an easy to digest format.</p>
+<p>You can often see important information on a page that you want to use in analysics or online marketing tools, like the price of a product, name of a product or author of an article. We use the datalayer to capture that type of information and send it to Google Tag Manager in a simple format. If you want to read a more detailed explanation or definition of the datalayer, I recommend <a href="https://www.simoahava.com/analytics/data-layer/">an article by Google Tag Manager expert Simo Ahava</a>.</p>
+{{% webp alt="GTM datalayer example" image="/img/gtm/google-tag-manager-data-layer.jpg" %}}
+</div>
+<div id="how-can-you-use-the-datalayer" class="section level3">
+<h3>How can you use the datalayer?</h3>
+<p>The datalayer has several important purposes:</p>
+<ul>
+<li>to help understand what is shown on a page</li>
+<li>be a translation of the content of the page into a structured format</li>
+<li>function as a datastructure to pass important information to other tools</li>
+</ul>
+<p>From a technical perspective, it is possible to scrape most of this data from each page, from with Google Tag Manager itself. However, this can be very time-consuming, have a negative impact on website performance and error prone (the page and elements on a page may change). That’s why we usually decouple the elements a user sees on a page from what we need in our dataset.</p>
+<p>Tracking solutions like Google Analytics, Facebook advertising and many others can use the data in the datalayer to access certain information. The tags can be triggered based on specific logic from the datalayer or populate themselves with the data for analysis. For a more detailed article about this mechanism, please check out the article from <a href="https://www.bounteous.com/insights/2013/10/15/unlock-data-layer-non-developers-guide-google-tag-manager/">Bounteous about datalayers</a>.</p>
+</div>
+</div>
+<div id="include-hugo-variables-in-the-datalayer" class="section level2">
+<h2>Include Hugo variables in the datalayer</h2>
+<p>Hugo comes with tons of useful variables to include in a datalayer. The most relevant variables for the datalayer can be found in the <a href="https://gohugo.io/variables/page/">Page Variables section</a> of the Hugo documentation.</p>
+<p>There are several page related variables in the Hugo Page Variables overview I want to include in the datalayer:</p>
+<ul>
+<li>.Title - the title of the page</li>
+<li>.Permalink - A less beautified page title (ie. /tags/tagname/)</li>
+<li>.FuzzyWordCount - the approximate wordcount of the page</li>
+<li>.WordCount - the number of words on a page</li>
+<li>.ReadingTime - the estimated time to read the content in minutes</li>
+<li>.ExpiryDate - to show when the content expires</li>
+<li>.PublishDate - to show the date of publication of the article</li>
+<li>.Lastmod - to show the date the article was last modified</li>
+<li>.Language - tells us what language the page is in (for multilingual sites)</li>
+<li>.IsTranslated - shows if there are alternative languages available (for multilingual sites)</li>
+<li>.Kind - to show what type of page is shown (ie home, page, etc.)</li>
+<li>.Type - the type of content of a page (ie post, page, etc.)</li>
+<li>.File.UniqueID - An unique page ID</li>
+</ul>
+<p>All of these variables are provided by Hugo out-of-the-box. We can add these variables to our datalayer to use in our Google Tag Manager solution.</p>
+<p>In addition, there are also a few very common variables I have included in the basic datalayer. These variables are often generated when you create a new article:</p>
+<ul>
+<li>page category</li>
+<li>page author</li>
+<li>page tags</li>
+</ul>
+<p>In addition to these variables, I’ve also included some extra ones I will be using.</p>
+<ul>
+<li>Reading time in seconds (minutes can be a bit too rounded)</li>
+<li>Page type 2 - where I use .Type and .Kind to create a combined variable for page types</li>
+</ul>
+<p>The datalayer that is created based on the page variables will look something like this:</p>
+{{% webp alt="GTM basic datalayer" image="/img/gtm/datalayer_basic.jpg" %}}
+<p>By adding an additional parameter to your config.toml file, the entire datalayer will be included in your website.</p>
+<p><code>gtm_datalayer = "basic"</code></p>
+<p>The new configuration should look something like this:</p>
+{{% webp alt="GTM basic datalayer config.toml" image="/img/gtm/params_basic_datalayer.jpg" %}}
+<p>The variables in the datalayer are based on Pages variables in Hugo. On some pages, some of the variables will be missing (ie homepage). This happens because not all pages variables from Hugo are available for all page types.</p>
+</div>
+<div id="update-4-5-2021---support-for-proxy-google-tag-manager-web-container" class="section level2">
+<h2>Update 4-5-2021 - Support for Proxy Google Tag Manager Web Container</h2>
+<p>With the introduction of GTM server side, it is now easier to render the gtm.js file from your own serverside endpoint. This will allow for even better performance and less dependency of the Google servers. Instead of loading the gtm.js file from <a href="https://www.googletagmanager.com" class="uri">https://www.googletagmanager.com</a>, you can now do this from any custom (sub)domain. This update is also reflected in the GTM template for Hugo.</p>
+<p>The additional site param “gtm_endpoint” is now part of the config.toml and template. Simply add the custom domain (ie gtm.martijnvanvreeden.nl) to this parameter to include tracking from your own domain.</p>
+<p>For example:</p>
+<p><code>gtm_endpoint = "gtm.martijnvanvreeden.nl"</code></p>
+<p>For a detailed outline of Serverside Google Tag Manager, please check out <a href="https://www.simoahava.com/analytics/server-side-tagging-google-tag-manager/">Simo Ahava’s blog on this SSGTM</a>.</p>
+<p>If you wish to continue to use the standard webcontainer version of GTM, simply exclude the parameter from the config.toml.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Hopefully this article will help you configure Google Tag Manager on your Hugo website. I’ve currently included the instruction for the first few steps. In the future, I may include additional ways to enrich the datalayer or an article on how to leverage the datalayer for Google Tag Manager and Google Analytics use.</p>
+<p>If you have any questions, feel free to reach out via <a href="https://twitter.com/martijnvv">Twitter</a> or <a href="mail@martijnvanvreeden.nl">Mail</a>.</p>
+</div>
+</div>

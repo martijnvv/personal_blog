@@ -1,0 +1,76 @@
+---
+title: Google Tag Manager Server-side 
+author: Martijn van Vreeden
+date: '2021-11-16'
+slug: google-tag-manager-server-side-advantages-and-concerns
+categories:
+  - google tag manager
+tags:
+  - google tag manager
+subtitle: ''
+---
+
+# Google Tag Manager Server-side 
+
+Google Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.
+
+If you are interested in a how-to guide to setting up Google Tag Manager Server-side, I can highly recommend you to take a look at the following video (25 mins) by Simo Ahava. He explains the basic steps of setting things up. If you are keen on having a more detailed way of learning how to run GTM SS, check out [his online course at Team Simmer](https://www.teamsimmer.com/checkout/server-side-tagging/course-page/).
+
+```{r regular, echo=FALSE}
+blogdown::shortcode("youtube", id = '"6OGbOh216mU"', yt_end = '"92"', enablejsapi='"true"', modestbranding = '"true"', color = '"white"')
+```
+
+## What is server-side tracking?
+
+With server-side tag management, you can introduce a server on which you are able to manage the distribution of data to third parties. Instead of using a plethora of javascript trackers on a website which gives third parties a lot of freedom to collect the data they feel fits the needs of their end-users, you will be in full control to choose which data you want to share with which technology.
+
+```{r image7, echo=FALSE}
+blogdown::shortcode("webp", alt = "Server-side tag management", image = '"/img/gtm-serverside.jpg"')
+```
+
+This server-side setup has many advantages and some concerns as well. I will discuss all of these in the following chapters.
+
+## Advantages of Google Tag Manager Server-side
+
+Using a server-side tag management solution has several big advantages over client-side tracking. And those advantages are expected to grow over time. With all the focus on privacy and GDPR to better manage and respect the wishes of users, the way we collect and manage data will become more important over time. Also, increasing measures by providers of browsers like Apple and Firefox, to safeguard the data and rights of users, will impact the way we collect and manage data. 
+
+### Reduce load on page
+
+Up until the use of server-side tracking, we would collect data in the client (the browser). Most of the vendors would use javascript trackers to manage their data collection. This means whenever a new vendor like Google, Facebook, Affiliate would like to collect data, they would ask the developer of the website to implement a javascript library. When many of the javascript libraries would be loaded on the website, it would slow down the way the website loads. Even though over time the performance of these javascript libraries would improve, every bit counts. 
+
+With the introduction of server-side tracking, only one tracker would be introduced to the website. All the third party vendors would then receive the data through that one single item via the server. This would significantly reduce the amount of work to be done in the browser and improve the performance of the website. This is easily the biggest benefit of server-side tracking for the website owner and the end-user of the website. Speed is good :-)
+
+### Have full control of the data
+
+When javascript libraries are added to the website to collect data, it is often not very well understand what type of functionalities are activated. Many javascript libraries collect more than you may know. Over time, the javascript library can also be updated, without the website owner knowing about it. By using server-side data-collection, you have a 100% control over all the data that you are sending to the vendor. This means no more surprise updates and reducing the risk of data leaks significantly. 
+
+### Cleanup of payload
+
+Once you have full control of the data, you can also easily control the data you are sending. You can easily redact some privacy sensitive data you may not want to share with some vendors. Consider the removing IP addresses, email addresses from url's or other dimensions before sending the data forward.
+
+
+## Concerns related to Google Tag Manager Server-side
+
+Let's not pretend that server-side is all perfect. There are some concerns and a downside to using a server-side tag management solution. I'll share some of the main concerns and additional responsibilities you need to be aware of.
+
+### Cirmumvent adblockers
+
+Adblockers are ensuring users who don't want to be tracked a safe passage. Whenever a website runs, the adblocker will scan for javascript libraries traditionally loaded for advertising and tracking purposes. With server-side tracking we won't have to load those javascript libraries anymore. Which means adblockers can't detect them anymore.
+
+This may seem like a big advantage. More users will be tracked and data quality will increase! However, these users are expecting to not be tracked. Respecting your user's wishes is a major concern for any ethical business. This means you need to be respectful through thorough consent management systems instead.
+
+### Lack of transparency
+
+Without having all those javascript trackers on your website, it is going to be harder to show users which tools and vendors you are using to collect data. Anything can be happening on the server. You could send the data to one vendor or twenty!
+
+This lack of transparency is a potential concern. By being transparent about your data collection in a clear and up-to-date cookie policy and privacy policy, you can share what data you are sending to which vendor. 
+
+### Cost
+
+Google Tag Manager is a free product. If you only use the client-side version of Google Tag Manager, you won't have to pay for their services (unless you upgrade to a paid 360 account). With server-side tracking, you will have to deal with the cost of running the server. Everytime you collect a datapoint and send it to the endpoint of the server, it will manage the data and send it to whoever you like. The costs for the server are your additional cost. For most businesses these costs will not be higher than 150 euros a month. 
+
+### Lack of availability of endpoint by vendors
+
+As you now know, server-side data-collection gives you great control over the data you are sharing with vendors. It's also a relatively new technology that is gaining traction only since Google introduced their server-side solution. This means many vendors haven't introduced the option of sending data to them via the server. In addition, not all vendors will be very excited about handing over control of the data collection to the server. They are losing freedom and flexibility by doing so.
+
+Smart vendors will see server-side tag management as an opportunity. They can offer website-owners more control over the data and will show they are aware of the privacy concerns of their customers. Hopefully several of the vendors will open up resources to develop the endpoints needed to collect the data server-side.

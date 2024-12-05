@@ -1,0 +1,30 @@
+---
+title: Supporting NGOs | Martijn van Vreeden | Digital Analytics
+author: Martijn van Vreeden
+date: '2020-01-02'
+slug: supporting-ngo
+categories: []
+gallery: true
+social_off: true
+tags: []
+subtitle: ''
+description: 'In addition to my work for companies, I also provide services to non-profit organisations. I offer my services at reduced rated to help them achieve their mission.'
+---
+
+## Supporting non-profit organisations
+
+I also try to chip in for some non-profit organisations, which I support against a higly reduced rate. I provide a wider range of services to them and allow them to benefit from my network to help them achieve their mission. 
+
+### Why support these ngo's?
+
+My work as a digital analyst has provided me with many opportunities to grow. It has provided me with business opportunities and I consider many people I have met during my carreer personal friends. The work I do is not always easy to obtain for anybody, especially organisations with limited resources that should be focused on making an impact on the mission they are trying to achieve. 
+
+It only seems logical to offer my help to organisations that are looking to make a difference in other peoples lives. My specific type of knowledge can benefit the organisation I work for and drive success for their efforts. Even a small contribution can make a difference.
+
+### Non-profit organisations I support(ed)
+
+Over the past few years I've supported several NGO's (certified CBF Dutch NGO's).
+
+```{r ngo, echo=FALSE}
+blogdown::shortcode("gallery", dir = '"/img/portfolio_ngo/"')
+```

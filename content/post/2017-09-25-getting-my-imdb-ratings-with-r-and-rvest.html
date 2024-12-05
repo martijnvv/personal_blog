@@ -1,0 +1,126 @@
+---
+title: Getting my IMDB ratings with R and Rvest
+author: Martijn van Vreeden
+date: '2017-09-25'
+slug: getting-my-imdb-ratings-with-r-and-rvest
+categories:
+  - imdb
+  - digital me
+tags:
+  - api
+  - imdb
+  - r
+  - rvest
+  - webscraping
+---
+
+
+
+<p><em>This post is part of a series of posts to <a href="/meet-the-digital-me/">analyse the digital me</a>.</em></p>
+<div id="getting-my-imdb-ratings-with-r-and-rvest" class="section level1">
+<h1>Getting my IMDB ratings with R and Rvest</h1>
+<p>I’m a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking (“who was that guy playing in that one movie?”) it is also a place for me to collect all the ratings I have done on movies in the past few years. The star rating system is pretty effective to see if I already watched a certain movie and what I thought of it.</p>
+<div id="getting-my-imdb-ratings-into-a-dataframe-with-r" class="section level2">
+<h2>Getting my IMDB ratings into a dataframe with R</h2>
+<p>My IMDB ratings are protected by my login, which makes it a bit more complated to get to my reviewed pages. I made them public for all to see by <a href="https://www.imdb.com/help/show_leaf?userprofile">changing a setting</a>. You can see my ratings on this <a href="https://www.imdb.com/user/ur25468061/ratings?opfrule=httpDefault">user list page</a>.
+Unfortunately there isn’t a way to pull in my ratings and movie details through an API. This means I have to scrape the data from the IMDB website and structure it myself. I’m using R packages <a href="https://cran.r-project.org/web/packages/rvest/rvest.pdf">RVest</a> and <a href="https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html">Magrittr</a> for this. To clean and structure the data I use <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">data.table</a> and <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">dplyr</a>.</p>
+<pre class="r"><code>library(&quot;rvest&quot;)
+library(&quot;magrittr&quot;)
+library(&#39;data.table&#39;)
+library(&#39;dplyr&#39;)</code></pre>
+<p>I first load the packages I need before I start scraping</p>
+<pre class="r"><code>userId &lt;- &quot;ur25468061&quot;
+startQuery &lt;- c(&quot;1&quot;)</code></pre>
+<p>I break down the url of the public list I want to scrape (<a href="https://www.imdb.com/user/ur25468061/ratings?start=1&amp;view=detail&amp;sort=ratings_date:desc&amp;defaults=1&amp;my_ratings=restrict">https://www.imdb.com/user/ <strong>ur25468061</strong> /ratings?start= <strong>1</strong> &amp;view=detail&amp;sort=ratings_date:desc&amp;defaults=1&amp;my_ratings=restrict</a>). I can easily change the user ID (ur25468061) and number of page (1) to get different data from a different list or page.</p>
+<pre class="r"><code>df_imdb&lt;-data.frame()
+for(v in startQuery){
+  paste0(&quot;http://www.imdb.com/user/&quot;,userId,&quot;/ratings?start=&quot;, v, &quot;&amp;view=detail&amp;sort=ratings_date:desc&quot;) -&gt; download_url
+  export_html &lt;- read_html(download_url)
+  html_nodes(export_html, &quot;.year_type&quot;) %&gt;% html_text() -&gt; info100Year
+  export_html %&gt;% html_nodes( &quot;.info&quot;) %&gt;% html_nodes(&quot;b&quot;) %&gt;% html_nodes(&quot;a&quot;) %&gt;% html_text() -&gt; info100Title
+  export_html %&gt;% html_nodes( &quot;.info&quot;) %&gt;% html_nodes(&quot;b&quot;) %&gt;% html_nodes(&quot;a&quot;)  %&gt;% html_attr(&#39;href&#39;)  -&gt; info100URL
+  as.numeric(export_html %&gt;% html_nodes( &quot;.rating-your&quot;) %&gt;% html_nodes(&quot;.value&quot;) %&gt;% html_text()) -&gt; info100Rating
+  export_html %&gt;% html_nodes( &quot;.item_description&quot;) %&gt;% html_text() -&gt; info100Desc
+  export_html %&gt;% html_nodes( &quot;.list&quot;) %&gt;% html_nodes( &quot;.image&quot;) %&gt;% html_nodes( &quot;.hover-over-image&quot;) %&gt;% html_nodes(&quot;img&quot;) %&gt;% html_attr(&#39;src&#39;)  -&gt; info100Images
+  gsub(&quot;(|)&quot;,&quot;&quot;,info100Year, fixed=TRUE) -&gt; info100Year
+  paste0(&quot;http://www.imdb.com&quot;, info100URL) -&gt; info100URL
+  sapply(strsplit(info100URL, &#39;/&#39;), function(x) x[5]) -&gt; info100id
+  
+  df &lt;- data.frame(&quot;title&quot; = info100Title, &quot;year&quot; = info100Year, &quot;description&quot; = info100Desc, &quot;myRating&quot; = info100Rating, &quot;url&quot; = info100URL, &quot;id&quot; = info100id, stringsAsFactors = FALSE)
+  df_imdb&lt;-rbind(df_imdb,df)
+}
+sapply(strsplit(df_imdb$year, &#39; &#39;), function(x) x[2]) -&gt; df_imdb$type
+df_imdb$type[is.na(df_imdb$type)] &lt;- &quot;Movie&quot;
+as.numeric(sapply(strsplit(df_imdb$year, &#39; &#39;), function(x) x[1])) -&gt; df_imdb$year</code></pre>
+<p>I now run a simple for loop through my pages (in this example just page 1) for my userlist. I collect several variables about the movies I have watched:</p>
+<ul>
+<li>Year of release</li>
+<li>Title</li>
+<li>URL of the movie on IMDB</li>
+<li>My rating on IMDB</li>
+<li>Short description of movie</li>
+<li>A URL of an image of the movie</li>
+<li>IMDB movie ID</li>
+<li>Type of IMDB item (I also reviewed some tv-series)</li>
+</ul>
+<p>As you may see webscraping requires a lot of cleaning data to make it look dataframe perfect and ready to analyse. What I end up with is a pretty cool dataframe of most recently rated movies with a bunch of variables for me to analyse.</p>
+</div>
+<div id="scraping-additional-movie-data" class="section level2">
+<h2>Scraping additional movie data</h2>
+<p>The dataframe is already pretty full of data to analyse. However, I would like some more details about the movies to analyse:</p>
+<ul>
+<li>Total number of IMDB ratings</li>
+<li>Average IMDB rating of all users</li>
+<li>Top cast members</li>
+<li>Director of the movie</li>
+<li>Movie genres</li>
+</ul>
+<p>Based on the IMDB movie ID’s I collected in the previous dataframe I can get all this data from movie pages on IMDB. All movie pages include the IMDB movie ID in the url: <a href="https://www.imdb.com/title/tt3501112/">https://www.imdb.com/title/ <strong>tt3501112</strong> /</a></p>
+<pre class="r"><code>df_imdb$id -&gt; imdb_movie_id
+
+df_imdb_movie &lt;- data.frame()
+for(i in imdb_movie_id){
+    read_html(paste0(&quot;http://www.imdb.com/title/&quot;,i,&quot;/&quot;)) -&gt; lego
+    
+  # verschil tussen http://www.imdb.com/title/tt2782844/ en http://www.imdb.com/title/tt2072233/
+    as.numeric(gsub(&quot;,&quot;, &quot;&quot;, lego %&gt;% html_nodes(&quot;.imdbRating .small&quot;) %&gt;% html_text)) -&gt; imdb_num_ratings
+    as.numeric(lego %&gt;% html_nodes(&quot;.imdbRating strong&quot;) %&gt;% html_text) -&gt; imdb_rating
+    #lego %&gt;% html_nodes(&quot;.title_wrapper .subtext&quot;) %&gt;% html_text() -&gt; imdb_time_html
+    #gsub(&quot; &quot;, &quot;&quot;, sapply(strsplit(imdb_time_html, &#39;\n&#39;), function(x) x[4]), fixed = TRUE) -&gt; imdb_time_string
+    #strsplit(imdb_time_string, &quot;h|min&quot;) -&gt; imdb_time_hours
+    #as.numeric(do.call( rbind, imdb_time_hours)[,1]) * 60 + as.numeric(do.call( rbind, imdb_time_hours)[,2]) -&gt; imdb_time_minutes
+    
+    #create row of cast, normally 15
+    list(t(unlist(lego %&gt;%  html_nodes(&quot;#titleCast .itemprop span&quot;) %&gt;%  html_text()))) -&gt; imdb_cast
+    paste(unlist(imdb_cast), collapse=&#39;|&#39;) -&gt; imdb_cast
+    lego %&gt;% html_nodes(&quot;.credit_summary_item .itemprop&quot;) %&gt;% html_text() -&gt; imdb_director
+    imdb_director[1] -&gt; imdb_director
+    list(gsub(&quot;Genres:| &quot;, &quot;&quot;, lego %&gt;% html_nodes(xpath = &quot;//*[@id=\&quot;titleStoryLine\&quot;]/div[4]&quot;) %&gt;% html_nodes(&quot;a&quot;) %&gt;% html_text())) -&gt; imdb_genres
+    paste(unlist(imdb_genres), collapse=&#39;|&#39;) -&gt; imdb_genres
+    df1 &lt;- data.table(&quot;imdb_rating&quot; = imdb_rating, &quot;imdb_ratings&quot; = imdb_num_ratings ,&quot;imdb_director&quot; = imdb_director, &quot;id&quot; = i, &quot;imdb_cast&quot; = imdb_cast, &quot;imdb_genres&quot; = imdb_genres ,stringsAsFactors = FALSE)
+    df_imdb_movie&lt;-rbind(df_imdb_movie,df1)
+}</code></pre>
+<p>I created another loop to collect data for all the movies in my previous table. Now I merge the two dataframes to turn them into one big, beautiful dataframe.</p>
+<pre class="r"><code>df3 = merge(df_imdb, df_imdb_movie, by.x=c(&quot;id&quot;), by.y=c(&quot;id&quot;))</code></pre>
+</div>
+<div id="next-steps-to-start-analysing-my-imdb-data" class="section level2">
+<h2>Next steps to start analysing my IMDB data</h2>
+<p>I run these queries daily for the most recently added movies and update my dataframe with the new additions. Afterwards, I save my dataframe to a SQL table (no cloud for me yet, I’m too old-school). This way, I will continue to update my database of reviewed movies.</p>
+<p>You can send your data to a SQL table with the R package <a href="https://cran.r-project.org/web/packages/RMySQL/index.html">RMySQL</a>. It takes a few lines of R code to read or write your SQL table</p>
+<pre class="r"><code># Load the package
+library(&#39;RMySQL&#39;)
+
+#Initiate database connection
+con &lt;- dbConnect(MySQL(),
+                 user = &#39;-----&#39;,
+                 password = &#39;-----&#39;,
+                 host = &#39;-----&#39;,
+                 dbname=&#39;-----&#39;)
+#read table
+dbReadTable(conn = con, name = &#39;imdb&#39;)
+
+#write table
+dbWriteTable(conn = con, name = &#39;imdb&#39;, value = DATAFRAMENAME)</code></pre>
+<p>In my next post I will explore the dataset and learn some more about my movie likes and dislikes!</p>
+</div>
+</div>

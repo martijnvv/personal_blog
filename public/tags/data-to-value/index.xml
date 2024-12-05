@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>data to value on Martijn van Vreeden</title>
+    <link>https://martijnvanvreeden.nl/tags/data-to-value/</link>
+    <description>Recent content in data to value on Martijn van Vreeden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/tags/data-to-value/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Composable CDP&#39;s</title>
+      <link>https://martijnvanvreeden.nl/understanding-composable-cdp/</link>
+      <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/understanding-composable-cdp/</guid>
+      <description>Understanding Composable CDP’s One of the new hot topics in tech is the “Composable CDP.” Databricks is sharing a good definition of a Composable CDP in their article written together with Hightouch and Snowplow Analytics.
+“A Composable CDP consists of the same components as their off-the-shelf counterparts; Data Collection, Data Storage and Modeling, and Data Activation. By implementing a best-in-class product at each layer of the Composable CDP, organizations can achieve a far more extensible CDP solution that can solve problems well beyond the common use cases of off-the-shelf CDPs.</description>
+    </item>
+    
+    <item>
+      <title>What&#39;s happening in Digital Analytics</title>
+      <link>https://martijnvanvreeden.nl/what-is-happening-in-digital-analytics/</link>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/what-is-happening-in-digital-analytics/</guid>
+      <description>What’s happening in Digital Analytics in 2023When you go online or to conferences you can find a ton of resources about Digital Analytics. The vast majority of content seems to be related to marketing technology. The transition from Google Universal Analytics to Google Analytics 4 is an instigator for martech providers and consultants to focus on technology in digital analytics.
+I appreciate the value of collecting quality data in a technical solution for analysis and configuring tools to get the most out of them, but don’t be fooled, there’s more going on in the digital analytics space.</description>
+    </item>
+    
+  </channel>
+</rss>

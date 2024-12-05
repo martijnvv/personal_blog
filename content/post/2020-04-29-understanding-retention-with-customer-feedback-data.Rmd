@@ -1,0 +1,60 @@
+---
+title: Understanding retention with customer feedback data
+author: Martijn van Vreeden
+date: '2020-04-29'
+slug: understanding-retention-with-customer-feedback-data
+categories:
+  - digital analytics
+tags:
+  - google analytics
+description: "To get a better understanding of customer behavior in relation to the quality of the product and services a company provides, we often use customer feedback forms. We all know the concepts of NPS, CES or other ways of getting an understanding of customer satisfaction. What are the biggest differences and which one predicts retention most reliably? Let’s find out."
+content_summary: "To get a better understanding of customer behavior in relation to the quality of the product and services a company provides, we often use customer feedback forms. We all know the concepts of NPS, CES or other ways of getting an understanding of customer satisfaction. What are the biggest differences and which one predicts retention most reliably? Let’s find out." 
+---
+
+# Understanding retention with customer feedback data
+
+To get a better understanding of customer behavior in relation to the quality of the product and services a company provides, we often use customer feedback forms. We all know the concepts of NPS, CES or other ways of getting an understanding of customer satisfaction. What are the biggest differences and which one predicts retention most reliably? Let’s find out.
+
+To get started, let’s run by the most popular methods available to measure customer satisfaction.
+
+## NPS (Net Promoter Score)
+
+The Net Promoter Score, or NPS, is based on the fundamental perspective that every company’s customers can be divided into three categories: Promoters, Passives, and Detractors. You basically love a company, you hate it, or you don’t really care either way.
+
+By asking one simple question — How likely is it that you would recommend [your company] to a friend or colleague? - you can get more insight in the way your performance is measured by clients. Respondents will answer with a 1 to 10 score:
+
+* Promoter: 9 - 10
+* Passives: 7-8
+* Detractors 1-6
+
+To calculate your company’s NPS, take the percentage of customers who are Promoters and subtract the percentage who are Detractors.
+
+The NPS focuses on what customers plan to do in the future and may signal something about the future performance of the relationship.
+
+## CES (Customer Effort Score)
+
+The CES is based around the concept that the amount of effort your client has to make to finish their task or interaction with your company. The more effort, the lower the satisfaction of the client. The CES is often setup with a 5-scale answer. The premise is that a bad CES is a predictor for future behavior of a client.
+
+## Top 2-box scoring
+
+This one question customer satisfaction model is fairly straightforward. Not unlike the NPS and CES methods. Top 2-box scoring asks a question about customer satisfaction like “How satisfied are you with the service of Company X?”. You can answer based on a 10-scale (scoring 1 to 10) or a 5-scale (extremely dissatisfied to extremely satisfied). This will result in a “top-box” for a 10 scale of 9 or 10 scores and a top-box for a 5-scale with only the answer “extremely satisfied”.
+
+The idea behind this practice is that you're getting only those that are expressing a strong attitude with a statement.
+
+The top-2-box customer satisfaction is very similar to the NPS. The biggest difference is that NPS focuses on the future and Top 2-box focuses on the present.
+
+## So which one should I use?
+
+One of the most important reasons to use any of the customer feedback metrics I just described is to measure customer happiness. Often that’s not the final goal though. Happy customers should be returning customers, which makes a direct relation between with retention as a KPI very interesting to many companies.
+
+Recently Dutch researchers from the University of Groningen have researched the predictive ability of several different customer feedback metrics for retention. They learned that customer feedback metrics are a very good predictor for retention. The overall winner according to the research seems to be the top 2-box scoring method, followed by NPS. There are however differences between industries that you should be aware of.
+
+Most of you will have a keen interest in online shopping as an industry. Here is what they state in their research:
+
+“In the online world, in which customers can easily compare 29 offers and switch firms, having highly satisfied customers (i.e., having a high top-2-box customer satisfaction) is of utmost importance rather than having “on average” quite satisfied customers. In terms of the classification of our conceptual framework, this indicates that in the online world, and also for drugstores, customers have a strong focus on the present and are driven by highly positive service experiences.”
+
+Based on these results, you could consider implementing the top 2-box scoring method to your website to measure customer satisfaction. It will give you a useful predictor of customer retention, which is for most (smaller) companies quite a challenge to measure.
+
+If you are not a 100% online company, please check out the other industries mentioned in the study.
+
+I would highly recommend you to read the full study from Evert de Haan, Peter C. Verhoef and Thorsten Wiesel. You can download the study (pdf) [here](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2568613).

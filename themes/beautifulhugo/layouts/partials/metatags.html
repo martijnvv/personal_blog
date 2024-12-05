@@ -1,0 +1,21 @@
+{{ if eq .Kind "taxonomy" }}
+	{{- with .Title | default .Site.Title }}
+  <title>{{ . }} related blogposts | Martijn van Vreeden</title>
+  <meta property="og:title" content="{{ . }} related blogposts" />
+  <meta name="twitter:title" content="{{ . }} related blogposts" />
+  <meta name="description" content="Martijn van Vreeden's blogposts about {{ . }}.">
+  <meta property="og:description" content="Martijn van Vreeden's blogposts about {{ . }}.">
+  <meta name="twitter:description" content="Martijn van Vreeden's blogposts about {{ . }}.">
+	{{- end }}
+{{ else }}
+	{{- with .Title | default .Site.Title }}
+  <title>{{ . }}</title>
+  <meta property="og:title" content="{{ . }}" />
+  <meta name="twitter:title" content="{{ . | truncate 70 }}" />
+	{{- end }}
+	{{- with .Description | default .Params.subtitle | default .Summary }}
+  <meta name="description" content="{{ . }}">
+  <meta property="og:description" content="{{ . }}">
+  <meta name="twitter:description" content="{{ . | truncate 200 }}">
+	{{- end }}
+{{- end }}

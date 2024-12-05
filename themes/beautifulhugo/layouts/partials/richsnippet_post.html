@@ -1,0 +1,42 @@
+  <script type="application/ld+json">
+		{
+			"@context":"http://schema.org/",
+			"@type":"BlogPosting",
+			"mainEntityOfPage":"{{ .Permalink | absLangURL }}",
+			"editor": "Martijn van Vreeden",
+			"url":"{{ .Permalink | absLangURL }}",
+			{{- with .Title | default .Site.Title }}"headline":"{{ . }}",{{ end }}
+			{{- with .Description | default .Params.subtitle | default .Summary }}"description":"{{ . }}",{{ end }}
+			{{ if .Params.categories}}{{$category := index (.Params.categories) 0}}"articleSection":"{{ $category }}",{{ end }}
+			"timeRequired": "PT{{ .ReadingTime }}M",
+			"inLanguage" : "{{ .Lang }}",
+			"wordCount": {{ .WordCount }},
+			"datePublished" : "{{ .PublishDate.Format "2006-01-02T15:04:05" }}",
+			"dateModified" : "{{ .Date.Format "2006-01-02T15:04:05"  }}",
+			"image":{
+				"@type": "ImageObject",
+				"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"name": {{- with .Title | default .Site.Title }}"{{ . }}"{{ end }},
+				"width": "450",
+				"height": "450"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Martijn van Vreeden's Blog",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+					"height": "450",
+					"width": "450"
+				}
+			},
+			"author": {
+				"@type":"Person",
+				"name":"Martijn van Vreeden",
+				"image":"https:\/\/www.martijnvanvreeden.nl\/img\/logo.jpg",
+				"url":"https:\/\/www.martijnvanvreeden.nl",
+				"description":"I’m an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.",
+				"sameAs":["https:\/\/www.linkedin.com\/in\/martijnvanvreeden\/", "https:\/\/https://twitter.com\/martijnvv"]
+			}
+		}
+  </script>

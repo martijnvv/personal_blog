@@ -1,0 +1,108 @@
+---
+title: How to create Google Tag Manager documentation with R
+author: Martijn van Vreeden
+date: '2020-01-09'
+slug: create-google-tag-manager-documentation-with-r
+content_summary: "Creating digital data documentation can be a painstaking, boring, but extremely useful endeavor. Knowing what digital data is available to you and others can be helpful to understand the potential of your data set, as well as provide context to analysis, reporting and other ways to leverage data. To take some of the effort out of creating documentation about the contents of your Google Tag Manager account, I have created a script that pulls data out of the environment and outputs a simple Excel file, which you can share with stakeholders."
+description: "To create digital data documentation can be a boring, but  useful endeavor. This R script helps you automate the process"
+categories:
+  - google tag manager
+tags:
+  - google tag manager
+  - documentation
+  - data governance
+image: "https://martijnvanvreeden.nl/img/GTM_R_integration.webp"
+share_img: "https://martijnvanvreeden.nl/img/GTM_R_integration.jpg"
+---
+
+# Create Google Tag Manager documentation with R
+
+Creating digital data documentation can be a painstaking, boring, but extremely useful endeavor. Knowing what digital data is available to you and others can be helpful to understand the potential of your data set, as well as provide context to analysis, reporting and other ways to leverage data.
+
+To take some of the effort out of creating documentation about the contents of your Google Tag Manager account, I have created a script that pulls data out of the environment and outputs a simple Excel file, which you can share with stakeholders.
+
+If you are using the features available to you in Google Tag Manager, it takes hardly any effort to output the documentation and update it periodically.
+
+## About the R script
+
+[This R script](https://github.com/martijnvv/GTMDocumentationR) generates an automated output in easy-to-read Excel format of the contents of a GTM account, using R and the GTM API.
+
+## Usecases for this script
+
+The output is very useful when you are auditing a GTM account, or for other data governance purposes. It provides a format of the defined variables in GTM, including some additional contextual values. This has proven effective to share the type of data you are collecting with stakeholders in your organisation that don't have access to GTM, or are not familiar with Google Tag Manager.
+
+The following tabs are included in the Excel output:
+
+* Summary tab, with most important information about the GTM account
+* Enabled builtin variables
+* Additional variables, including important contextual information
+* Overview of tags, including tag status, name and notes
+* List of triggers
+* List of users and user access level
+
+## R Packages used
+
+The packages I have used are:
+
+* [googleAuthR](https://cran.r-project.org/web/packages/googleAuthR/index.html)
+* [openxlsx](https://cran.r-project.org/web/packages/openxlsx/index.html)
+
+## Options to configure before running the script
+
+In order for the script to run successfully on your GTM account, you need to update some parts of the script.
+
+### Get Google Tag Manager API credentials
+
+You need to provide access for the script to your Google Tag Manager account via the API. This requires you to provide an API client ID and client secret. To get this access, please go to the Google developers console and create a project: https://console.developers.google.com/flows/enableapi?apiid=tagmanager&credential=client_key&pli=1
+
+You need to use these credentials and add them to the "api_data" file in this R project.
+
+### Add the company name to the script
+
+The company name will be included on the summary sheet of the documentation and is also part of the name of the Excel.
+
+```{r name, echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+# Basic input for project -------------------------------------------------
+projectName <- 'Dummy inc' #insert company name here for Excel output
+Sys.Date() -> date
+xlsXFileName <- paste0(projectName, '_gtmDocumentation_',date,'.xlsx')
+```
+
+### Get your GTM container ID and GTM account ID
+
+Once you have access to GTM via your R script, please provide a valid Google Tag Manager account ID and container ID for the GTM container you would like to run the script for. You can find these values in your Google Tag Manager UI in the admin section.
+
+You can include the ID's in the R script.
+```{r ids, echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+# Choose account_id -------------------------------------------------------
+account_id <- "INSERT_ACCOUNT_ID"
+
+# Choose container from container_list ------------------------------------
+container_id <- "INSERT_CONTAINER_ID"
+```
+
+### Split your variable notes input to multiple columns (optional)
+
+With each item in GTM (variable, trigger, tag), you can add a note. This script pulls the information from the note for each corresponding item and splits the texts to separate columns based on an identifier. It is possible to setup these identifiers to provide more detailed documentation for each of the items in the documentation.
+
+In this example, I split the notes section into 3 additional columns in the documentation:
+* description
+* example
+* variable_setting
+
+This is based on a split after the word "EXAMPLE:" and "TYPE". 
+
+```{r split, echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+# optional to split the notes column in multiple columns
+transform(variable_list, description=do.call(rbind, strsplit(variable.notes, 'EXAMPLE:', fixed=TRUE)), stringsAsFactors=F) -> variable_list
+transform(variable_list, type=do.call(rbind, strsplit(description.2, 'TYPE:', fixed=TRUE)), stringsAsFactors=F) -> variable_list
+names(variable_list)[names(variable_list) == "description.1"] <-"description"
+names(variable_list)[names(variable_list) == "type.1"] <-"example"
+names(variable_list)[names(variable_list) == "type.2"] <-"variable_setting"
+```
+
+## Full working script example
+
+To find a full script and more details about the functionality, please check out [my Github page](https://github.com/martijnvv/GTMDocumentationR).
+
+![Summary view](https://martijnvanvreeden.nl/img/example_output.PNG)

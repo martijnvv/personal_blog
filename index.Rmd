@@ -1,0 +1,6 @@
+---
+site: blogdown:::blogdown_site
+post: false
+description: 'Martijn is an independent digital analyst with 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.'
+---
+

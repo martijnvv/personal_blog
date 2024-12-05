@@ -1,0 +1,269 @@
+---
+title: 10 Things you need to know about the new Google Analytics 4
+author: Martijn van Vreeden
+date: '2020-04-04'
+slug: 10-things-you-need-to-know-about-the-new-google-app-web-analytics
+categories:
+  - google-analytics
+tags:
+  - google-analytics
+  - google-app-web-analytics
+  - google-analytics4 
+description: "Google Analytics 4 is Google's answer to the changing digital landscape we are dealing with as analysts. In this article I will share 10 things you need to know about the new Google Analytics 4 tool. Consider it a simple way to explain what Google Analytics 4 is and the most important things you need to know to get started and figure out if it is important for you to use."
+content_summary: "Google Analytics 4 is Google's answer to the changing digital landscape we are dealing with as analysts. In this article I will share 10 things you need to know about the new Google Analytics 4 tool. Consider it a simple way to explain what Google Analytics 4 is and the most important things you need to know to get started and figure out if it is important for you to use."  
+---
+
+# 10 Things you need to know about the new Google Analytics 4
+
+On July 31st 2019, [Google introduced](https://www.blog.google/products/marketingplatform/analytics/new-way-unify-app-and-website-measurement-google-analytics/) a "new" analytics solution they called Google Analytics 4. Google Analytics 4 is Google's answer to the changing digital landscape we are dealing with as analysts. Google Analytics 4 will replace the current Google Universal Analytics in the future. 
+
+In this article I will share 10 things you need to know about the new Google Analytics 4 tool. Consider it a way to explain what Google Analytics 4 is and why it is important for you to use. I compiled the list based on questions I received from companies and digital analysts. I'm sure there are at least another 10 things to share (and maybe I will), but this article will hopefully get you started.
+
+This is not a how-to-guide to using Google Analytics 4. There are tons of articles out there showing you how to track, configure and use the tool. I added a list of my favorite resources to start using Google Analytics 4 at the bottom of this article. Check them out if you decide you want to get started using Google Analytics 4.
+
+1. [It's new, but it's not](#chapter1)
+2. [A different data model](#chapter2)
+3. [Combining Web and app. One data model and reporting setup](#chapter3)
+4. [A new focus on audiences could pivot your analytics mindset](#chapter4)
+5. [Track additional events out-of-the-box](#chapter5)
+6. [Standard events, that could be(come) useful](#chapter6)
+7. [Tracking configuration via GTM templates](#chapter7)
+8. [Easy integration with BigQuery](#chapter8)
+9. [Many missing reporting features](#chapter9)
+10. [Reasons why you should start now](#chapter10)
+
+Bonus. [Google Analytics 4 resources are everywhere](#chapter11)
+
+## 1. Google Analytics 4 is new, but it's not {#chapter1}
+
+For those who have been around the app digital analytics block a few times, it's easy to spot some similarities in the interface of Google Analytics 4 to Firebase Analytics. Firebase Analytics was introduced in 2011 to allow businesses to track their mobile applications. It was purchased by Google in 2014 and has been going through significant updates over time. It is used on [more than 1.5 million apps (in March 2020)](https://en.wikipedia.org/wiki/Firebase).
+
+Firebase Analytics has been the starting point for building the new solution Google Analytics 4 that is currently in beta. The data model, reporting setup and many other underlying functionalities have been used to create this new product. This is great, because anybody familiar with Firebase Analytics, can jumpstart their Google Analytics 4 journey.
+
+## 2. Google Analytics 4 has a different data model {#chapter2}
+
+For those coming from the web-focused solution Google Universal Analytics, it's time to pivot your way of thinking a bit. It is likely that you'll miss a few metrics and dimensions inside the reports and feature list of the Google Analytics 4 solution. This has everything to do with the radical change in the way the data model is setup. This change of the data model is easily the most important change coming with Google Analytics 4. Many digital analytics specialists were already complaining about the outdated data model Google Universal was built on. Maybe Google listened.
+
+### 2.1 Google Analytics 4 focuses on events and users, not sessions
+
+Google Universal Analytics had three main levels in the way their data model worked:
+
+* User-level
+* Session-level
+* Hit-level
+
+There is a clear hierarchy in these three levels.
+In addition to these three levels of data, the data model also includes additional product-level data for e-commerce reporting.
+
+The hit-level data is also split in to three main different types of hits:
+
+* Pageviews (triggered when someone visits a page)
+* Events (triggered whenever somebody clicks on a button, or interacts with an element)
+* Transactions (triggered whenver a purchase has been made)
+
+```{r image2.1, echo=FALSE}
+blogdown::shortcode("webp", alt = "Google Universal Analytics data model", image = '"/img/datamodel-universal-analytics.jpg"')
+```
+
+### 2.2 In Google Analytics 4 sessions take a backseat
+
+Most of the discussion about the Google Universal Analytics data model was around the session-level metrics and dimensions. What constitutes as [a session is pretty arbitrary](https://www.simoahava.com/analytics/the-schema-conspiracy/) and [easy to manipulate](https://support.google.com/analytics/answer/2795871). A session is also [deceptively complicated to define](https://support.google.com/analytics/answer/2731565?hl=en). Consider the session time-out (time of inactivity before you're considered in a new session) and end of day expiry (when a new day starts, you start a new session, even if you're not inactive). These types of issues can impact your session count, without you realizing it.
+
+I'm sure these are just some of the reasons for Google to remove the sessions from their data model in the new Google Analytics 4 solution.
+
+When you look in the Google Analytics 4 reports, you will still find some session related metrics and dimensions in the reports like visit-starts and visit timestamp, but they are taking a backseat in terms of priority. They are not getting any dedicated reports to analyse them. From a data model perspective, they are calculated in the same way as in Google Universal Analytics, but there is not session-scope in the data model anymore.
+
+```{r image2.2, echo=FALSE}
+blogdown::shortcode("webp", alt = "Google Analytics 4 data model", image = '"/img/AppWebDatamodel.jpg"')
+```
+
+### 2.3 Pageviews are events
+
+In addition to the change in the use of sessions, there's also a change in the way we look at pageviews. Historically, they were an important metric to consider when analysing user behaviour. Times have changed. We don't only move from page to page by clicking on a hyperlink. Techniques to show different content have changed as well. 
+With javascript frameworks like Angular, React, Vue, etc. the website will show new content, without changing URL's and you may not be sure if the new content shown can still be considered a new "pageview". 
+
+Viewing of new content is still part of the data model of Google Analytics 4, but it's just another type of event in the event stream that we create by interacting with a website or application. An event stream can be considered a flowchart of all interactions made by a user during their visits to your websites or applications. The concept of an event stream is not new. Digital analytics solutions like [Snowplow Analytics](https://snowplowanalytics.com/) have built there entire data model on it years ago.
+
+## 3. Google Analytics 4 combines Web and App. With one data model and reporting setup {#chapter3}
+
+The new data model allows us to look at the data and the reports in a more holistic way. It can now be applied to both websites and apps alike. A user has a clear and equal definition for both types of platforms, just like all the events do.
+
+When you look at the data as an analyst, you will be able to act on the same (or very similar) definitions in your reports, regardless if you're working on an analysis about your website or your app.
+
+It also opens up possibilities for us to analyse across all of our platforms. We can track and analyse our user behaviour across all of the platforms (websites, apps and IOT) and get a better understanding of all of the user's interactions with our company or brand. We are now able to merge the data silos that used to be there for each app or website.
+
+To ensure you can track users across your platforms, Google provides you with two options:
+
+* User ID's on signup / login
+* By device
+
+```{r image3, echo=FALSE}
+blogdown::shortcode("webp", alt = "Google Analytics 4 User tracking", image = '"/img/app+web-usertracking.jpg"')
+```
+
+### 3.1 User ID on signup / login
+
+Whenever a user on your website application can be identified as a specific user, you can send the unique user ID to Google Analytics 4 by configuring the tracking code. You will usually be able to identify an unique user when he/she logs in or signs up on your website/app. 
+It's a useful way to track users across platforms, as soon as their identity is made available. This method will not suffice for all websites and apps, because tons of users will stay anonymous and not login or sign up during their visit.
+
+### 3.2 By device
+
+This method uses only the device ID, either the Analytics cookie for websites or the App-Instance ID for apps, to identify a user, and ignores any User-IDs that were collected. It's the exact same method of tracking users in Google Universal Analytics and Firebase for apps. The downside of this method is that you cannot track cross-device or cross application on a device. It will make the number of users reported less reliable, but your privacy officer will be happy if you choose this option only, because you will not be collecting any user specific data to your analytics tool.
+
+## 4. A new focus on audiences could pivot your analytics mindset {#chapter4}
+
+With sessions taking a backseat in Google Analytics 4, there will be more focus on other things. Google has chosen a path to customer centric analysis and is pivoting focus to audiences. 
+
+In Google Universal Analytics several reports about users are available related to for instance user loyalty and engagement. Some of these reports have already been made available in Google Analytics 4 as well. New to Google Analytics 4 is the possibility to create audiences. It is similar to creating advanced segments in Google Universal Analytics, but is pushed more to the foreground. You can configure segments of users that have specific characteristics. Users from a specific country, or who have done specific interactions (ie purchasers). These audiences can be applied to the reports that are available.
+
+### 4.1 Demographic and interest reports and data
+
+Google Analytics 4 also provides demographic and interest data, just like Google Universal Analytics. It works exactly the same way. You [enable the collection](https://support.google.com/analytics/answer/2799357?hl=en) of this type of data and allow a Doubleclick (or App Advertising ID) to be used to integrate the data. Additional cookies are dropped, so make sure to update your consent management and cookie policy before you enable this feature. 
+
+```{r image4, echo=FALSE}
+blogdown::shortcode("webp", alt = "Build an audience in Google Analytics 4", image = '"/img/build_an_audience.jpg"')
+```
+
+The data is only available for a subset of users, but may be helpful in your analysis anyway. The subset is mainly determined by users who logged in to other Google services like Youtube.
+
+## 5. Google Analytics 4 can track some additional events out-of-the-box {#chapter5}
+
+In the Google Analytics 4 configuration it is possible to automatically start tracking some basic events. Interactions that are relevant to many websites and apps. By the flip of a switch you can start tracking these interactions and see the data flow into your dataset. This can be a time-saver for those who are not very code-savvy and ensure that these interactions are collected in a structured and standard way. I'm pretty sure Google will build some additional reports and functionalities around these events. The reporting features are currently still very limited on this.
+
+```{r image5, echo=FALSE}
+blogdown::shortcode("webp", alt = "Enhanced Measurement Google Analytics 4", image = '"/img/enhanced-event-configuration.jpg"')
+```
+
+Pageviews and Internal Search tracking have additional "advanced" functionality, to make sure they are properly configured for your website. All the others are a simple flip of the switch.
+
+## 6. Google Analytics 4 has standard events, which could be(come) useful {#chapter6}
+
+In addition to the Enhanced Measurement events I just discussed, Google has also introduced groups of "standard events". They are recommendations by Google to collect some events (see list below) that we often track. Some of these are very generic, others are industry specific.
+In their documentation about these events Google shares recommended naming conventions and definitions for these events which are outlined in detail in [their documentation](https://support.google.com/analytics/answer/9322688?hl=en&ref_topic=9267641). 
+
+Some events you can find are:
+
+* sign_up
+* share (for social shares)
+* purchase (for e-commerce purchases)
+* view_cart (for e-commerce sites specifically)
+* generate_lead
+
+For a full list, please check out the [Google Analytics 4 developer documentation](https://support.google.com/analytics/answer/9322688?hl=en&ref_topic=9267641).
+
+It is pretty likely that in the future, these recommended events will be used to fuel specific reporting or analytics capabilities in the reporting suite. 
+
+## 7. Google Analytics 4 tracking can be setup via GTM templates {#chapter7}
+
+As part of the roll-out of Google Analytics 4, Google has also introduced tag templates in Google Tag Manager. These templates make it relatively easy to implement Google Analytics 4. If you are already running your current Google Universal Analytics through Google Tag Manager, it will be pretty easy to also implement Google Analytics 4. 
+
+```{r image7, echo=FALSE}
+blogdown::shortcode("webp", alt = "GTM tag templates Google Analytics 4", image = '"/img/gtm-tags-app+web.jpg"')
+```
+
+There are two GTM tags provided for Google Analytics 4, which have specific functionalities:
+
+* Configuration
+* Event
+
+### 7.1 Configuration tag
+
+The Configuration tag is there to help you set some basic configurations for tracking with Google Analytics 4. It allows you to input the [Measurement ID](https://support.google.com/analytics/answer/9539598?hl=en) (the unique account ID for your property) and enable whether you want to track pageviews.
+
+You can also configure additional parameters in this tag, similar to custom dimensions in Google Universal Analytics. Unfortunately, this doesn't seem to really work yet. The custom parameter data will not be processed and shown in your reports yet.
+
+### 7.2 Event tag
+
+The event tag is there to send any additional events to Google. This tag will work similar to the event tracking method used for Google Universal Analytics. You will use this tracker for custom events. You don't have to configure this for all the events that are automatically tracked. The workflow for adding events would be:
+
+1. Check if an automatic event is available to use
+2. Check if a recommended event is available in the Google documentation. If this is the case, use that naming convention
+3. If neither of these options apply, create your own custom event
+
+When implementing events, you will have to consider the [limitations in the tracking of events](https://support.google.com/analytics/answer/9267744?hl=en&ref_topic=9267641) and parameters you can add.
+
+## 8. Google Analytics 4 integrates easily with BigQuery {#chapter8}
+
+Google Analytics 4 is still lacking many of the functionalities of the current Google Universal Analytics platform. But there is one feature that many Google Analytics 4 users are really excited about. The integration with Google BigQuery. It is available for all Google Analytics 4 users, where only paying Google Analytics 360 clients were able to use this type of integration for Google Universal Analytics.
+
+Google Big Query is a serverless, scalable and really cheap data warehouse, where you can store all your Google Analytics 4 data in a raw format.
+This means that all the data you are collecting with Google Analytics 4 is available for you to analyse and activate in raw format. It will make it a lot easier to integrate the data with other data sets, visualise it in different tools and build data models and other types of functionalities on top of. 
+
+## 9. Google Analytics 4 is still missing many reporting features {#chapter9}
+
+Despite some of the fun new features in Google Analytics 4, it is not yet a full-featured digital analytics solution yet. You will still miss some of your favorite reports and some things are a bit of a hassle to setup. 
+
+Here are some of the things you might be missing (at time of writing - April 5 2020):
+
+* (Enhanced) e-commerce reports
+* Internal search reports
+* Filters (ie IP filtering) - UPDATE: now available
+* Multiple views per property
+* Datastudio connector - UPDATE: now available
+
+So appreciate that Google Analytics 4 is still under development and in beta. You can use it, but it's not a fully finished product yet. 
+Google is working hard to provide additional features for Google Analytics 4. They are often releasing updates, so it's recommended to monitor the [release notes](https://support.google.com/analytics/answer/9164320?hl=en). They seem to have bi-weekly releases going. With some important updates in there.
+
+## 10. You should setup your Google Analytics 4 now {#chapter10}
+
+Google Analytics 4 may still be in beta and it's not a production ready solution yet, but there are a lot of reasons to start the implementation process anyway:
+
+* Build up historical data
+* Familiarize yourself with the tool
+* Leverage the Big Query integration
+* Smaller updates in data collection, every time a new feature is made available
+
+### Build up historical data
+
+It's very unlikely that you'll be able to transfer your old historical Google Universal Analytics data to an Google Analytics 4 profile. The data model has changed so radically, that it wouldn't even make a lot of sense to do this. Definitions and logic has changed so much, that it wouldn't match the new data anyway. 
+
+This means your data collection will start from scratch. You will have no historical data to look at once you start. Some basic metrics are already available to measure (ie pageviews, users, etc.). If you start tracking now, you will at least have some historic data available when Google Analytics 4 is production ready.
+
+Don't remove your Google Universal Analytics implementation yet, but run Google Analytics 4 in paralel to start building your historical data.
+
+### Familiarize yourself with the tool
+
+Moving your analysis from Google Universal Analytics to Google Analytics 4 will be a big shift. If you start collecting data now, you can at least start learning how Google Analytics 4 works. If you're going to be comfortable with the solution, you'll be ready whenever you shift to Google Analytics 4.
+
+### Leverage the Big Query integration
+
+For all users of the free version of Google Universal Analytics, the Big Query integration is completely new. It may provide you with opportunities your current setup doesn't offer. 
+
+### Smaller updates in datacollection, every time a new feature is made available
+
+Most of us have been working on implementations of analytics solutions before. It can be quite a big project if you have to move from one solution to another. By starting your implementation now, you can split this project up into small easy-to-manage bites. Start with the basic tracking now and you'll only have to add tracking for new features when they are released.
+
+## Google Analytics 4 resources are everywhere {#chapter11}
+
+Like I mentioned in the introduction, there are tons of amazing resources out there to get started with Google Analytics 4. I will share some of my favorites here. I hope they are useful to you.
+
+### How to implement Google Analytics 4
+
+* [Step by Step: Setting up an Google Analytics 4 Property in Google Analytics (Krista Seiden)](Step by Step: Setting up an Google Analytics 4 Property in Google Analytics)
+* [Technical overview of the new Google Analytics 4 properties (David Vallejo)](https://www.thyngster.com/technical-overview-of-new-appweb-properties/)
+* [Getting Started With Google Analytics: Google Analytics 4 (Simo Ahava)](https://www.simoahava.com/analytics/getting-started-with-google-analytics-app-web/)
+* [Event recommendations (Google developer documentation)](https://support.google.com/analytics/answer/9322688?hl=en&ref_topic=9267641)
+* [Step by Step: Setting up an Google Analytics 4 Config Tag in GTM (Krista Seiden)](https://www.kristaseiden.com/step-by-step-setting-up-an-app-web-config-tag-in-gtm/)
+* [Step by Step: Setting up an Google Analytics 4 Event Tag in GTM (Krista Seiden)](https://www.kristaseiden.com/step-by-step-setting-up-an-app-web-event-tag-in-gtm/)
+
+### How to configure Google Analytics 4
+
+* [Linking Google Analytics 4 to Google Ads: How-to Guide (Bounteous)](https://www.bounteous.com/insights/2020/02/14/linking-google-analytics-app-web-google-ads/)
+* [Enable BigQuery Export For Google Analytics: Google Analytics 4 Properties (Simo Ahava)](https://www.simoahava.com/analytics/enable-bigquery-export-google-analytics-app-web/)
+
+Or check out this 10 minute video from Julian from Measureschool to get started.
+
+```{r regular, echo=FALSE}
+blogdown::shortcode("youtube", id = '"QAUvmkBXc1s"', yt_end = '"92"', enablejsapi='"true"', modestbranding = '"true"', color = '"white"')
+```
+
+### How to use Google Analytics 4
+
+* [Custom Parameter Reporting In Google Analytics: Google Analytics 4 (Simo Ahava)](https://www.simoahava.com/analytics/custom-parameter-reporting-google-analytics-app-web/)
+* [Google Analytics 4 property reports overview (Loves Data)](https://www.lovesdata.com/blog/google-analytics-app-web-property)
+* [Analyzing Reports in the new Google Analytics 4 Property (Krista Seiden)](https://www.kristaseiden.com/analyzing-reports-in-the-new-app-web-property/)
+* [Streamview in Google Analytics (Krista Seiden)](https://www.kristaseiden.com/streamview-in-google-analytics/)
+* [How to query and calculate GA Google Analytics 4 event data in BigQuery (Johan van de Werken)](https://towardsdatascience.com/how-to-query-and-calculate-ga-app-web-event-data-in-bigquery-a77931176d3)
+* [Why Google Analytics 4 BigQuery Export Rocks and Sucks (Robert Sahlin)](https://robertsahlin.com/why-google-analytics-app---web-bigquery-export-rocks-and-sucks/)
+
+If you have any questions about Google Analytics 4 or you want to recommend additional resources to be included in the article, please reach out via [email](mailto:mail@martijnvanvreeden.nl) or [Linkedin](https://www.linkedin.com/in/martijnvanvreeden/).

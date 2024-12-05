@@ -1,0 +1,143 @@
+---
+title: Getting my IMDB ratings with R and Rvest
+author: Martijn van Vreeden
+date: '2017-09-25'
+slug: getting-my-imdb-ratings-with-r-and-rvest
+categories:
+  - imdb
+  - digital me
+tags:
+  - api
+  - imdb
+  - r
+  - rvest
+  - webscraping
+---
+
+_This post is part of a series of posts to [analyse the digital me](/meet-the-digital-me/)._
+
+# Getting my IMDB ratings with R and Rvest
+I'm a big fan of IMDB and have been for many years. It is a fantastic website with a lot of information about movies, documentaries and tv-series. Besides fact-checking ("who was that guy playing in that one movie?") it is also a place for me to collect all the ratings I have done on movies in the past few years. The star rating system is pretty effective to see if I already watched a certain movie and what I thought of it.
+
+## Getting my IMDB ratings into a dataframe with R
+My IMDB ratings are protected by my login, which makes it a bit more complated to get to my reviewed pages. I made them public for all to see by [changing a setting](https://www.imdb.com/help/show_leaf?userprofile). You can see my ratings on this [user list page](https://www.imdb.com/user/ur25468061/ratings?opfrule=httpDefault).
+Unfortunately there isn't a way to pull in my ratings and movie details through an API. This means I have to scrape the data from the IMDB website and structure it myself. I'm using R packages [RVest](https://cran.r-project.org/web/packages/rvest/rvest.pdf) and [Magrittr](https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html) for this. To clean and structure the data I use [data.table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html) and [dplyr](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html).
+
+```r
+library("rvest")
+library("magrittr")
+library('data.table')
+library('dplyr')
+```
+I first load the packages I need before I start scraping
+
+```r
+userId <- "ur25468061"
+startQuery <- c("1")
+```
+
+I break down the url of the public list I want to scrape ([https://www.imdb.com/user/ **ur25468061** /ratings?start= **1** &view=detail&sort=ratings_date:desc&defaults=1&my_ratings=restrict](https://www.imdb.com/user/ur25468061/ratings?start=1&view=detail&sort=ratings_date:desc&defaults=1&my_ratings=restrict)). I can easily change the user ID (ur25468061) and number of page (1) to get different data from a different list or page.
+
+```r
+df_imdb<-data.frame()
+for(v in startQuery){
+  paste0("http://www.imdb.com/user/",userId,"/ratings?start=", v, "&view=detail&sort=ratings_date:desc") -> download_url
+  export_html <- read_html(download_url)
+  html_nodes(export_html, ".year_type") %>% html_text() -> info100Year
+  export_html %>% html_nodes( ".info") %>% html_nodes("b") %>% html_nodes("a") %>% html_text() -> info100Title
+  export_html %>% html_nodes( ".info") %>% html_nodes("b") %>% html_nodes("a")  %>% html_attr('href')  -> info100URL
+  as.numeric(export_html %>% html_nodes( ".rating-your") %>% html_nodes(".value") %>% html_text()) -> info100Rating
+  export_html %>% html_nodes( ".item_description") %>% html_text() -> info100Desc
+  export_html %>% html_nodes( ".list") %>% html_nodes( ".image") %>% html_nodes( ".hover-over-image") %>% html_nodes("img") %>% html_attr('src')  -> info100Images
+  gsub("(|)","",info100Year, fixed=TRUE) -> info100Year
+  paste0("http://www.imdb.com", info100URL) -> info100URL
+  sapply(strsplit(info100URL, '/'), function(x) x[5]) -> info100id
+  
+  df <- data.frame("title" = info100Title, "year" = info100Year, "description" = info100Desc, "myRating" = info100Rating, "url" = info100URL, "id" = info100id, stringsAsFactors = FALSE)
+  df_imdb<-rbind(df_imdb,df)
+}
+sapply(strsplit(df_imdb$year, ' '), function(x) x[2]) -> df_imdb$type
+df_imdb$type[is.na(df_imdb$type)] <- "Movie"
+as.numeric(sapply(strsplit(df_imdb$year, ' '), function(x) x[1])) -> df_imdb$year
+```
+
+I now run a simple for loop through my pages (in this example just page 1) for my userlist. I collect several variables about the movies I have watched:
+
+* Year of release
+* Title
+* URL of the movie on IMDB
+* My rating on IMDB
+* Short description of movie
+* A URL of an image of the movie
+* IMDB movie ID
+* Type of IMDB item (I also reviewed some tv-series)
+
+As you may see webscraping requires a lot of cleaning data to make it look dataframe perfect and ready to analyse. What I end up with is a pretty cool dataframe of most recently rated movies with a bunch of variables for me to analyse.
+
+## Scraping additional movie data
+The dataframe is already pretty full of data to analyse. However, I would like some more details about the movies to analyse:
+
+* Total number of IMDB ratings
+* Average IMDB rating of all users
+* Top cast members
+* Director of the movie
+* Movie genres
+
+Based on the IMDB movie ID's I collected in the previous dataframe I can get all this data from movie pages on IMDB. All movie pages include the IMDB movie ID in the url: [https://www.imdb.com/title/ **tt3501112** /](https://www.imdb.com/title/tt3501112/)
+
+```r 
+df_imdb$id -> imdb_movie_id
+
+df_imdb_movie <- data.frame()
+for(i in imdb_movie_id){
+    read_html(paste0("http://www.imdb.com/title/",i,"/")) -> lego
+    
+  # verschil tussen http://www.imdb.com/title/tt2782844/ en http://www.imdb.com/title/tt2072233/
+    as.numeric(gsub(",", "", lego %>% html_nodes(".imdbRating .small") %>% html_text)) -> imdb_num_ratings
+    as.numeric(lego %>% html_nodes(".imdbRating strong") %>% html_text) -> imdb_rating
+    #lego %>% html_nodes(".title_wrapper .subtext") %>% html_text() -> imdb_time_html
+    #gsub(" ", "", sapply(strsplit(imdb_time_html, '\n'), function(x) x[4]), fixed = TRUE) -> imdb_time_string
+    #strsplit(imdb_time_string, "h|min") -> imdb_time_hours
+    #as.numeric(do.call( rbind, imdb_time_hours)[,1]) * 60 + as.numeric(do.call( rbind, imdb_time_hours)[,2]) -> imdb_time_minutes
+    
+    #create row of cast, normally 15
+    list(t(unlist(lego %>%  html_nodes("#titleCast .itemprop span") %>%  html_text()))) -> imdb_cast
+    paste(unlist(imdb_cast), collapse='|') -> imdb_cast
+    lego %>% html_nodes(".credit_summary_item .itemprop") %>% html_text() -> imdb_director
+    imdb_director[1] -> imdb_director
+    list(gsub("Genres:| ", "", lego %>% html_nodes(xpath = "//*[@id=\"titleStoryLine\"]/div[4]") %>% html_nodes("a") %>% html_text())) -> imdb_genres
+    paste(unlist(imdb_genres), collapse='|') -> imdb_genres
+    df1 <- data.table("imdb_rating" = imdb_rating, "imdb_ratings" = imdb_num_ratings ,"imdb_director" = imdb_director, "id" = i, "imdb_cast" = imdb_cast, "imdb_genres" = imdb_genres ,stringsAsFactors = FALSE)
+    df_imdb_movie<-rbind(df_imdb_movie,df1)
+}
+```
+
+I created another loop to collect data for all the movies in my previous table. Now I merge the two dataframes to turn them into one big, beautiful dataframe.
+
+```r
+df3 = merge(df_imdb, df_imdb_movie, by.x=c("id"), by.y=c("id"))
+```
+
+## Next steps to start analysing my IMDB data
+I run these queries daily for the most recently added movies and update my dataframe with the new additions. Afterwards, I save my dataframe to a SQL table (no cloud for me yet, I'm too old-school). This way, I will continue to update my database of reviewed movies.
+
+You can send your data to a SQL table with the R package [RMySQL](https://cran.r-project.org/web/packages/RMySQL/index.html). It takes a few lines of R code to read or write your SQL table
+
+```r
+# Load the package
+library('RMySQL')
+
+#Initiate database connection
+con <- dbConnect(MySQL(),
+                 user = '-----',
+                 password = '-----',
+                 host = '-----',
+                 dbname='-----')
+#read table
+dbReadTable(conn = con, name = 'imdb')
+
+#write table
+dbWriteTable(conn = con, name = 'imdb', value = DATAFRAMENAME)
+```                 
+
+In my next post I will explore the dataset and learn some more about my movie likes and dislikes!

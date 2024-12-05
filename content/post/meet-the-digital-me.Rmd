@@ -1,0 +1,43 @@
+---
+title: Meet the digital me | Martijn van Vreeden
+author: 'Martijn van Vreeden'
+date: '2017-09-25'
+slug: meet-the-digital-me
+categories:
+  - digital me
+tags:
+  - me
+  - spotify
+  - imdb
+  - strava
+  - goodreads
+  - twitter
+description: "This is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me. Just like all people these days, I leave a digital footprint."   
+content_summary: "This is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me. Just like all people these days, I leave a digital footprint. I use apps, digital services and websites to share my experiences with others, keep people posted of what I do and compare what I do with all the stuff other people do."
+---
+
+# Meet the digital me
+
+This is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me.
+
+Just like all people these days, I leave a digital footprint. I use apps, digital services and websites to share my experiences with others, keep people posted of what I do and compare what I do with all the stuff other people do.
+
+This type of digital behaviour leaves a pretty big digital footprint, with copious amounts of data. Data that I can analyse and visualise to get to know me a little better.
+
+## R progamming language as a tool to analyse me
+I have decided to collect, analyse and visualise digital data to get to know myself a bit better and practise my analytics skills. For all of the analysis and visualisation I will be using R as a language. In case you don't know what R is or what you can do with this, I recommend doing a little [Google Search](https://www.google.nl/search?q=what+is+r+stats+&oq=what+is+r+stats) and join the [thousands of R users](http://r4stats.com/articles/popularity/) already working with this language. For all analysts, I believe knowing at least a bit about R stats should be required. 
+
+## How will I get my data?
+I will be using some pretty cool API's to pull in data and also do some webscraping to get publicly available data to analyse. Some API's are already available through [R packages](https://www.datacamp.com/community/tutorials/r-packages-guide) for me to leverage. This will make it pretty easy to get a clean dataset to work with. For webscraping I will use another R package called [Rvest](https://cran.r-project.org/web/packages/rvest/rvest.pdf).
+
+## How will I visualise my data?
+To visualise the digital me, I will also use R packages. [ggplot2](https://ggplot2.tidyverse.org/) and [Plotly](https://plot.ly/ggplot2/) to start with, but I may experiment with some additional packages while I'm progressing the journey of getting to know the digital me.
+
+## Which part of me will I explore?
+I will analyse myself by looking at the following services I often use:
+
+* [Strava](https://www.strava.com/) (I'm a cycling fan and use this to monitor my progress)
+* [IMDB](https://www.imdb.com/) (because I rate movies after watching them)
+* [Goodreads](https://www.goodreads.com/) (my virtual bookshelf)
+* [Spotify](https://www.spotify.com/) (people's favorite digital jukebox)
+* [Twitter](https://twitter.com/) (my chatter and babbles with others)

@@ -1,0 +1,133 @@
+---
+title: Hugo shortcode to serve images in next-gen formats
+author: Martijn van Vreeden
+date: '2020-03-28'
+slug: hugo-shortcode-to-serve-images-in-next-gen-formats
+categories:
+  - hugo
+tags:
+  - hugo
+description: ''
+content_summary: 'Next-gen images could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you Safari!). To make sure you will serve an alternative, normal format like jpg or png instead for those non-compatible browsers, you need to update the way you serve your images and provide both formats. '
+---
+
+# Hugo shortcode to serve images in next-gen formats
+
+In my last blogpost I shared [10 ways to improve your Hugo website performance](/10-ways-to-improve-your-hugo-website-performance/). My last tip was to serve images in next-gen formats. This could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you, Safari!). To make sure you will serve an alternative, normal format like jpg or png instead for those non-compatible browsers, you need to update the way you serve your images and provide both formats. 
+
+In this article I share the shortcode you can use to do this and give you step-by-step instructions on how to create the images and add them to your markdown files for next-gen compatibility.
+
+## The HTML output for an image with multiple image types
+
+Traditionally, when you would like to include an image, you would create the following HTML element.
+
+```{r start1, eval=FALSE} 
+<img src="image.jpg" alt="my image" />
+```
+
+There is also a HTML5 version of this same image, which is more flexible for many purposes, like responsiveness. The HTML5 version includes the figure element, which includes a picture and optional figcaption element.
+
+```{r start, eval=FALSE} 
+<figure>
+	<picture>
+	  <img src="image.jpg" alt="my image">
+	</picture>
+	<figcaption>
+	  <p class="caption">Image caption text</p>
+	</figcaption>
+</figure>
+```
+
+To provide the option of alternative image types, for one image, you can add the source element, with an srcset item. Whenever the image type in this source element is supported, the browser will use it. Otherwise it will use your fallback option provided in the img element. A great way to include WebP as a primary image and a jpg as a backup.
+
+```{r start0, eval=FALSE} 
+<figure>
+	<picture>
+    <source srcset="image.webp" type="image/webp">
+	  <img src="image.jpg" alt="my image">
+	</picture>
+	<figcaption>
+	  <p class="caption">Image caption text</p>
+	</figcaption>
+</figure>
+```
+
+## Shortcode next-gen images Hugo
+
+A shortcode is a simple snippet inside a content file that Hugo will render using a predefined template. Note that shortcodes will not work in template files. If you need the type of drop-in functionality that shortcodes provide but in a template, you most likely want a partial template instead.
+
+This video gives a brief introduction to Hugo shortcodes and how to create your own.
+
+```{r regular, echo=FALSE}
+blogdown::shortcode("youtube", id = '"2xkNJL4gJ9E"', yt_end = '"92"', enablejsapi='"true"', modestbranding = '"true"', color = '"white"')
+```
+
+
+Hugo already provides a ton of shortcodes out of the box, like the one for images, with the [HTML5 figure element](https://gohugo.io/content-management/shortcodes/#figure). Unfortunately, this doesn't allow you to add more than 1 version of the image. Which means you can't provide a WebP and a jpg version in one image.
+
+To make this possible, I have create the following shortcode to allow you to use 2 versions of the same image, a WebP version and another version of the image like a jpg or png image.
+
+```{r start2, eval=FALSE} 
+{{ $image := .Get "image"}}
+{{ $type_arr := split $image "." }}
+{{ $srcbase := index $type_arr 0 }}
+
+<figure>
+	<picture>
+	  <source srcset="{{$srcbase}}.webp" type="image/webp">
+	<img src="{{.Get `image`}}" alt="{{.Get `alt` }}" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">{{.Get "alt" }}</p>
+	</figcaption>
+</figure>
+```
+
+As you can see, I also include the defer reference to the image for performance improvement. Learn more on using [defer to improve performance](https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/#chapter3) in my blog about website performance. 
+
+I've made this shortcode available in [a Github repository](https://github.com/martijnvv/webp-integration-hugoio) as well.
+
+## How to use the WebP shortcode
+
+To use the WebP shortcode in your markdown page, you will first have to include the shortcode in your template file. Once this is done, follow these steps to use the shortcode on your site.
+
+### 1. Create 2 versions of the same image
+
+Instead of having just one version of an image (ie jpg or png), you will have to create a WebP version of the same image. There are [online tools](https://webp-converter.com/) that can do this for you. Make sure to give them the exact same name, with the only difference being the file extension.
+
+### 2. Upload both versions of the image
+
+Instead of just uploading your regular image, also upload the WebP version of the image. Add them both to the same folder.
+
+### 3. Include the shortcode in your markdown file
+
+Use the following shortcode to include the image to your page. I include an example you can also check out in the source code.
+
+```{r image1, echo=TRUE}
+blogdown::shortcode("webp", alt = "A cute puppy to lighten your day", image = '"/img/puppy.jpg"')
+```
+
+The exact format of the shortcode depends on the platform you use. I run my website with blogdown.
+
+The code includes the jpg version of the image as a fallback and automatically returns the puppy.webp version as the primary source the browser checks.
+
+## Using other next-gen formats than WebP
+
+The shortcode is pretty simple. To add other next-gen image formats or replace WebP, simply add an additional source. 
+
+```{r start3, eval=FALSE} 
+{{ $image := .Get "image"}}
+{{ $type_arr := split $image "." }}
+{{ $srcbase := index $type_arr 0 }}
+
+<figure>
+	<picture>
+	  <source srcset="{{$srcbase}}.webp" type="image/webp">
+    <source srcset="{{$srcbase}}.jp2" type="image/jp2">
+	<img src="{{.Get `image`}}" alt="{{.Get `alt` }}" defer>
+	</picture>
+	<figcaption>
+	<p class="caption">{{.Get "alt" }}</p>
+	</figcaption>
+</figure>
+```

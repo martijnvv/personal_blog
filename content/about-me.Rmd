@@ -1,0 +1,60 @@
+---
+title: About me | Martijn van Vreeden | Digital Analytics
+author: 'Martijn van Vreeden'
+date: '2017-09-24'
+slug: about-me
+categories: []
+tags: []
+social_off: true
+description: 'Martijn is an independent digital analyst with 10+ years experience in digital marketing and analytics'
+---
+
+# About Martijn van Vreeden
+
+I'm an independent digital analyst, based in Amersfoort, the Netherlands. I have 10+ years experience in digital marketing and digital analytics, with a focus on leveraging digital data to grow companies.
+
+## Experience
+
+### Current work as an independent consultant (2015 - current)
+Since January 2015 I have been an independent digital analytics consultant. My previous experience as both a consultant and an inhouse digital analyst are allowing me to help companies grow their digital analytics capabilities and leverage digital data in their day-to-day business and decision making.
+
+Common types of work I do for companies include:
+
+* Inhouse interim digital analytics
+* Coaching junior inhouse digital analysts
+* Help developing a digital data strategy
+* Implementing digital analytics solutions (i.e. TMS, webanalytics tools, dashboarding and reporting)
+* Workshops about digital analytics, digital analytics solutions (ie Google Analytics and Google Tag Manager) and KPI's
+
+#### Clients
+
+I have worked for several large and small companies over the past few years. Find a few of them on my [portfolio page](/portfolio/).
+
+#### Supporting NGO's
+
+In addition to my regular clients, I also support several NGO's achieve their mission. Find out [which NGO's I support](/supporting-ngo/).
+
+### Previous exprience
+
+#### Pon Automotive - Lead Digital Analytics (2011 - 2014)
+After working as a digital analytics consultant for 3 years at Traffic Builders, I moved on the [Pon Automotive](https://pon.com/), the Dutch importer of the Volkswagen group, where I was responsible for digital analytics and CRO for [Volkswagen](https://www.volkswagen.nl), [Audi](https://www.audi.nl/nl/web/nl.html), [SEAT](https://www.seat.nl), [SKODA](https://www.skoda.nl) and [Porsche](https://www.porsche.com/netherlands/nl/). My four years at Pon Automotive helped me learn to tackle challenges in a large, complex organisation and how to ensure that data informed decisions were made throughout the company. 
+
+#### Traffic Builders - Digital analytics consultant (2009 - 2011)
+
+I worked at [Traffic Builders](https://www.traffic-builders.com/) for about 3 years as a digital analytics consultant. It gave me an opportunity to work with some of the best people in SEO, SEA and online marketing and helped me become a well-rounded digital professional. During my years at Traffic Builders I enhanced my knowledge on a wide variety of digital analytics and cro tools and help some great companies grow their digital business.
+
+#### Online Marketing Group and Moving Ecuador (2007 - 2008)
+
+I ran my own company in Ecuador (Moving Ecuador) for a while, before moving back to The Netherlands in 2008. This is where I worked for Online Marketing Group as a project manager and help develop an SEO strategy for several of their websites.
+
+## Contribution to Digital Analytics community in The Netherlands
+Besides my work as an independent digital analyst, I also actively contribute to the Dutch digital analytics community.
+Over the past few years I have been a program manager and MC at digital analytics conferences like Google Analytics User Conference, Webanalytics Wednesday Amsterdam and Digital Analytics Congres. 
+
+I'm also part of the team organising [MeasureCamp Amsterdam](https://amsterdam.measurecamp.org), a non-profit grassroot unconference, held every year, which is quite popular with digital analytics specialists in The Netherlands.
+
+Since 2013, I'm a member of the [MOA Digital Analytics Group](https://www.moaweb.nl/profgroep-da.html), an initiative to professionalise the Digital Analytics industry in the Netherlands.
+
+## Get in touch
+
+Would you like to get in touch with me to share ideas, collaborate on a digital analytics project or just to have a beer? You can reach me through social media ([LinkedIn](https://www.linkedin.com/in/martijnvanvreeden/) or [Twitter](https://twitter.com/martijnvv)) or send me an email (mail@martijnvanvreeden.nl).

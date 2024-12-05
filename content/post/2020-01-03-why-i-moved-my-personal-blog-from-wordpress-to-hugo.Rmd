@@ -1,0 +1,69 @@
+---
+title: Why I moved my personal blog from Wordpress to Hugo
+author: Martijn van Vreeden
+date: '2020-01-03'
+slug: why-i-moved-my-personal-blog-from-wordpress-to-hugo
+categories:
+  - digital me
+tags:
+  - hugo
+  - me
+description: "My Wordpress website was a painfully heavy, bloathed website. No need for all the gadgets and features, which I don't use anyway"
+content_summary: "It was one of those rare moments in my freelance career when I had some extra time on my hands. Eager to work on a website and tinker with some code. I was looking at my personal website (which you're on right now). It was still built on Wordpress, with a basic theme and some useful features. In reality, I wasn't using much of the power that Wordpress holds."
+image: "https://martijnvanvreeden.nl/img/hugo-io-logo.webp"
+share_img: "https://martijnvanvreeden.nl/img/hugo-io-logo.jpg"
+---
+
+# Why I moved my personal blog from Wordpress to Hugo
+
+It was one of those rare moments in my freelance career when I had some extra time on my hands. Eager to work on a website and tinker with some code. I was looking at my personal website (which you're on right now). It was still built on Wordpress, with a basic theme and some useful features. In reality, I wasn't using much of the power that Wordpress holds. I didn't use many of the extensions and plugins available and hardly any of the other features that were running on my website. Despite me not using the features, the website was pretty heavy on css and javascript libraries. Just a waste of bandwith and performance.
+
+I figured that based on my limited requirements, I could almost build a simple website based on some static HTML pages instead. After browsing the web looking for light-weight alternatives to Wordpress, I learned about [Hugo](https://gohugo.io/) and [static website generators](https://www.staticgen.com/).
+
+## Introducing Hugo
+
+Hugo considers itself to be "The world’s fastest framework for building websites". Pretty bold claim, but as I looked into it some more  I got kind of impressed. As a bonus, there are some additional benefits to using Hugo as a framework:
+
+* It integrates seemlessly with R, based on the [Bookdown](https://bookdown.org/home/) R package. And I like to write blogs with R code!
+* Hugo provides some useful basic plugins for features like an image gallery or comments plugin
+* Hugo is flexible, easy to configure and works based on templates you can edit to your hearts content
+* Hugo has an active open source community, ready to help out
+* Hugo provides sufficient options for templates. Not as many as a cms, but sufficient nonetheless
+* No underlying software to maintain
+* Easier access to the code under the hood
+* Security. No hacks into databases and other vulnerabilities
+* Write offline. You don't have to login to your CMS admin to create pages
+* No server-side functionality which is needed for contact forms, comments, and search
+
+## My need for speed
+
+One of my biggest frustrations with Wordpress must have been that it was stuffed with all these features and gizmos you never use, but they take up a lot of bandwith for users and make your website run slower than it has to be. It kind of reminded me of this scene from Psych. Shawn's dad was clearly a wise man.
+
+```{r regular, echo=FALSE}
+blogdown::shortcode("youtube", id = '"jv_etThFN4A"', yt_end = '"92"', enablejsapi='"true"', modestbranding = '"true"', color = '"white"')
+```
+
+## Why Hugo is super fast
+
+Website performance matters. Even if I would selfishly ignore all other human visitors to my website, I would be supporting [Google's mission to make the web faster](https://developers.google.com/web/fundamentals/performance/why-performance-matters) and help myself [climb the ranks of Google](https://yoast.com/how-site-speed-influences-seo/).
+
+Hugo is not a content management system (CMS). It is a static website generator. This means that it doesn't reference a database to populate the page, but it creates each page individually and outputs the HTML you need. Whenever you want to write a new article, you write the content and Hugo will build the page. Hugo will include all the required references to CSS, javascript files and add other things required to render the page.
+
+A static website generator like Hugo pre-renders pages and is generally faster than a classic CMS, which has to reference MySQL databases and process code when the browser loads.
+
+## Disadvantages to using Hugo
+
+To be fair, Hugo does have some disadvantages in comparison to a CMS like Wordpress. Here are a few reasons you may want to consider sticking to your Wordpress environment:
+
+* Wordpress can be a code-free environment. If you are not very code savvy, this might be a big plus
+* The number of [design templates for Hugo](https://themes.gohugo.io/) is limited to a couple of hundred. You may not find the one you like
+* You may need some fancy features that Hugo doesn't support yet with [their shortcodes](https://gohugo.io/content-management/shortcodes/)
+
+## Getting started with Hugo
+
+In case you're interested in learning more about building your own website with Hugo, here are some of the resources I have used to build my website:
+
+* [Hugo Website](https://gohugo.io/) - useful as a startingpoint and general reference
+* [The rise of static website generators](https://hackernoon.com/rise-of-static-site-generators-and-the-destiny-of-cms-e2b8ff0d5fcc) - Read about the pros and cons of CMS vs static website generators
+* [Blogdown book](https://bookdown.org/yihui/blogdown/) - This only book shares instructions on how to build your Hugo site with R
+* [Blogdown Video](https://www.youtube.com/watch?v=CjTLN-FXiFA) - instruction video about using R and Hugo

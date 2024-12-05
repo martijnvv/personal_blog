@@ -1,0 +1,170 @@
+---
+title: Analysing Google Location data with R
+author: Martijn van Vreeden
+date: '2018-08-11'
+slug: analysing-google-location-data
+categories:
+  - digital me
+tags:
+  - ggplot2
+  - r
+  - google
+  - location
+description: 'This time I will explore my Google Location data, data that Google is collecting from my devices' 
+content_summary: "Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data! In this blog I will explore the location data Google has collected about me since 2016."
+---
+
+
+
+<p><em>This post is part of a series of posts to <a href="/meet-the-digital-me/">analyse the digital me</a>.</em></p>
+<div id="analyse-google-location-data-with-r" class="section level1">
+<h1>Analyse Google Location data with R</h1>
+<p>Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!</p>
+<p>In this blog I will explore the location data Google has collected about me since 2016.</p>
+<p>I will be using some R packages to structure the data properly and other packages to build plots:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/ggmap/index.html">ggmap</a></li>
+<li><a href="https://cran.r-project.org/web/packages/tidyverse/index.html">tidyverse</a></li>
+<li><a href="https://cran.r-project.org/web/packages/anytime/index.html">anytime</a></li>
+<li><a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a></li>
+<li><a href="https://cran.r-project.org/web/packages/hrbrthemes/index.html">hrbrthemes</a></li>
+<li><a href="https://cran.r-project.org/web/packages/jsonlite/index.html">jsonlite</a></li>
+</ul>
+<pre class="r"><code>library(jsonlite)
+library(tidyverse)
+library(lubridate)
+library(anytime)
+library(hrbrthemes)
+library(ggmap)</code></pre>
+<div id="get-google-location-data-in-r" class="section level2">
+<h2>Get Google Location data in R</h2>
+<p>To analyse the Google Location data, we need to grab it from Google first. You can do this through <a href="https://takeout.google.com/settings/takeout">Google Takeout</a>, Google’s service to help you download all your data that they’ve collected from you in the past. Select only the Location History data and click “next” to download your file. I ended up with a pretty big json file with about 100MB of data.</p>
+<p>I saved it to my R project folder. So now I’m good to start my analysis.</p>
+<p>First point of action, is to load the JSON file into R and create a dataframe.</p>
+<pre class="r"><code>#load data
+system.time(df_list &lt;- fromJSON(&quot;dfs/Locatiegeschiedenis.json&quot;))
+df &lt;- df_list$location
+head(df)</code></pre>
+<p>I want to clean up the dataframe a bit, to make sure I can use it for my analysis and plots. I will also create a few new columns to make life easier.</p>
+<pre class="r"><code>#create columns for dates
+as.POSIXct(as.numeric(df$timestampMs)/1000, tz=&#39;GMT&#39;, origin=&#39;1970-01-01&#39;) -&gt; df$time
+as.Date(df$time) -&gt; df$date
+isoweek(df$date) -&gt; df$week
+isoyear(df$date) -&gt; df$year
+
+#Create proper lat lon columns for ggmap
+df$lat &lt;- df$latitudeE7 / 1e7
+df$lon &lt;- df$longitudeE7 / 1e7</code></pre>
+</div>
+<div id="some-summary-data" class="section level2">
+<h2>Some summary data</h2>
+<p>Now let’s have a quick look at the dataset.</p>
+<pre class="r"><code>#return some summary data
+n_count &lt;- nrow(df) #number of rows in dataframe / number of location pings
+n_count
+n_days &lt;- df$date %&gt;%
+  n_distinct() #number of days in dataframe
+n_days
+n_avg_day &lt;- round(n_count/n_days,2) #average number of datapoints per day
+n_avg_day
+round(n_avg_day / 24,2) #average number of datapoints per hour</code></pre>
+<p>Looking at this data, I was kind of surprised by the amount of data Google is collecting. Almost a datapoint per 2 minutes, for days when they were collecting data!</p>
+<div id="number-of-datapoints-per-month" class="section level3">
+<h3>Number of datapoints per month</h3>
+<p>It’s time to visualise some of the data I’ve got in the dataframe. A first view will be of the number of datapoints per week. I will be using the <a href="https://cran.r-project.org/web/packages/tidyverse/index.html">Tidyverse package</a>, together with <a href="https://cran.r-project.org/web/packages/hrbrthemes/index.html">hrbrthemes</a>, to create some easy-to-read plots.</p>
+<pre class="r"><code>#colors for fill and lines in ggplot
+col1 = &quot;#9ecae1&quot; #light blue
+
+#The actual weekly data plot
+df %&gt;% 
+  group_by(week,year) %&gt;%
+  summarise(n = n()) %&gt;%
+  ggplot( aes(x=week, y = n)) +
+  geom_bar(stat= &quot;identity&quot;,fill=col1) +
+  facet_grid(facets = year ~ .) +
+  theme_ipsum_rc(grid=&quot;XY&quot;, axis_text_size=12, axis_title_size = 12)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  scale_x_continuous(breaks = c(1:52)) +
+  labs(x = &quot;week of year&quot;, y = &quot;number of times tracked&quot;, title=&quot;Number of times tracked per week by Google Location&quot;)</code></pre>
+{{% webp alt="Weekly datapoints" image="/img/location/weekly.jpg" %}}
+<p>As you can see, Google has been collecting data since mid-2016, with a gap in 2018. I disabled Google Location tracking during that time. Unfortunately, some of my favorite apps seem to depend on it, so I had to turn it back on again. At its peak, Google was collecting almost 100.000 datapoint a week in 2017. It also seems like I may not be very active in the last few months of the year, since fewer datapoints are required to pinpoint my location.</p>
+</div>
+<div id="activities-in-google-location" class="section level3">
+<h3>Activities in Google Location</h3>
+<p>As you could see in the dataframe, Google also includes data about the activity I am doing, for each datapoint. They are often set to NULL, but let’s see what Google can tell me about my activity. Because this is such a big dataset, I’m going to limit this visualisation to 2017 and only show the first available activity for each datapoint / row.</p>
+<pre class="r"><code>loc3 &lt;- with(df, subset(df, df$time &gt; as.POSIXct(&#39;2017-01-01 0:00:01&#39;)))
+loc3 &lt;- with(df, subset(loc3, df$time &lt; as.POSIXct(&#39;2017-12-31 23:59:59&#39;)))
+activities &lt;- loc3$activity
+
+list.condition &lt;- sapply(activities, function(x) !is.null(x[[1]]))
+activities  &lt;- activities[list.condition]
+
+df3 &lt;- do.call(&quot;bind_rows&quot;, activities)
+main_activity &lt;- sapply(df3$activity, function(x) x[[1]][1][[1]][1])
+activities_2 &lt;- data.frame(main_activity = main_activity, 
+                           time = as.POSIXct(as.numeric(df3$timestampMs)/1000, origin = &quot;1970-01-01&quot;))
+ggplot(activities_2, aes(x = main_activity, group = main_activity)) + 
+  geom_bar(fill=col1)  + 
+  guides(fill = FALSE) +
+  scale_y_continuous(breaks= scales::pretty_breaks(n=6),expand=c(0,0), limits=c(0, 40000)) +
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Activity&quot;,
+    y = &quot;Count&quot;,
+    title = &quot;Main activities in 2017&quot;,
+    caption = &quot;Associated activity for recorded positions in 2017. 
+    Because Google records activity probabilities for each position, 
+    only the activity with highest likelihood were chosen for each position.&quot;
+  )</code></pre>
+{{% webp alt="Main activities in 2017" image="/img/location/activity.jpg" %}}
+</div>
+</div>
+<div id="locations-from-the-google-location-data" class="section level2">
+<h2>Locations from the Google Location data</h2>
+<p>The most interesting part about Google location data is all of the… location data. So let’s see where I have been the past few years. I use the <a href="https://cran.r-project.org/web/packages/ggmap/index.html">ggmap package</a> to visualise my Google Maps plots.</p>
+<p>I live in the Netherlands, in a pretty place called <a href="https://www.tripadvisor.com/Tourism-g188613-Amersfoort-Vacations.html">Amersfoort</a>. And I often have to go to other cities in the Netherlands for work. You will also see I often go cycling around the province.</p>
+<p>###Locations visited nearby
+This first plot will show you where I have been according to the Google Location data.
+Building a map plot is pretty straightforward once you have a proper dataframe with latitude and longitude columns. There are a few steps to go through:
+* Get the map with a location and zoom level with the get_map function
+* Create the plot with the ggmap function and overlay your data</p>
+<pre class="r"><code>#get map from Google Maps
+amersfoort &lt;- get_map(location = &#39;Amersfoort&#39;, zoom = 11)
+
+#Generate the plot
+ggmap(amersfoort) + 
+  geom_point(data = df, aes(x = lon, y = lat), alpha = 0.1, color = &quot;red&quot;, size=0.2) + 
+  theme(legend.position = &quot;right&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Longitude&quot;, 
+    y = &quot;Latitude&quot;, 
+    title = &quot;Location history data points in Amersfoort&quot;,
+    caption = &quot;\nA simple point plot shows recorded positions.&quot;)</code></pre>
+{{% webp alt="Location history data points in Amersfoort" image="/img/location/provincie.jpg" %}}
+<div id="velocity-of-travel" class="section level3">
+<h3>Velocity of travel</h3>
+<p>I can also visualise something similar to the previous map, but including the page I was travelling in.</p>
+<pre class="r"><code>ggmap(amersfoort) + 
+  geom_point(data = df, aes(x = lon, y = lat, color = velocity), alpha = 0.5, size=0.2) + 
+  theme(legend.position = &quot;right&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=10, axis_title_size = 12)+
+  labs(
+    x = &quot;Longitude&quot;, 
+    y = &quot;Latitude&quot;, 
+    title = &quot;Location history data points in Amersfoort&quot;,
+    caption = &quot;\nA simple point plot shows recorded positions.&quot;)</code></pre>
+{{% webp alt="Location history data points in Amersfoort" image="/img/location/amersfoort.jpg" %}}
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>I might do a followup post in the future on this dataset, because there is a lot of fun stuff in the to discover about my behaviour:</p>
+<ul>
+<li>What’s my average walking pace?</li>
+<li>What are my favorite destinations when cycling?</li>
+<li>Do I walk faster in the morning than the evening?</li>
+<li>When am I most active during the week?</li>
+</ul>
+</div>
+</div>

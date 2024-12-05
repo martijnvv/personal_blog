@@ -1,0 +1,15 @@
+---
+title: Cookie Policy | Martijn van Vreeden | Digital Analytics
+author: Martijn van Vreeden
+date: '2019-12-26'
+slug: cookie-policy
+categories: []
+gallery: true
+social_off: true
+tags: []
+description: 'I will have your cookies.'
+---
+
+# Cookie Policy
+
+My policy is to eat as many cookies as I can. I love them. They are my bread and butter.

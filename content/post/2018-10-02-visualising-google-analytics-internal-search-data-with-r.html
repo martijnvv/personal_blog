@@ -1,0 +1,325 @@
+---
+title: Visualising Google Analytics internal search data with R
+author: Martijn van Vreeden
+date: '2018-10-02'
+slug: visualising-google-analytics-internal-search-data-with-r
+categories:
+  - google-analytics
+tags:
+  - api
+  - r
+  - google-analytics
+description: 'I have created several visualisations to show Google Analytics internal search data with R' 
+content_summary: "It’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis."
+---
+
+
+
+<div id="visualising-google-analytics-internal-search-data-with-r" class="section level1">
+<h1>Visualising Google Analytics internal search data with R</h1>
+<p>It’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis. The basic reports limit the ways you can look at the data.</p>
+<p>In this post I will show you some alternative visualisations for internal search engine data, built with R and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, the famous data graphic building engine for R. I will also use the <a href="https://cran.r-project.org/web/packages/wordcloud/index.html">Wordcloud</a> and <a href="https://github.com/timelyportfolio/sunburstR">SunburstR</a> packages for some creative ways to visualize keyword data.</p>
+<p>This post is not meant to give you a step-by-step plan on how to analyse the internal searchengine data from Google Aanlytics, but is only here to expand your horizon a bit and show you alternative ways to leverage the data that you are already collecting.</p>
+<div id="lets-start-by-loading-the-required-packages" class="section level2">
+<h2>Let’s start by loading the required packages</h2>
+<pre class="r"><code>library(&quot;wordcloud&quot;)
+library(&quot;googleAnalyticsR&quot;) #for queries to Google Analytics API
+library(&quot;dplyr&quot;)
+library(&quot;ggplot2&quot;)
+library(&#39;reshape2&#39;)
+library(&#39;hrbrthemes&#39;) #For pretty plots
+library(&quot;tm&quot;) #for text mining
+library(&quot;RTextTools&quot;) #another one for text mining
+library(&quot;sunburstR&quot;)
+library(&#39;magrittr&#39;)</code></pre>
+</div>
+<div id="now-we-need-to-get-the-first-set-of-data-from-google-analytics" class="section level2">
+<h2>Now we need to get the first set of data from Google Analytics</h2>
+<p>I have created a query to get data from Google Analytics with Mark Edmondson’s excellent <a href="http://code.markedmondson.me/googleAnalyticsR/">Google Analytics R package</a>. It returns a dataframe with the most important internal searchengine metrics and the search terms. In addition, I have added a custom dimension (dimension39), which I have setup to collect the number of search results for each internal search query. A useful additional dimension to the basic ones already available.</p>
+<p>I have selected a daterange of only a week. This should return a sufficient amount of data to base my visualisations on. Depending on your website visitor volume and purpose of your analysis, you may want to change the daterange. Keep in mind that the query may become a bit slow when you want to get a lot of data from the Google Analytics API.</p>
+<pre class="r"><code># data selection ----------------------------------------------------------
+dateStart &lt;- as.Date(&quot;2018-09-25&quot;)
+dateEnd &lt;- as.Date(&quot;2018-10-01&quot;)
+
+# GA Authentication and View ID&#39;s -------------------------------------------------------
+viewId_nl &lt;- view_id #the unique view id from GA i.e. 6235232
+ga_auth(&quot;.httr-oauth&quot;) #authenticate Google Analytics access
+
+# Google Analytics queries ------------------------------------------------
+df &lt;- google_analytics(viewId_nl, 
+                       date_range = c(dateStart, dateEnd), 
+                       dimensions=c(&quot;searchKeyword&quot;, &quot;dimension39&quot;), 
+                       metrics = c(&quot;searchUniques&quot;, &quot;transactions&quot;, &quot;transactionRevenue&quot;, &quot;searchExits&quot;, &quot;searchDepth&quot;, &quot;searchRefinements&quot;, &quot;searchResultViews&quot;),                       anti_sample = TRUE)
+
+colnames(df)[2] &lt;- &quot;keywordNResults&quot;</code></pre>
+</div>
+<div id="cleaning-the-searchquery-data" class="section level2">
+<h2>Cleaning the searchquery data</h2>
+<p>Keywords and searchqueries can be a bit messy. That’s why I start by cleaning the dataset:</p>
+<ul>
+<li>Lowercase all keywords</li>
+<li>Remove some punctuation</li>
+<li>Trim whitespaces before and after the keywords</li>
+<li>Remove queries with zero keywords / empty searchquery in it (standard query if you just hit enter on the website)</li>
+</ul>
+<p>I will also add some useful additional columns to the dataframe:</p>
+<ul>
+<li>Keyword count in searchquery</li>
+<li>Number of characters in searchquery</li>
+<li>Longest keyword in searchquery</li>
+<li>Average ordervalue</li>
+</ul>
+<pre class="r"><code># Clean dataframe --------------------------------------------------------------
+as.numeric(gsub(&quot;[[:punct:]]&quot;, &quot;&quot;, df$keywordNResults)) -&gt; df$keywordNResults #Create numeric value from dimension search_results
+tolower(df$searchKeyword) -&gt; df$searchKeyword #lowercase all characters
+df$searchKeyword %&lt;&gt;%
+  gsub(&quot;[[:punct:]]&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;–&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;“&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;”&quot;, &quot;&quot;, .) -&gt; df$searchKeyword #remove all punctuation
+trimws(df$searchKeyword, which = c(&quot;both&quot;)) -&gt; df$searchKeyword #clean pre and post sentence whitespace
+
+df %&gt;%
+  group_by(searchKeyword) %&gt;%
+  summarise_at(vars(-searchKeyword, keywordNResults), funs(sum(., na.rm = TRUE))) -&gt; df #summarise the clean values in the dataframe
+
+# Update dataframe with additional useful columns -------------------------
+df$avgOrdervalue &lt;- round(df$transactionRevenue / df$transactions,2)
+sapply(strsplit(df$searchKeyword, &quot; &quot;), length) -&gt; df$keywordCount #count words
+nchar(df$searchKeyword) -&gt; df$keywordLength #count characters
+nchar(sapply(strsplit(df$searchKeyword, &quot; &quot;), function(x) x[which.max(nchar(x))])) -&gt; df$keywordLongest #count characters longest word in query
+
+df %&gt;%
+  filter(keywordCount != 0) -&gt; df #empty searchquery needs to be removed</code></pre>
+</div>
+<div id="some-summary-stats-the-first-steps-to-understanding-my-dataset" class="section level2">
+<h2>Some summary stats, the first steps to understanding my dataset</h2>
+<p>Not a special way to visualise data, but definitely useful to see what my dataset includes.</p>
+<pre class="r"><code>nrow(df) #unique searchterms
+sum(df$searchUniques) #number of unique queries
+length(which(df$searchUniques == 1)) #Unicorn searches (searchqueries only used once)
+length(which(df$keywordNResults == 0)) #zero results searches</code></pre>
+<p>The summary stats are proof of some of the challenges that internal search term data cause. So many queries can be considered unicorn searches, only queried once. It is difficult to optimize the search engine or website for each of them, just like for the thousands of zero results searches.
+Going through all of these results individually, of filtering out only the top searched keywords is a good start to optimize our search engine results, but we will definitely not cover all of the possibilities to optimize our searchengine. We need to group the searchqueries to make it easier to optimize for them.</p>
+</div>
+<div id="categorising-search-queries-by-keyword-count" class="section level2">
+<h2>Categorising search queries by keyword count</h2>
+<p>One way to categorise these search queries is to group them by the number of words in the search query. This will allow us to learn more about the way our internal searchengine works based on long tail and short tail searchqueries. For short tail searchqueries, a searchengine will find more matches to return on the searchresultpage, but they may not be very specific. Searching for “cookbook” is obviously less specific than “Jamie Oliver’s Italian breakfast cookbook”. You may get only a few results back on the long tail, specifc searchquery, while you can expect a lot of results on the short tail search term.</p>
+<p>To visualise this, I will create a summary dataframe based on the number of words in the searchquery. I turn them into a factor, with values from 1 to 10 and 11+. I will update this dataframe with some additional calculated metrics to analyse if needed.</p>
+<pre class="r"><code># Create summary table based on keywordCount column -----------------------
+df %&gt;%
+  group_by(searchKeyword) %&gt;%
+  summarise_at(vars(-searchKeyword), funs(sum(., na.rm = TRUE))) %&gt;%
+  group_by(keywordCount) %&gt;%
+  summarise_at(vars(searchUniques:searchResultViews),funs(sum))%&gt;%
+  mutate(keywordCount = cut(keywordCount, c(0:9, 10, Inf))) %&gt;%
+  group_by(keywordCount) %&gt;%
+  summarise_at(vars(searchUniques:searchResultViews),funs(sum)) -&gt; df_kwCount
+
+df_kwCount[is.na(df_kwCount)] &lt;- 0
+df_kwCount$keywordCount&lt;- factor(c(1:10,&quot;11+&quot;),levels = c(1:10,&quot;11+&quot;))</code></pre>
+<p>Now we can find out how long tail versus short tail search queries are performing in our dataset.</p>
+<pre class="r"><code># barchart number of words in searchterm - search uniques
+ggplot(data = df_kwCount, aes(x=keywordCount)) +
+  geom_bar(aes(y = searchUniques), stat = &quot;identity&quot;) +
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=12, axis_title_size = 12) +
+  scale_y_continuous(labels = scales::comma) +
+  labs(
+    title = &quot;Unique searches by keywordcount&quot;,
+    x = &quot;Number of words in query&quot;, 
+    y = &quot;Number of unique searches&quot;, 
+    caption = &quot;\nNumber of unique searches by number of keywords in query&quot;) 
+
+# barchart number of words in searchterm - Revenue
+ggplot(data = df_kwCount, aes(x=keywordCount)) +
+  geom_bar(aes(y = transactionRevenue), stat = &quot;identity&quot;) +
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=12, axis_title_size = 12) +
+  scale_y_continuous(labels = scales::comma) +
+  labs(
+    title = &quot;Revenue by keywordcount&quot;,
+    x = &quot;Number of words in query&quot;, 
+    y = &quot;Revenue in Euro&#39;s&quot;, 
+    caption = &quot;\nRevenue based on transactions by number of keywords in query&quot;) </code></pre>
+<p>Based on the visualisations above, we can see the revenue and search volumes are in the short tail, not the long tail. Most of the search queries only have up to 2 or 3 keywords in it. It would be possible to dive deeper into the optimisation of long tail versus short tail, for example with metrics like average ordervalue, conversion rate, number of searchrefinements, etc. However, this is a visualisation showcase, not a indepth analysis, so I’ll leave it with these two barcharts.</p>
+</div>
+<div id="creating-a-simple-to-do-list-for-poorly-performing-search-queries" class="section level2">
+<h2>creating a simple to-do-list for poorly performing search queries</h2>
+<p>It can be quite helpful to frequently check the searchqueries that are searched for often, but are not generating transactions. A good starting point to optimize your search engine results. You can do this from your Google Analytics UI as well, but here’s the R version.</p>
+<pre class="r"><code>df %&gt;%
+  filter(transactions == 0) %&gt;%
+  arrange(desc(searchUniques)) %&gt;%
+  head(20) %&gt;%
+  ggplot(., aes(x=searchKeyword, y=searchUniques)) + 
+  geom_bar(stat = &quot;identity&quot;) +
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=12, axis_title_size = 12) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 12, hjust = 1)) +
+  scale_y_continuous(breaks= scales::pretty_breaks(n=6),expand=c(0,0)) +
+  labs(
+    x = &quot;Keyword&quot;, 
+    y = &quot;Number of unique searches&quot;, 
+    caption = &quot;\nThis returns the number of unique searches for keywords with 0 transactions, but many searches.&quot;)</code></pre>
+</div>
+<div id="diving-into-top-performing-searchqueries" class="section level2">
+<h2>Diving into top performing searchqueries</h2>
+<p>Finding out great opportunities for business with internal search queries can also be done by looking at top-performing or popular keywords. I consider the number of queries and the revenue generated by a query to be extremely useful. A scatterplot can help you find outliers for these KPI’s.</p>
+<p>I’ve added average ordervalue and keyword count to the visualisation for some additional context.</p>
+<pre class="r"><code>#Scatterchart with level of transparency and color for keywordcount + size + text
+ggplot(data = df, aes(x=transactionRevenue, y = searchUniques, color = keywordCount,size = avgOrdervalue)) +
+  geom_point(alpha = .4) +
+  scale_color_gradient(low = &quot;#0091ff&quot;, high = &quot;#f0650e&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=12, axis_title_size = 12) +
+  ggrepel::geom_text_repel(aes(label = searchKeyword), data = subset(df, searchUniques &gt; 50), color = &quot;black&quot;, size = 3, segment.color = &quot;grey&quot;) +
+  labs(
+    title = &quot;Keyword queries by revenue and unique searches&quot;,
+    x = &quot;Revenue&quot;, 
+    y = &quot;Unique searches&quot;) </code></pre>
+<p>The scatterplot shows us that most of the keywords are grouped in the bottom-left corner. This means they are queried very few times and don’t generate a lot of revenue. I have added the searchqueries to the outliers in the right and top area of the chart. Some are bestselling books in The Netherlands, other searchqueries relate to seasonal products.</p>
+<p>Whales are the searchqueries that generate a high average ordervalue and revenue. There my be only a few of them, but it’s useful to zoom in on them to understand related behaviour by these users.
+A good way to find “whales” in your keyword data is by subsetting high average ordervalue queries.</p>
+<pre class="r"><code>#Scatterchart big orders only - text -&gt; minimum of 175 euros
+subset(df,avgOrdervalue &gt; 100) -&gt; df_bigorder
+nrow(df_bigorder) -&gt; nrow_bigorder
+ggplot(data = df_bigorder, aes(x=transactionRevenue, y = searchUniques, color = keywordCount, size = avgOrdervalue)) +
+  geom_point(alpha = .4) +
+  scale_color_gradient(low = &quot;#0091ff&quot;, high = &quot;#f0650e&quot;) + 
+  theme_ipsum_rc(grid=&quot;Y&quot;, axis_text_size=12, axis_title_size = 12) +
+  ggrepel::geom_text_repel(aes(label = searchKeyword), data = subset(df, avgOrdervalue &gt; 150), color = &quot;black&quot;, size = 3, segment.color = &quot;grey&quot;) +
+  labs(
+    title = paste0(&quot;Keywords used for whales! Showing &quot;,nrow_bigorder , &quot; keywords.&quot;),
+    x = &quot;Revenue&quot;, 
+    y = &quot;Unique searches&quot;,
+    caption = &quot;\nOnly showing keywords with avg ordervalue of +100, keyword name showing for at least 175 euros&quot;)</code></pre>
+</div>
+<div id="keyword-clouds-they-are-pretty" class="section level2">
+<h2>Keyword clouds… They are pretty!</h2>
+<p>Personally, I’m not a fan of word clouds ( <a href="https://towardsdatascience.com/can-we-please-stop-using-word-clouds-eca2bbda7b9d">together with some others</a>. But management usually eats them up. They look pretty and show some words. And with R they are made with only a few lines of code. Here’s one with the most popular searchqueries.</p>
+<pre class="r"><code>wordcloud(words = df$searchKeyword, freq = df$searchUniques, min.freq = 2,
+          max.words=50, random.order=FALSE, rot.per=0.35, scale=c(3.5,.3), 
+          colors=brewer.pal(8, &quot;Dark2&quot;)) #Wordcloud unique searches</code></pre>
+</div>
+<div id="correlating-internal-search-metrics" class="section level2">
+<h2>Correlating internal search metrics</h2>
+<p>I personally find a correlation matrix a lot more valuable to derive insights from internal search data. It tells me which metrics impact other metrics, some of which we can leverage to optimise for our KPI’s.</p>
+<p>It requires a bit of R scripting, but is extremely useful.</p>
+<pre class="r"><code># Correlation matrix based on first dataframe -----------------------------
+df$conversionRate &lt;- round((df$transactions / df$searchUniques)*100,2) 
+df$avgOrdervalue &lt;- round(df$transactionRevenue / df$transactions,2)
+df$exitRate &lt;- round((df$searchExits / df$searchUniques)*100,2)
+df$avgDepth &lt;- round(df$searchDepth / df$searchUniques,2)
+df[is.na(df)] &lt;- 0
+df[,-1] -&gt; df_nums
+cormat &lt;- round(cor(df_nums),2) #get a matrix with rounded numbers
+cormat[is.na(cormat)] &lt;- 0
+
+get_lower_tri&lt;-function(cormat){
+  cormat[upper.tri(cormat)] &lt;- NA
+  return(cormat)
+} # Get lower triangle of the correlation matrix
+get_upper_tri &lt;- function(cormat){
+  cormat[lower.tri(cormat)]&lt;- NA
+  return(cormat)
+} # Get upper triangle of the correlation matrix
+
+reorder_cormat &lt;- function(cormat){
+  # Use correlation between variables as distance
+  dd &lt;- as.dist((1-cormat)/2)
+  hc &lt;- hclust(dd)
+  cormat &lt;-cormat[hc$order, hc$order]
+}
+
+cormat &lt;- reorder_cormat(cormat)
+upper_tri &lt;- get_upper_tri(cormat)
+
+melted_cormat &lt;- melt(upper_tri, na.rm = TRUE)
+
+ggplot(melted_cormat, aes(Var2, Var1, fill = value))+
+  geom_tile(color = &quot;white&quot;)+
+  scale_fill_gradient2(low = &quot;blue&quot;, high = &quot;red&quot;, mid = &quot;white&quot;, 
+                       midpoint = 0, limit = c(-1,1), space = &quot;Lab&quot;, 
+                       name=&quot;Pearson\nCorrelation&quot;) +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 12, hjust = 1))+
+  coord_fixed() +
+  geom_text(aes(Var2, Var1, label = value), color = &quot;black&quot;, size = 4) +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.ticks = element_blank(),
+    legend.justification = c(1, 0),
+    legend.position = c(0.6, 0.7),
+    legend.direction = &quot;horizontal&quot;)+
+  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                               title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
+<p>The correlation matrix maps all of my searchengine metrics and helps me find out or confirm:</p>
+<ul>
+<li>The length of the keywords in a query (keywordLongest) doesn’t impact the conversion rate (-0.03)</li>
+<li>The number of results to a query (keywordNResults) doesn’t impact the number of transactions (0.06)</li>
+<li>The absolute number of searches for a searchquery (searchUniques) correlates with the number of search refinements (0.85)</li>
+</ul>
+<p>No huge surprises, this searchengine is in pretty good shape!</p>
+</div>
+<div id="if-all-else-fails-explore" class="section level2">
+<h2>If all else fails, explore!</h2>
+<p>If grouping data is not an option, there is always the possibility of creating solutions to explore the data. In the following example, you can find a sunburst visualisation, which shows the initial searchquery and the following searchquery. The initial searchquery didn’t show the best results to a user, so they refined their search.</p>
+<p>To create this visualisation, I ran another Google Analytics query, with the keywords and keyword refinements.
+I have just visualised the top 100 searchqueries &amp; refinements, but the exploration is already possible.</p>
+<pre class="r"><code># Refined keywords dataframe ----------------------------------------------
+df_refined &lt;- google_analytics(viewId_nl, 
+                       date_range = c(dateStart, dateEnd), 
+                       dimensions=c(&quot;searchKeyword&quot;, &quot;searchKeywordRefinement&quot;), 
+                       metrics = c(&quot;searchUniques&quot;),  
+                       anti_sample = TRUE)</code></pre>
+<pre class="r"><code># Clean dataframe --------------------------------------------------------------
+tolower(df_refined$searchKeyword) -&gt; df_refined$searchKeyword #lowercase all characters
+df_refined$searchKeyword %&lt;&gt;%
+  gsub(&quot;[[:punct:]]&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;-&quot;, &quot; &quot;, .) %&gt;%
+  gsub(&quot;–&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;“&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;”&quot;, &quot;&quot;, .) -&gt; df_refined$searchKeyword #remove all punctuation
+df_refined$searchKeywordRefinement %&lt;&gt;%
+  gsub(&quot;[[:punct:]]&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;-&quot;, &quot; &quot;, .) %&gt;%
+  gsub(&quot;–&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;“&quot;, &quot;&quot;, .) %&gt;%
+  gsub(&quot;”&quot;, &quot;&quot;, .) -&gt; df_refined$searchKeywordRefinement #remove all punctuation
+trimws(df_refined$searchKeyword, which = c(&quot;both&quot;)) -&gt; df_refined$searchKeyword #clean pre and post sentence whitespace
+df_refined %&gt;%
+  group_by(searchKeyword, searchKeywordRefinement) %&gt;%
+  summarise_at(vars(-searchKeyword, -searchKeywordRefinement), funs(sum(., na.rm = TRUE)))%&gt;%
+  filter(searchUniques != 0) -&gt; df_refined #summarise the clean values in the dataframe
+
+# Build sunburst ----------------------------------------------------------
+paste0(df_refined$searchKeyword,&quot;-&quot;,df_refined$searchKeywordRefinement) -&gt; df_refined$combo
+df_refined[,c(4,3)] -&gt;df_sunburst
+df_sunburst %&gt;%
+  arrange(desc(searchUniques))%&gt;%
+  head(100) -&gt; df_sunburst
+  
+sunburst(
+  df_sunburst,
+  count = TRUE,
+  legend = FALSE
+)</code></pre>
+<p>Just hover the center circle to see the initial searchquery, hover the outer circle to see the refinement query.</p>
+</div>
+<div id="further-visualisations" class="section level2">
+<h2>Further visualisations</h2>
+<p>Above were just a few examples of alternative ways to visualise and analyse your internal searchengine data.
+There are tons of other visualisations and analytics techniques to explore like:</p>
+<ul>
+<li>k-means clustering</li>
+<li>Deepdive for seasonal searches</li>
+<li>Sentiment analysis</li>
+<li>Term frequency</li>
+<li>Language classification (for multilingual websites)</li>
+<li>Sankey diagrams (as replacement for sunbursts)</li>
+<li>Etc.</li>
+</ul>
+</div>
+</div>

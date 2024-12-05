@@ -1,0 +1,49 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#317EFB"/>
+{{- partial "metatags.html" . }}
+  <meta name="author" content="{{ .Site.Author.name }}"/>
+{{- with .Site.Params.favicon }}
+  <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
+{{- end -}}
+<!-- Social Media Tags -->
+{{- with .Params.share_img | default .Params.image | default .Site.Params.logo.url }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ . | absURL }}" />
+{{- end }}
+  <meta name="twitter:card" content="summary" />
+{{- with .Site.Author.twitter }}
+  <meta name="twitter:site" content="@{{ . }}" />
+  <meta name="twitter:creator" content="@{{ . }}" />
+{{- end }}
+{{- with .Site.Params.fb_app_id }}
+  <meta property="fb:app_id" content="{{ . }}" />
+{{- end }}
+  <meta property="og:url" content="{{ .Permalink | absLangURL }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta name="google-site-verification" content="9jGR4dFHGBlfB9kcaGTSmzbtXMpxU3strfXQFQFHlkA" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  
+  {{ if .Site.Params.gtm_ga}}<link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">{{ end }}  
+{{ if .Site.Params.gtm_id}}{{- partial "gtm.html" . }}{{ end }}
+{{ hugo.Generator -}}
+  <link rel="canonical" href="{{ .Permalink | absLangURL }}" />
+  <script type="text/javascript">
+          var stylesheet = document.createElement('link');
+          stylesheet.href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css';
+          stylesheet.rel = 'stylesheet';
+          stylesheet.type = 'text/css';
+          document.getElementsByTagName('head')[0].appendChild(stylesheet);
+   </script> 
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  {{ if .IsHome }}{{- partial "richsnippet_website.html" . }}{{ end }}  
+{{ if isset .Params "social_off"}}{{ else if eq .Kind "taxonomy" }}{{ else }}{{- partial "richsnippet_post.html" . }}{{ end }}
+</head>
+

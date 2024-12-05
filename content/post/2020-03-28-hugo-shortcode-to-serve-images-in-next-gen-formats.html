@@ -1,0 +1,105 @@
+---
+title: Hugo shortcode to serve images in next-gen formats
+author: Martijn van Vreeden
+date: '2020-03-28'
+slug: hugo-shortcode-to-serve-images-in-next-gen-formats
+categories:
+  - hugo
+tags:
+  - hugo
+description: ''
+content_summary: 'Next-gen images could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you Safari!). To make sure you will serve an alternative, normal format like jpg or png instead for those non-compatible browsers, you need to update the way you serve your images and provide both formats. '
+---
+
+
+
+<div id="hugo-shortcode-to-serve-images-in-next-gen-formats" class="section level1">
+<h1>Hugo shortcode to serve images in next-gen formats</h1>
+<p>In my last blogpost I shared <a href="/10-ways-to-improve-your-hugo-website-performance/">10 ways to improve your Hugo website performance</a>. My last tip was to serve images in next-gen formats. This could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you, Safari!). To make sure you will serve an alternative, normal format like jpg or png instead for those non-compatible browsers, you need to update the way you serve your images and provide both formats.</p>
+<p>In this article I share the shortcode you can use to do this and give you step-by-step instructions on how to create the images and add them to your markdown files for next-gen compatibility.</p>
+<div id="the-html-output-for-an-image-with-multiple-image-types" class="section level2">
+<h2>The HTML output for an image with multiple image types</h2>
+<p>Traditionally, when you would like to include an image, you would create the following HTML element.</p>
+<pre class="r"><code>&lt;img src=&quot;image.jpg&quot; alt=&quot;my image&quot; /&gt;</code></pre>
+<p>There is also a HTML5 version of this same image, which is more flexible for many purposes, like responsiveness. The HTML5 version includes the figure element, which includes a picture and optional figcaption element.</p>
+<pre class="r"><code>&lt;figure&gt;
+    &lt;picture&gt;
+      &lt;img src=&quot;image.jpg&quot; alt=&quot;my image&quot;&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;
+      &lt;p class=&quot;caption&quot;&gt;Image caption text&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+<p>To provide the option of alternative image types, for one image, you can add the source element, with an srcset item. Whenever the image type in this source element is supported, the browser will use it. Otherwise it will use your fallback option provided in the img element. A great way to include WebP as a primary image and a jpg as a backup.</p>
+<pre class="r"><code>&lt;figure&gt;
+    &lt;picture&gt;
+    &lt;source srcset=&quot;image.webp&quot; type=&quot;image/webp&quot;&gt;
+      &lt;img src=&quot;image.jpg&quot; alt=&quot;my image&quot;&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;
+      &lt;p class=&quot;caption&quot;&gt;Image caption text&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+</div>
+<div id="shortcode-next-gen-images-hugo" class="section level2">
+<h2>Shortcode next-gen images Hugo</h2>
+<p>A shortcode is a simple snippet inside a content file that Hugo will render using a predefined template. Note that shortcodes will not work in template files. If you need the type of drop-in functionality that shortcodes provide but in a template, you most likely want a partial template instead.</p>
+<p>This video gives a brief introduction to Hugo shortcodes and how to create your own.</p>
+{{% youtube id="2xkNJL4gJ9E" yt_end="92" enablejsapi="true" modestbranding="true" color="white" %}}
+<p>Hugo already provides a ton of shortcodes out of the box, like the one for images, with the <a href="https://gohugo.io/content-management/shortcodes/#figure">HTML5 figure element</a>. Unfortunately, this doesn’t allow you to add more than 1 version of the image. Which means you can’t provide a WebP and a jpg version in one image.</p>
+<p>To make this possible, I have create the following shortcode to allow you to use 2 versions of the same image, a WebP version and another version of the image like a jpg or png image.</p>
+<pre class="r"><code>{{ $image := .Get &quot;image&quot;}}
+{{ $type_arr := split $image &quot;.&quot; }}
+{{ $srcbase := index $type_arr 0 }}
+
+&lt;figure&gt;
+    &lt;picture&gt;
+      &lt;source srcset=&quot;{{$srcbase}}.webp&quot; type=&quot;image/webp&quot;&gt;
+    &lt;img src=&quot;{{.Get `image`}}&quot; alt=&quot;{{.Get `alt` }}&quot; defer&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;
+    &lt;p class=&quot;caption&quot;&gt;{{.Get &quot;alt&quot; }}&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+<p>As you can see, I also include the defer reference to the image for performance improvement. Learn more on using <a href="https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/#chapter3">defer to improve performance</a> in my blog about website performance.</p>
+<p>I’ve made this shortcode available in <a href="https://github.com/martijnvv/webp-integration-hugoio">a Github repository</a> as well.</p>
+</div>
+<div id="how-to-use-the-webp-shortcode" class="section level2">
+<h2>How to use the WebP shortcode</h2>
+<p>To use the WebP shortcode in your markdown page, you will first have to include the shortcode in your template file. Once this is done, follow these steps to use the shortcode on your site.</p>
+<div id="create-2-versions-of-the-same-image" class="section level3">
+<h3>1. Create 2 versions of the same image</h3>
+<p>Instead of having just one version of an image (ie jpg or png), you will have to create a WebP version of the same image. There are <a href="https://webp-converter.com/">online tools</a> that can do this for you. Make sure to give them the exact same name, with the only difference being the file extension.</p>
+</div>
+<div id="upload-both-versions-of-the-image" class="section level3">
+<h3>2. Upload both versions of the image</h3>
+<p>Instead of just uploading your regular image, also upload the WebP version of the image. Add them both to the same folder.</p>
+</div>
+<div id="include-the-shortcode-in-your-markdown-file" class="section level3">
+<h3>3. Include the shortcode in your markdown file</h3>
+<p>Use the following shortcode to include the image to your page. I include an example you can also check out in the source code.</p>
+<pre class="r"><code>blogdown::shortcode(&quot;webp&quot;, alt = &quot;A cute puppy to lighten your day&quot;, image = &#39;&quot;/img/puppy.jpg&quot;&#39;)</code></pre>
+{{% webp alt="A cute puppy to lighten your day" image="/img/puppy.jpg" %}}
+<p>The exact format of the shortcode depends on the platform you use. I run my website with blogdown.</p>
+<p>The code includes the jpg version of the image as a fallback and automatically returns the puppy.webp version as the primary source the browser checks.</p>
+</div>
+</div>
+<div id="using-other-next-gen-formats-than-webp" class="section level2">
+<h2>Using other next-gen formats than WebP</h2>
+<p>The shortcode is pretty simple. To add other next-gen image formats or replace WebP, simply add an additional source.</p>
+<pre class="r"><code>{{ $image := .Get &quot;image&quot;}}
+{{ $type_arr := split $image &quot;.&quot; }}
+{{ $srcbase := index $type_arr 0 }}
+
+&lt;figure&gt;
+    &lt;picture&gt;
+      &lt;source srcset=&quot;{{$srcbase}}.webp&quot; type=&quot;image/webp&quot;&gt;
+    &lt;source srcset=&quot;{{$srcbase}}.jp2&quot; type=&quot;image/jp2&quot;&gt;
+    &lt;img src=&quot;{{.Get `image`}}&quot; alt=&quot;{{.Get `alt` }}&quot; defer&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;
+    &lt;p class=&quot;caption&quot;&gt;{{.Get &quot;alt&quot; }}&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+</div>
+</div>

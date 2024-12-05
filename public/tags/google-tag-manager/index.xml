@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>google tag manager on Martijn van Vreeden</title>
+    <link>https://martijnvanvreeden.nl/tags/google-tag-manager/</link>
+    <description>Recent content in google tag manager on Martijn van Vreeden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/tags/google-tag-manager/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Tag Manager Server-side</title>
+      <link>https://martijnvanvreeden.nl/google-tag-manager-server-side-advantages-and-concerns/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/google-tag-manager-server-side-advantages-and-concerns/</guid>
+      <description>Google Tag Manager Server-sideGoogle Tag Manager server-side is a way of running Google Tag Manager on a server instead of in the browser (client-side). It can potentially have a huge impact on the way you collect data for the user. This article is not going to be a how-to guide to using Google Tag Manager server-side. Instead, it will be an outline of some of the most important advantages and concerns related to this new product.</description>
+    </item>
+    
+    <item>
+      <title>How to add Google Tag Manager to Hugo static website</title>
+      <link>https://martijnvanvreeden.nl/how-to-add-google-tag-manager-to-hugo-static-website/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/how-to-add-google-tag-manager-to-hugo-static-website/</guid>
+      <description>How to add Google Tag Manager to a Hugo static websiteIn this article I will provide a step-by-step instruction and code samples on how to implement Google Tag Manager and a datalayer to your Hugo static website. As a digital analytics consultant I can appreciate the value a good Google Tag Manager (GTM) implementation can have for your business or even to optimize your user’s blog experience.
+How to add the standard Google Tag Manager container to a Hugo websiteTo make sure that Google Tag Manager is enabled, we will have to include the Google Tag Manager container.</description>
+    </item>
+    
+    <item>
+      <title>How to create Google Tag Manager documentation with R</title>
+      <link>https://martijnvanvreeden.nl/create-google-tag-manager-documentation-with-r/</link>
+      <pubDate>Thu, 09 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/create-google-tag-manager-documentation-with-r/</guid>
+      <description>Create Google Tag Manager documentation with RCreating digital data documentation can be a painstaking, boring, but extremely useful endeavor. Knowing what digital data is available to you and others can be helpful to understand the potential of your data set, as well as provide context to analysis, reporting and other ways to leverage data.
+To take some of the effort out of creating documentation about the contents of your Google Tag Manager account, I have created a script that pulls data out of the environment and outputs a simple Excel file, which you can share with stakeholders.</description>
+    </item>
+    
+    <item>
+      <title>Optimizing the Youtube Shortcode for Hugo</title>
+      <link>https://martijnvanvreeden.nl/optimizing-the-youtube-shortcode-for-hugo/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://martijnvanvreeden.nl/optimizing-the-youtube-shortcode-for-hugo/</guid>
+      <description>How to optimize the Youtube Shortcode for HugoThe Youtube embed shortcode for Hugo allows you to embed Youtube videos in your Hugo pages. Which is a pretty neat feature they provide to you out-of-the-box. The shortcode allows you to add two additional parameters that can be managed from the standard settings:
+Unique Youtube video IDallowfullscreen (which you can set to “true”, which allows users to show the video in full screen mode)However, there are a ton of additional parameters you can include to customize your Youtube video embed.</description>
+    </item>
+    
+  </channel>
+</rss>

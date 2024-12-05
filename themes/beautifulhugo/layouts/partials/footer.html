@@ -1,0 +1,48 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            
+        <ul class="list-inline text-center footer-links social_links">
+		{{ range .Site.Data.beautifulhugo.social.social_icons }}
+            {{- if isset $.Site.Author .id }}
+              <li>
+                <a href="{{ printf .url (index $.Site.Author .id) }}" title="{{ .title }}" rel="noreferrer" aria-label="{{ .title }}">
+                  <span class="glyph fs1">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="glyph_config icon-{{ .icon }} gl_inverse"></i>
+                  </span>
+                </a>
+              </li>
+		{{- end -}} {{ end }}
+			<li>
+                <a href="mailto:mail@martijnvanvreeden.nl" title="Email me" rel="noreferrer" aria-label="email me">
+                  <span class="glyph fs1">
+						<i class="fas fa-circle fa-stack-2x"></i>
+						<i class="glyph_config icon-mail2 gl_inverse"></i>
+                  </span>
+                </a>
+            </li>
+        </ul>
+        <p class="credits copyright text-muted">
+              <a href="/cookie-policy/" rel="nofollow">Privacy policy</a>
+          &nbsp;&bull;&nbsp;
+          {{ .Site.LastChange.Format "2006" }}
+          {{ if .Site.Title }}
+            &nbsp;&bull;&nbsp;
+            <a href="{{ "" | absLangURL }}" rel="nofollow">{{ .Site.Title }}</a>
+          {{ end }}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="{{ "js/main.js" | absURL }}"></script>
+	<script src="{{ "js/highlight.min.js" | absURL }}"></script>
+	<script src="{{ "js/purecookie.js" | absURL }}"></script>
+	<script> hljs.initHighlightingOnLoad(); </script>
+	{{ if isset .Params "gallery" }}{{ range .Site.Params.gallery_js_int }}<script src="{{ printf "%s" . | absURL }}"></script>{{ end }}
+	{{ range .Site.Params.gallery_js_ext }}<script src="{{ printf "%s" . | absURL }}"></script>{{ end }}{{ end }}
+	<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></noscript>

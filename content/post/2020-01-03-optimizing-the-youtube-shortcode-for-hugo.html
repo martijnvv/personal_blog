@@ -1,0 +1,61 @@
+---
+title: Optimizing the Youtube Shortcode for Hugo
+author: Martijn van Vreeden
+date: '2020-01-03'
+slug: optimizing-the-youtube-shortcode-for-hugo
+categories:
+  - hugo
+tags:
+  - hugo
+  - google tag manager
+  - google analytics
+subtitle: ''
+description: "The Youtube embed shortcode for Hugo allows you to embed Youtube videos in your Hugo pages. Which is a pretty neat feature they provide to you out-of-the-box. However, there are a ton of additional parameters you can include to customize your Youtube video embed."
+content_summary: "The Youtube embed shortcode for Hugo allows you to embed Youtube videos in your Hugo pages. Which is a pretty neat feature they provide to you out-of-the-box. However, there are a ton of additional parameters you can include to customize your Youtube video embed."
+image: "https://martijnvanvreeden.nl/img/hugo-youtube.webp"
+share_img: "https://martijnvanvreeden.nl/img/hugo-youtube.jpg"
+---
+
+
+
+<div id="how-to-optimize-the-youtube-shortcode-for-hugo" class="section level1">
+<h1>How to optimize the Youtube Shortcode for Hugo</h1>
+<p>The Youtube embed shortcode for Hugo allows you to <a href="https://gohugo.io/content-management/shortcodes/#youtube">embed Youtube videos in your Hugo pages</a>. Which is a pretty neat feature they provide to you out-of-the-box. The shortcode allows you to add two additional parameters that can be managed from the standard settings:</p>
+<ul>
+<li>Unique Youtube video ID</li>
+<li>allowfullscreen (which you can set to “true”, which allows users to show the video in full screen mode)</li>
+</ul>
+<p>However, there are a ton of additional parameters you can include to customize your Youtube video embed. You can find a full list of all the embed parameters on the <a href="https://developers.google.com/youtube/player_parameters">Youtube developers website</a>.</p>
+<div id="my-personal-requirement" class="section level2">
+<h2>My personal requirement</h2>
+<p>As a digital analytics specialist, I have a particular interest in the “enablejsapi” parameter, which allows you to track pretty much all interactions with the Youtube player and send it to <a href="https://tagmanager.google.com/#/home">Google Tag Manager</a> or some other tracking system. This is super useful if you want to see if your users are interacting with the Youtube video. Simo Ahava shows you exactly <a href="https://www.simoahava.com/analytics/the-youtube-video-trigger-in-google-tag-manager/">how to configure Google Tag Manager</a> to leverage this feature.</p>
+<p>Unfortunately, the “enablejsapi” parameter was not included as one of the options in the standard Hugo shortcode setup provided by Hugo. This means we have to update the shortcode to make this possible.</p>
+</div>
+<div id="update-the-youtube-shortcode-for-hugo" class="section level2">
+<h2>Update the Youtube shortcode for Hugo</h2>
+<p>To update the shortcode, we need to add it to our shortcodes folder in our template/layouts folder in our website configuration. The exact location depends on your website structure, but the concept is explained in more detail on the <a href="https://gohugo.io/content-management/shortcodes/">Hugo documentation website</a>.</p>
+<p>The code below can be saved in an html file “youtube.html” and added to the shortcodes folder. This way, it will overwrite the standard Youtube embed shortcode feature.</p>
+<pre class="r"><code>&lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/{{ .Get &quot;id&quot; }}?enablejsapi=1{{ with .Get &quot;color&quot; }}{{ if eq . &quot;white&quot; }}&amp;color=white{{ end }}{{ end }}{{ with .Get &quot;autoplay&quot; }}{{ if eq . &quot;true&quot; }}&amp;autoplay=1{{ end }}{{ end }}{{ if isset .Params &quot;yt_start&quot; }}&amp;start={{ .Get &quot;yt_start&quot; }}{{ end }}{{ if isset .Params &quot;yt_end&quot; }}&amp;end={{ .Get &quot;yt_end&quot; }}{{ end }}{{ with .Get &quot;modestbranding&quot; }}{{ if eq . &quot;true&quot; }}&amp;modestbranding=1{{ end }}{{ end }}&quot;{{ if .Get &quot;class&quot; }} class=&quot;{{ .Get &quot;class&quot; }}&quot;{{ end }} allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div id="overview-of-options-in-the-shortcode" class="section level2">
+<h2>Overview of options in the shortcode</h2>
+<p>The following options / parameters are provided:</p>
+<ul>
+<li>color: by default red, only alternative value is “white”. Set with “color” parameter</li>
+<li>yt_start: to set start time in seconds</li>
+<li>yt_end: to set end time in seconds, starting from 0 or the yt_start value</li>
+<li>modestbranding: standard shows branding, if set to “true”, Youtube logo is not shown</li>
+<li>autoplay: when set to “true”, video starts playing on load of page</li>
+</ul>
+<p>The API connection is enabled by default.</p>
+</div>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<pre class="r"><code>{{&lt; youtube id=&quot;w7Ft2ymGmfc&quot; autoplay=&quot;true&quot; color=&quot;white&quot; yt_start=&quot;12&quot; yt_end=&quot;24&quot;&gt;}}</code></pre>
+<p>In this example we set the starttime of the video to 12 seconds from the start, and the endtime of the video 24 seconds after the starttime. We change the color of the bar to white as well.</p>
+<p>If you are using Rmarkdown to render your website, use the following setup:</p>
+<pre class="r"><code>blogdown::shortcode(&quot;youtube&quot;, id = &#39;&quot;w7Ft2ymGmfc&quot;&quot;&#39;, color = &#39;&quot;white&quot;&#39;, yt_start=&#39;&quot;12&quot;&#39;, yt_end = &#39;&quot;24&quot;&#39;)</code></pre>
+</div>
+</div>
