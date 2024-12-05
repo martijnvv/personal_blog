@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cdp on Martijn van Vreeden</title>
-    <link>https://martijnvanvreeden.nl/categories/cdp/</link>
+    <link>/categories/cdp/</link>
     <description>Recent content in cdp on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/categories/cdp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/cdp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Composable CDP&#39;s</title>
-      <link>https://martijnvanvreeden.nl/understanding-composable-cdp/</link>
+      <link>/understanding-composable-cdp/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/understanding-composable-cdp/</guid>
+      <guid>/understanding-composable-cdp/</guid>
       <description>Understanding Composable CDP’s One of the new hot topics in tech is the “Composable CDP.” Databricks is sharing a good definition of a Composable CDP in their article written together with Hightouch and Snowplow Analytics.
 “A Composable CDP consists of the same components as their off-the-shelf counterparts; Data Collection, Data Storage and Modeling, and Data Activation. By implementing a best-in-class product at each layer of the Composable CDP, organizations can achieve a far more extensible CDP solution that can solve problems well beyond the common use cases of off-the-shelf CDPs.</description>
     </item>

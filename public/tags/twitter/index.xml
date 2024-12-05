@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>twitter on Martijn van Vreeden</title>
-    <link>https://martijnvanvreeden.nl/tags/twitter/</link>
+    <link>/tags/twitter/</link>
     <description>Recent content in twitter on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="/tags/twitter/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Meet the digital me | Martijn van Vreeden</title>
-      <link>https://martijnvanvreeden.nl/meet-the-digital-me/</link>
+      <link>/meet-the-digital-me/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/meet-the-digital-me/</guid>
+      <guid>/meet-the-digital-me/</guid>
       <description>Meet the digital meThis is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me.
 Just like all people these days, I leave a digital footprint. I use apps, digital services and websites to share my experiences with others, keep people posted of what I do and compare what I do with all the stuff other people do.</description>
     </item>

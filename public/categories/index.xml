@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Martijn van Vreeden</title>
-    <link>https://martijnvanvreeden.nl/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>cdp</title>
-      <link>https://martijnvanvreeden.nl/categories/cdp/</link>
-      <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://martijnvanvreeden.nl/categories/cdp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>digital analytics</title>
-      <link>https://martijnvanvreeden.nl/categories/digital-analytics/</link>
-      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://martijnvanvreeden.nl/categories/digital-analytics/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>google tag manager</title>
-      <link>https://martijnvanvreeden.nl/categories/google-tag-manager/</link>
-      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      <link>/categories/google-tag-manager/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/google-tag-manager/</guid>
+      <guid>/categories/google-tag-manager/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google-analytics</title>
-      <link>https://martijnvanvreeden.nl/categories/google-analytics/</link>
-      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      <link>/categories/google-analytics/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/google-analytics/</guid>
+      <guid>/categories/google-analytics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cdp</title>
+      <link>/categories/cdp/</link>
+      <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/cdp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>digital analytics</title>
+      <link>/categories/digital-analytics/</link>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/digital-analytics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://martijnvanvreeden.nl/categories/hugo/</link>
+      <link>/categories/hugo/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/hugo/</guid>
+      <guid>/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>digital me</title>
-      <link>https://martijnvanvreeden.nl/categories/digital-me/</link>
+      <link>/categories/digital-me/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/digital-me/</guid>
+      <guid>/categories/digital-me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spotify</title>
-      <link>https://martijnvanvreeden.nl/categories/spotify/</link>
+      <link>/categories/spotify/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/spotify/</guid>
+      <guid>/categories/spotify/</guid>
       <description></description>
     </item>
     
     <item>
       <title>imdb</title>
-      <link>https://martijnvanvreeden.nl/categories/imdb/</link>
+      <link>/categories/imdb/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/categories/imdb/</guid>
+      <guid>/categories/imdb/</guid>
       <description></description>
     </item>
     

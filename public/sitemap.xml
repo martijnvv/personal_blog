@@ -2,169 +2,172 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://martijnvanvreeden.nl/categories/</loc>
+    <loc>/categories/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/data-governance/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/google-tag-manager/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/google-tag-manager/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/google-analytics/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/google-analytics4/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/updates-to-google-consent-management/</loc>
+    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/cdp/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/cdp/</loc>
+    <loc>/tags/data-to-value/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/data-governance/</loc>
+    <loc>/tags/google-analytics/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/data-to-value/</loc>
+    <loc>/understanding-composable-cdp/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/google-analytics/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/google-analytics4/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/post/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/understanding-composable-cdp/</loc>
-    <lastmod>2023-10-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/digital-analytics/</loc>
+    <loc>/categories/digital-analytics/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/privacy/</loc>
+    <loc>/tags/privacy/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/what-is-happening-in-digital-analytics/</loc>
+    <loc>/what-is-happening-in-digital-analytics/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/google-tag-manager/</loc>
+    <loc>/google-tag-manager-server-side-advantages-and-concerns/</loc>
     <lastmod>2021-11-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/google-tag-manager/</loc>
-    <lastmod>2021-11-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/google-tag-manager-server-side-advantages-and-concerns/</loc>
-    <lastmod>2021-11-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/understanding-retention-with-customer-feedback-data/</loc>
+    <loc>/understanding-retention-with-customer-feedback-data/</loc>
     <lastmod>2020-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/how-to-add-google-tag-manager-to-hugo-static-website/</loc>
+    <loc>/how-to-add-google-tag-manager-to-hugo-static-website/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/hugo/</loc>
+    <loc>/tags/hugo/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</loc>
+    <loc>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/google-analytics/</loc>
+    <loc>/tags/google-app-web-analytics/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/google-app-web-analytics/</loc>
-    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/hugo/</loc>
+    <loc>/categories/hugo/</loc>
     <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/hugo-shortcode-to-serve-images-in-next-gen-formats/</loc>
+    <loc>/hugo-shortcode-to-serve-images-in-next-gen-formats/</loc>
     <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/10-ways-to-improve-your-hugo-website-performance/</loc>
+    <loc>/10-ways-to-improve-your-hugo-website-performance/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/documentation/</loc>
+    <loc>/tags/documentation/</loc>
     <lastmod>2020-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/create-google-tag-manager-documentation-with-r/</loc>
+    <loc>/create-google-tag-manager-documentation-with-r/</loc>
     <lastmod>2020-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/digital-me/</loc>
+    <loc>/categories/digital-me/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/me/</loc>
+    <loc>/tags/me/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/optimizing-the-youtube-shortcode-for-hugo/</loc>
+    <loc>/optimizing-the-youtube-shortcode-for-hugo/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</loc>
+    <loc>/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/cookie-policy/</loc>
+    <loc>/cookie-policy/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/api/</loc>
+    <loc>/tags/api/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/collecting-spotify-data-with-r/</loc>
+    <loc>/collecting-spotify-data-with-r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/spotify/</loc>
+    <loc>/tags/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/spotify/</loc>
+    <loc>/categories/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/</loc>
+    <loc>/visualising-google-analytics-internal-search-data-with-r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/analysing-google-location-data/</loc>
+    <loc>/analysing-google-location-data/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/ggplot2/</loc>
+    <loc>/tags/ggplot2/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/google/</loc>
+    <loc>/tags/google/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/location/</loc>
+    <loc>/tags/location/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/imdb/</loc>
+    <loc>/tags/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/categories/imdb/</loc>
+    <loc>/categories/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/rvest/</loc>
+    <loc>/tags/rvest/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r-part-2/</loc>
+    <loc>/visualize-and-analyse-imdb-ratings-with-r-part-2/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/webscraping/</loc>
+    <loc>/tags/webscraping/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/visualize-and-analyse-imdb-ratings-with-r/</loc>
+    <loc>/visualize-and-analyse-imdb-ratings-with-r/</loc>
     <lastmod>2017-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/getting-my-imdb-ratings-with-r-and-rvest/</loc>
+    <loc>/getting-my-imdb-ratings-with-r-and-rvest/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/goodreads/</loc>
+    <loc>/tags/goodreads/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/meet-the-digital-me/</loc>
+    <loc>/meet-the-digital-me/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/strava/</loc>
+    <loc>/tags/strava/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/tags/twitter/</loc>
+    <loc>/tags/twitter/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/about-me/</loc>
+    <loc>/about-me/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvanvreeden.nl/portfolio/</loc>
+    <loc>/portfolio/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
   </url>
 </urlset>

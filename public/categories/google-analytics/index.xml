@@ -2,27 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>google-analytics on Martijn van Vreeden</title>
-    <link>https://martijnvanvreeden.nl/categories/google-analytics/</link>
+    <link>/categories/google-analytics/</link>
     <description>Recent content in google-analytics on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvanvreeden.nl/categories/google-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/google-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Updates to Google Consent Management</title>
+      <link>/updates-to-google-consent-management/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/updates-to-google-consent-management/</guid>
+      <description>Updates to Google Consent Management In March 2024, a new European privacy regulation will be implemented. This will have an impact on how we collect and process data.
+Why is this important?
+A new European regulation (Digital Markets Act) requires big tech to protect its users. They are responsible for respecting and collecting user consent As a result, we need to update our way of collecting data in GTM to &amp;ldquo;Consent Mode v2&amp;rdquo; All Google Advertising tracking will go through GA4 Consent Management will look different in GTM, as a result of the update If we don&amp;rsquo;t use this new technique, we cannot effectively use Google advertising products, starting march 2024 Coincidentally, Google Chrome will stop accepting 3rd party cookies end of March 2024 too, which means the urgency to shift is even higher What do we need to do to migrate?</description>
+    </item>
+    
     <item>
       <title>10 Things you need to know about the new Google Analytics 4</title>
-      <link>https://martijnvanvreeden.nl/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
+      <link>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
+      <guid>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</guid>
       <description>10 Things you need to know about the new Google Analytics 4On July 31st 2019, Google introduced a “new” analytics solution they called Google Analytics 4. Google Analytics 4 is Google’s answer to the changing digital landscape we are dealing with as analysts. Google Analytics 4 will replace the current Google Universal Analytics in the future.
 In this article I will share 10 things you need to know about the new Google Analytics 4 tool.</description>
     </item>
     
     <item>
       <title>Visualising Google Analytics internal search data with R</title>
-      <link>https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/</link>
+      <link>/visualising-google-analytics-internal-search-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://martijnvanvreeden.nl/visualising-google-analytics-internal-search-data-with-r/</guid>
+      <guid>/visualising-google-analytics-internal-search-data-with-r/</guid>
       <description>Visualising Google Analytics internal search data with RIt’s a well-known fact that for many content-rich websites like e-commerce website the internal search engine is one of the most important features to navigate the website to find the right product. Google Analytics has created several standard reports to show you how visitors use your internal search engine and how this impacts your KPI’s. These reports can be quite useful, but they may also limit your way of analysis.</description>
     </item>
     
