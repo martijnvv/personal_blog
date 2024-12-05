@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>spotify on Martijn van Vreeden</title>
-    <link>/tags/spotify/</link>
+    <link>https://martijnvv.github.io/personal_blog/tags/spotify/</link>
     <description>Recent content in spotify on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/spotify/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/spotify/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collecting Spotify data with R</title>
-      <link>/collecting-spotify-data-with-r/</link>
+      <link>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/collecting-spotify-data-with-r/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</guid>
       <description>This post is part of a series of posts to analyse the digital me.
 Collecting Spotify data with RSpotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.
 To get started, you wil need to R packages to access the data and process it afterwards.</description>
@@ -20,10 +20,10 @@ To get started, you wil need to R packages to access the data and process it aft
     
     <item>
       <title>Meet the digital me | Martijn van Vreeden</title>
-      <link>/meet-the-digital-me/</link>
+      <link>https://martijnvv.github.io/personal_blog/meet-the-digital-me/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/meet-the-digital-me/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/meet-the-digital-me/</guid>
       <description>Meet the digital meThis is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me.
 Just like all people these days, I leave a digital footprint. I use apps, digital services and websites to share my experiences with others, keep people posted of what I do and compare what I do with all the stuff other people do.</description>
     </item>

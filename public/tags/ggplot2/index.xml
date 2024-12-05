@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ggplot2 on Martijn van Vreeden</title>
-    <link>/tags/ggplot2/</link>
+    <link>https://martijnvv.github.io/personal_blog/tags/ggplot2/</link>
     <description>Recent content in ggplot2 on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analysing Google Location data with R</title>
-      <link>/analysing-google-location-data/</link>
+      <link>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/analysing-google-location-data/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</guid>
       <description>This post is part of a series of posts to analyse the digital me.
 Analyse Google Location data with RGoogle is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!
 In this blog I will explore the location data Google has collected about me since 2016.</description>
@@ -20,10 +20,10 @@ In this blog I will explore the location data Google has collected about me sinc
     
     <item>
       <title>Visualize and analyse IMDB ratings with R (part 2)</title>
-      <link>/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
+      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
       <description>Visualize and analyse IMDB ratings with R (part 2)This post is part of a series of posts to analyse the digital me.
 In my previous post about analysing IMDB ratings in this series I explored some of the data I collected about my movie preferences, also compared to the ratings other IMDB raters.
 In this post I will dig a little deeper to learn more about my own personal movie preferences.</description>
@@ -31,10 +31,10 @@ In this post I will dig a little deeper to learn more about my own personal movi
     
     <item>
       <title>Visualize and analyse IMDB ratings with R</title>
-      <link>/visualize-and-analyse-imdb-ratings-with-r/</link>
+      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/visualize-and-analyse-imdb-ratings-with-r/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</guid>
       <description>This post is part of a series of posts to analyze the digital me.
 Visualize and analyse IMDB ratings with RIn my previous post in this series I shared how I collect and store my personal ratings data from IMDB and enrich it with a few important variables about the movie.
 In this post I will explore the data to learn about my movie preferences. I will be using some R packages to structure the data properly and other packages to build plots:</description>

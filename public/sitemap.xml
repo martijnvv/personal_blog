@@ -2,172 +2,172 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/data-governance/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/data-governance/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-tag-manager/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google-tag-manager/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/google-tag-manager/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/google-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/google-analytics/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-analytics4/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google-analytics4/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/post/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/updates-to-google-consent-management/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/updates-to-google-consent-management/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/cdp/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/cdp/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/data-to-value/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/data-to-value/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google-analytics/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/understanding-composable-cdp/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/understanding-composable-cdp/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/digital-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/digital-analytics/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/privacy/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/privacy/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/what-is-happening-in-digital-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/what-is-happening-in-digital-analytics/</loc>
     <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/google-tag-manager-server-side-advantages-and-concerns/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/google-tag-manager-server-side-advantages-and-concerns/</loc>
     <lastmod>2021-11-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/understanding-retention-with-customer-feedback-data/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/understanding-retention-with-customer-feedback-data/</loc>
     <lastmod>2020-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/how-to-add-google-tag-manager-to-hugo-static-website/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/how-to-add-google-tag-manager-to-hugo-static-website/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hugo/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/hugo/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/10-things-you-need-to-know-about-the-new-google-app-web-analytics/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google-app-web-analytics/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google-app-web-analytics/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/hugo/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/hugo/</loc>
     <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/hugo-shortcode-to-serve-images-in-next-gen-formats/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/hugo-shortcode-to-serve-images-in-next-gen-formats/</loc>
     <lastmod>2020-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/10-ways-to-improve-your-hugo-website-performance/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/10-ways-to-improve-your-hugo-website-performance/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/documentation/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/documentation/</loc>
     <lastmod>2020-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/create-google-tag-manager-documentation-with-r/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/create-google-tag-manager-documentation-with-r/</loc>
     <lastmod>2020-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/digital-me/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/digital-me/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/me/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/me/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/optimizing-the-youtube-shortcode-for-hugo/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/optimizing-the-youtube-shortcode-for-hugo/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/cookie-policy/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/cookie-policy/</loc>
     <lastmod>2019-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/api/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/api/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/collecting-spotify-data-with-r/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/r/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/spotify/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/spotify/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/visualising-google-analytics-internal-search-data-with-r/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/analysing-google-location-data/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/ggplot2/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/ggplot2/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/google/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/location/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/location/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/imdb/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/imdb/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/rvest/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/rvest/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/visualize-and-analyse-imdb-ratings-with-r-part-2/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/webscraping/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/webscraping/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/visualize-and-analyse-imdb-ratings-with-r/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</loc>
     <lastmod>2017-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/getting-my-imdb-ratings-with-r-and-rvest/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/getting-my-imdb-ratings-with-r-and-rvest/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/goodreads/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/goodreads/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/meet-the-digital-me/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/meet-the-digital-me/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/strava/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/strava/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/twitter/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/twitter/</loc>
     <lastmod>2017-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/about-me/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/about-me/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/portfolio/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/portfolio/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
   </url>
 </urlset>
