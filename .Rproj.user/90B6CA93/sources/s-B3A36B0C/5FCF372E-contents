@@ -1,0 +1,25 @@
+---
+title: Clients | Martijn van Vreeden | Digital Analytics
+author: Martijn van Vreeden
+date: '2017-09-24'
+slug: portfolio
+categories: []
+gallery: true
+social_off: true
+tags: []
+description: 'Digital Analytics consultant Martijn van Vreeden has helped dozens of companies of all sizes to grow their business, leveraging digital data. Find some of them here.'
+---
+
+# Clients
+
+These are some of the clients I have worked for over the past few years. I have provided them with several different digital analytics related sevices, which I share on the page [about me](/about-me/).
+
+## Get in touch
+
+Would you like to get in touch with me to share ideas, work on fun projects together or just to have a beer? You can reach me through social media ([LinkedIn](https://www.linkedin.com/in/martijnvanvreeden/) or [Twitter](https://twitter.com/martijnvv)) or send me an email (mail@martijnvanvreeden.nl).
+
+## Clients
+
+```{r regular, echo=FALSE}
+blogdown::shortcode("gallery", dir = "/img/portfolio/")
+```

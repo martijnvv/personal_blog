@@ -1,0 +1,73 @@
+baseurl = "https://martijnvv.github.io/personal_blog/"
+languageCode = "en-us"
+title = "Martijn van Vreeden"
+theme = "beautifulhugo"
+disqusShortname = ""
+enableRobotsTXT = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "^Thumbs\\.db$", "dfs"]
+ReadingTime = true
+
+[permalinks]
+	post = "/:slug/"  
+
+[[menu.main]]
+    name = "About me"
+    url = "/about-me/"
+[[menu.main]]
+    name = "Clients"
+    url = "/portfolio/"	
+[[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/martijnvv"
+[[menu.main]]
+    name = "Twitter"
+    url = "https://twitter.com/martijnvv"
+[[menu.main]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/martijnvanvreeden/"	
+	
+
+[params]
+    description = "A blog with some stats and stuff"
+	favicon = "img/favicon.ico"
+	rss = false
+
+	gtm_id = "GTM-NMSG6Q"
+	gtm_datalayer = "basic"
+	gtm_ga = true
+	socialShare = true
+	wordCount = true
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+	gallery_js_ext = ["https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js","https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js"]
+	gallery_js_int = ["js/load-photoswipe.js"]
+	gallery_css = ["https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css","https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css"]
+
+[params.logo]
+    url = "img/logo.jpg"
+    width = 50
+    height = 50
+    alt = "Logo"
+
+[Author]
+  name = "Martijn van Vreeden"
+  website = "https://martijnvanvreeden.nl/"	
+  twitter = "martijnvv"
+  linkedin = "martijnvanvreeden"
+  
+[taxonomies]
+  category = "categories"
+  tag = "tags"  
+
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]
+
+  
