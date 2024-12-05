@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Martijn van Vreeden</title>
-    <link>/categories/</link>
+    <link>https://martijnvv.github.io/personal_blog/categories/</link>
     <description>Recent content in Categories on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>google tag manager</title>
-      <link>/categories/google-tag-manager/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/categories/google-tag-manager/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google-analytics</title>
-      <link>/categories/google-analytics/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/google-analytics/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/categories/google-analytics/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/google-analytics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cdp</title>
-      <link>/categories/cdp/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/cdp/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>/categories/cdp/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/cdp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>digital analytics</title>
-      <link>/categories/digital-analytics/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/digital-analytics/</link>
       <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>/categories/digital-analytics/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/digital-analytics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>/categories/hugo/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/hugo/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/hugo/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>digital me</title>
-      <link>/categories/digital-me/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/digital-me/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/digital-me/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/digital-me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spotify</title>
-      <link>/categories/spotify/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/spotify/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/spotify/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/spotify/</guid>
       <description></description>
     </item>
     
     <item>
       <title>imdb</title>
-      <link>/categories/imdb/</link>
+      <link>https://martijnvv.github.io/personal_blog/categories/imdb/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/imdb/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/categories/imdb/</guid>
       <description></description>
     </item>
     

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>me on Martijn van Vreeden</title>
-    <link>/tags/me/</link>
+    <link>https://martijnvv.github.io/personal_blog/tags/me/</link>
     <description>Recent content in me on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I moved my personal blog from Wordpress to Hugo</title>
-      <link>/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</link>
+      <link>https://martijnvv.github.io/personal_blog/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/why-i-moved-my-personal-blog-from-wordpress-to-hugo/</guid>
       <description>Why I moved my personal blog from Wordpress to HugoIt was one of those rare moments in my freelance career when I had some extra time on my hands. Eager to work on a website and tinker with some code. I was looking at my personal website (which you’re on right now). It was still built on Wordpress, with a basic theme and some useful features. In reality, I wasn’t using much of the power that Wordpress holds.</description>
     </item>
     
     <item>
       <title>Visualize and analyse IMDB ratings with R (part 2)</title>
-      <link>/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
+      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r-part-2/</guid>
       <description>Visualize and analyse IMDB ratings with R (part 2)This post is part of a series of posts to analyse the digital me.
 In my previous post about analysing IMDB ratings in this series I explored some of the data I collected about my movie preferences, also compared to the ratings other IMDB raters.
 In this post I will dig a little deeper to learn more about my own personal movie preferences.</description>
@@ -29,10 +29,10 @@ In this post I will dig a little deeper to learn more about my own personal movi
     
     <item>
       <title>Visualize and analyse IMDB ratings with R</title>
-      <link>/visualize-and-analyse-imdb-ratings-with-r/</link>
+      <link>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/visualize-and-analyse-imdb-ratings-with-r/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/visualize-and-analyse-imdb-ratings-with-r/</guid>
       <description>This post is part of a series of posts to analyze the digital me.
 Visualize and analyse IMDB ratings with RIn my previous post in this series I shared how I collect and store my personal ratings data from IMDB and enrich it with a few important variables about the movie.
 In this post I will explore the data to learn about my movie preferences. I will be using some R packages to structure the data properly and other packages to build plots:</description>
@@ -40,10 +40,10 @@ In this post I will explore the data to learn about my movie preferences. I will
     
     <item>
       <title>Meet the digital me | Martijn van Vreeden</title>
-      <link>/meet-the-digital-me/</link>
+      <link>https://martijnvv.github.io/personal_blog/meet-the-digital-me/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/meet-the-digital-me/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/meet-the-digital-me/</guid>
       <description>Meet the digital meThis is likely the most self-centered blogpost you will read today, maybe even this year. Because this post is all about me, the digital me.
 Just like all people these days, I leave a digital footprint. I use apps, digital services and websites to share my experiences with others, keep people posted of what I do and compare what I do with all the stuff other people do.</description>
     </item>

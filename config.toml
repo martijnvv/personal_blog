@@ -1,6 +1,4 @@
 baseurl = "https://martijnvv.github.io/personal_blog/"
-relativeURLs = true
-canonifyURLs = true
 languageCode = "en-us"
 title = "Martijn van Vreeden"
 theme = "beautifulhugo"
@@ -23,7 +21,7 @@ ReadingTime = true
     url = "https://github.com/martijnvv"
 [[menu.main]]
     name = "Twitter"
-    url = "https://twitter.com/martijnvv"
+    url = "https://twitter.com/martijnvvw"
 [[menu.main]]
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/martijnvanvreeden/"	

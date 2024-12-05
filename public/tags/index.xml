@@ -2,206 +2,206 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Martijn van Vreeden</title>
-    <link>/tags/</link>
+    <link>https://martijnvv.github.io/personal_blog/tags/</link>
     <description>Recent content in Tags on Martijn van Vreeden</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>data governance</title>
-      <link>/tags/data-governance/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/data-governance/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/data-governance/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/data-governance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google tag manager</title>
-      <link>/tags/google-tag-manager/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/google-tag-manager/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google-tag-manager/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/google-tag-manager/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google-analytics4</title>
-      <link>/tags/google-analytics4/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/google-analytics4/</link>
       <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google-analytics4/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/google-analytics4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>data to value</title>
-      <link>/tags/data-to-value/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/data-to-value/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/data-to-value/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/data-to-value/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google-analytics</title>
-      <link>/tags/google-analytics/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/google-analytics/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google-analytics/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/google-analytics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>privacy</title>
-      <link>/tags/privacy/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/privacy/</link>
       <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/privacy/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>/tags/hugo/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/hugo/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/hugo/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google-app-web-analytics</title>
-      <link>/tags/google-app-web-analytics/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/google-app-web-analytics/</link>
       <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google-app-web-analytics/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/google-app-web-analytics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>documentation</title>
-      <link>/tags/documentation/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/documentation/</link>
       <pubDate>Thu, 09 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/documentation/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/documentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>me</title>
-      <link>/tags/me/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/me/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/me/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>api</title>
-      <link>/tags/api/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/api/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/api/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>r</title>
-      <link>/tags/r/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spotify</title>
-      <link>/tags/spotify/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/spotify/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/spotify/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/spotify/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ggplot2</title>
-      <link>/tags/ggplot2/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/ggplot2/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ggplot2/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/ggplot2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>google</title>
-      <link>/tags/google/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/google/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/google/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/google/</guid>
       <description></description>
     </item>
     
     <item>
       <title>location</title>
-      <link>/tags/location/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/location/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/location/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/location/</guid>
       <description></description>
     </item>
     
     <item>
       <title>imdb</title>
-      <link>/tags/imdb/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/imdb/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/imdb/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/imdb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rvest</title>
-      <link>/tags/rvest/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/rvest/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rvest/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/rvest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>webscraping</title>
-      <link>/tags/webscraping/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/webscraping/</link>
       <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/webscraping/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/webscraping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>goodreads</title>
-      <link>/tags/goodreads/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/goodreads/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/goodreads/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/goodreads/</guid>
       <description></description>
     </item>
     
     <item>
       <title>strava</title>
-      <link>/tags/strava/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/strava/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/strava/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/strava/</guid>
       <description></description>
     </item>
     
     <item>
       <title>twitter</title>
-      <link>/tags/twitter/</link>
+      <link>https://martijnvv.github.io/personal_blog/tags/twitter/</link>
       <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/twitter/</guid>
+      <guid>https://martijnvv.github.io/personal_blog/tags/twitter/</guid>
       <description></description>
     </item>
     
