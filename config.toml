@@ -1,4 +1,6 @@
-baseurl = "https://martijnvanvreeden.nl/"
+baseurl = ""
+relativeURLs = true
+canonifyURLs = true
 languageCode = "en-us"
 title = "Martijn van Vreeden"
 theme = "beautifulhugo"
