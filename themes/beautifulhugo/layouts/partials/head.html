@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="theme-color" content="#317EFB"/>
 {{- partial "metatags.html" . }}
-  <meta name="author" content="{{ .Site.Author.name }}"/>
+  <meta name="author" content="{{ .Site.Params.author.name }}"/>
 {{- with .Site.Params.favicon }}
   <link href='{{ . | absURL }}' rel='icon' type='image/x-icon'/>
 {{- end -}}
@@ -14,7 +14,7 @@
   <meta name="twitter:image" content="{{ . | absURL }}" />
 {{- end }}
   <meta name="twitter:card" content="summary" />
-{{- with .Site.Author.twitter }}
+{{- with .Site.Params.author.twitter }}
   <meta name="twitter:site" content="@{{ . }}" />
   <meta name="twitter:creator" content="@{{ . }}" />
 {{- end }}
@@ -41,7 +41,16 @@
           stylesheet.type = 'text/css';
           document.getElementsByTagName('head')[0].appendChild(stylesheet);
    </script> 
-  <link rel="stylesheet" href="/css/main.css"/>
+	{{ if .IsHome }}
+		<link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}"/>
+	{{ end }}
+	{{ if eq .Slug "contact" }}
+		<link rel="stylesheet" href="{{ "css/contact.css" | relURL }}"/>
+	{{ end }}
+	{{ if eq .Slug "about-me" }}
+		<link rel="stylesheet" href="{{ "css/about-me.css" | relURL }}"/>
+	{{ end }}  
+  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}"/>
   <link href="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   {{ if .IsHome }}{{- partial "richsnippet_website.html" . }}{{ end }}  
 {{ if isset .Params "social_off"}}{{ else if eq .Kind "taxonomy" }}{{ else }}{{- partial "richsnippet_post.html" . }}{{ end }}

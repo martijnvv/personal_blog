@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://martijnvv.github.io/personal_blog/blog/</loc>
+    <lastmod>2026-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://martijnvv.github.io/personal_blog/</loc>
+    <lastmod>2026-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://martijnvv.github.io/personal_blog/about-me/</loc>
+    <lastmod>2026-03-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://martijnvv.github.io/personal_blog/contact/</loc>
+    <lastmod>2026-03-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://martijnvv.github.io/personal_blog/categories/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/tags/data-governance/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/tags/google-tag-manager/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/categories/google-tag-manager/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/google-tag-manager/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/categories/google-analytics/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/tags/google-analytics4/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/post/</loc>
@@ -110,10 +119,10 @@
     <loc>https://martijnvv.github.io/personal_blog/tags/r/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/tags/spotify/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/categories/spotify/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/spotify/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/visualising-google-analytics-internal-search-data-with-r/</loc>
@@ -131,10 +140,10 @@
     <loc>https://martijnvv.github.io/personal_blog/tags/location/</loc>
     <lastmod>2018-08-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/tags/imdb/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/categories/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://martijnvv.github.io/personal_blog/categories/imdb/</loc>
+    <loc>https://martijnvv.github.io/personal_blog/tags/imdb/</loc>
     <lastmod>2017-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/tags/rvest/</loc>
@@ -169,5 +178,7 @@
   </url><url>
     <loc>https://martijnvv.github.io/personal_blog/portfolio/</loc>
     <lastmod>2017-09-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://martijnvv.github.io/personal_blog/supporting-ngo-s/</loc>
   </url>
 </urlset>

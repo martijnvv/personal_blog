@@ -1,0 +1,41 @@
+---
+title: Blog | Martijn van Vreeden
+author: Martijn van Vreeden
+date: 2026-03-25
+slug: blog
+description: Insights on digital analytics, measurement strategy, and data governance.
+---
+
+<div class="blog-page">
+
+  <div class="blog-hero">
+    <h1>Blog</h1>
+    <p class="blog-lead">
+      Thoughts on digital analytics, measurement strategy, and building better data foundations.
+    </p>
+  </div>
+
+  <div class="blog-posts">
+    {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+    
+    {{ range $pag.Pages }}
+      {{ partial "post_preview" . }}
+    {{ end }}
+  </div>
+
+  {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+    <ul class="pager main-pager">
+      {{ if .Paginator.HasPrev }}
+        <li class="previous">
+          <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; Newer posts</a>
+        </li>
+      {{ end }}
+      {{ if .Paginator.HasNext }}
+        <li class="next">
+          <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older posts &rarr;</a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+
+</div>

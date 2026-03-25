@@ -14,14 +14,11 @@ ReadingTime = true
     name = "About me"
     url = "/about-me/"
 [[menu.main]]
-    name = "Clients"
-    url = "/portfolio/"	
+    name = "Contact"
+    url = "/contact/"	
 [[menu.main]]
-    name = "GitHub"
+    name = "Blog"
     url = "https://github.com/martijnvv"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/martijnvv1"
 [[menu.main]]
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/martijnvanvreeden/"	

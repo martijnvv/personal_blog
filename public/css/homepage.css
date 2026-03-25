@@ -1,0 +1,297 @@
+.homepage-v2 {
+  margin-bottom: 70px;
+}
+
+.homepage-v2 .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.mvv-hero {
+  margin-top: 20px;
+}
+
+.mvv-hero-card,
+.mvv-service-card,
+.mvv-highlight-box,
+.mvv-cta-card {
+  background: #ffffff;
+  border: 1px solid #e9edf2;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.mvv-hero-card {
+  padding: 42px 38px;
+  background: linear-gradient(180deg, #f9fbfd 0%, #ffffff 100%);
+}
+
+.mvv-eyebrow,
+.mvv-kicker {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0085a1;
+}
+
+.mvv-hero-card h1 {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.mvv-subheadline {
+  margin-top: 18px;
+  font-size: 20px;
+  line-height: 1.35;
+  color: #1f2d3d;
+  font-weight: 300;
+}
+
+.mvv-lead {
+  margin-top: 24px;
+  max-width: 760px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #4a5562;
+}
+
+.mvv-hero-actions {
+  margin-top: 30px;
+}
+
+.mvv-btn {
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.mvv-btn-primary {
+  background: #0085a1;
+  color: #ffffff !important;
+  border: 1px solid #0085a1;
+}
+
+.mvv-btn-primary:hover,
+.mvv-btn-primary:focus {
+  background: #006f87;
+  border-color: #006f87;
+  color: #ffffff !important;
+}
+
+.mvv-btn-secondary {
+  background: transparent;
+  color: #404040 !important;
+  border: 1px solid #d6dde5;
+}
+
+.mvv-btn-secondary:hover,
+.mvv-btn-secondary:focus {
+  border-color: #0085a1;
+  color: #0085a1 !important;
+}
+
+.mvv-section {
+  margin-top: 60px;
+  padding-top: 25px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.mvv-section-heading {
+  margin-bottom: 26px;
+}
+
+.mvv-section-heading-left {
+  margin-bottom: 18px;
+}
+
+.mvv-section h2 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.mvv-problem-grid,
+.mvv-service-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mvv-problem-list,
+.mvv-check-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.mvv-problem-list li,
+.mvv-check-list li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.mvv-insight {
+  margin-top: 20px;
+  padding: 22px 24px;
+  border-left: 4px solid #0085a1;
+  background: #f7fbfc;
+}
+
+.mvv-insight p {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.mvv-service-card {
+  height: 100%;
+  padding: 28px 24px;
+}
+
+.mvv-service-card h3,
+.mvv-highlight-box h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.mvv-service-intro {
+  font-weight: 700;
+  color: #0085a1 !important;
+}
+
+.mvv-service-outcome {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #edf1f5;
+}
+
+.mvv-highlight-box {
+  padding: 28px 24px;
+  margin-top: 18px;
+  background: #f9fbfd;
+}
+
+.mvv-cta-card {
+  padding: 36px 28px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+}
+
+.mvv-cta-card h2 {
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 991px) {
+  .mvv-hero-card h1 {
+    font-size: 40px;
+  }
+
+  .mvv-subheadline {
+    font-size: 22px;
+  }
+
+  .mvv-section h2 {
+    font-size: 32px;
+  }
+
+  .mvv-service-card {
+    margin-bottom: 20px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .homepage-v2 {
+    margin-bottom: 50px;
+  }
+
+  .mvv-hero {
+    margin-top: 0;
+  }
+
+  .mvv-hero-card,
+  .mvv-service-card,
+  .mvv-highlight-box,
+  .mvv-cta-card {
+    border-radius: 14px;
+  }
+
+  .mvv-hero-card {
+    padding: 30px 22px;
+  }
+
+  .mvv-hero-card h1 {
+    font-size: 34px;
+  }
+
+  .mvv-subheadline {
+    font-size: 20px;
+  }
+
+  .mvv-lead,
+  .mvv-insight p {
+    font-size: 18px;
+  }
+
+  .mvv-section {
+    margin-top: 26px;
+  }
+
+  .mvv-section h2 {
+    font-size: 28px;
+  }
+
+  .mvv-btn {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .mvv-cta-card {
+    padding: 28px 20px;
+  }
+}
+.mvv-client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 30px 0 40px;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.mvv-client-logos img {
+  height: 120px;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+.mvv-case-grid {
+  display: flex;
+  gap: 40px;
+}
+
+.mvv-case {
+  flex: 1;
+}
+
+.mvv-case-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.mvv-case-body {
+  color: #4a5562;
+  line-height: 1.6;
+}

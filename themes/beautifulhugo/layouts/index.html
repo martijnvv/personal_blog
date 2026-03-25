@@ -1,36 +1,182 @@
 {{ define "main" }}
-  <div role="main" class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	      <div class="page-heading">
-              <h1>Martijn van Vreeden</h1>
-                    <hr class="small">
-                    <span class="page-subheading">Digital Analytics</span>
-            </div>
+  <div role="main" class="container homepage-v2">
+    <section class="mvv-hero row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12">
+        <div class="mvv-hero-card">
+          <h1>Take control of your digital measurement</h1>
+          <p class="mvv-subheadline">From strategy to implementation - I make digital measurement work inside complex organizations.</p>
+          <p class="mvv-lead">
+            Most organizations have tools and dashboards - but not real control.
+            I help bring structure, ownership, and clarity to digital measurement.
+          </p>
+          <div class="mvv-hero-actions">
+            <a class="mvv-btn mvv-btn-primary" href="/contact/">Book a 30-minute intro call</a>
+            <a class="mvv-btn mvv-btn-secondary" href="/about-me/">Learn more about how I work</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="posts-list">
-          {{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-          {{ range $pag.Pages }}
-            {{ partial "post_preview" . }}
-          {{ end }}
+    <section class="mvv-section mvv-problem row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12">
+        <div class="mvv-section-heading">
+          <p class="mvv-kicker">The challenge</p>
+          <h2>Most organizations don’t really control their digital measurement</h2>
         </div>
 
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-          <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
-              <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
-              </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
-              <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
-              </li>
-            {{ end }}
-          </ul>
-        {{ end }}
+        <div class="row mvv-problem-grid">
+          <div>
+            <p>
+              On paper, everything looks fine. But underneath, measurement is often fragmented and hard to trust.
+            </p>
+            <ul class="mvv-problem-list">
+              <li><strong>Inconsistency</strong>: Different teams define metrics differently</li>
+              <li><strong>No ownership</strong>: Tracking evolves without clear ownership</li>
+              <li><strong>Fragility</strong>: Changes create downstream confusion</li>
+              <li><strong>Mismatch</strong>: Dashboards do not match reality</li>
+              <li><strong>Distrust</strong>: Data is questioned in every meeting</li>
+            </ul>
+          </div>
+        </div>
+
+
       </div>
+    </section>
+
+    <section class="mvv-section mvv-services row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12">
+        <div class="mvv-section-heading">
+          <p class="mvv-kicker">How I help</p>
+          <h2>Building control across strategy, structure, and implementation</h2>
+        </div>
+
+        <div class="row mvv-service-grid">
+          <div class="col-md-4">
+            <article class="mvv-service-card">
+              <h3>Measurement Strategy</h3>
+              <p class="mvv-service-intro">Define what matters.</p>
+              <p>
+                I help translate business goals into a clear measurement approach, so teams know what to measure and why.
+              </p>
+              <p class="mvv-service-outcome"><strong>Outcome:</strong> A strategy tied to business priorities.</p>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="mvv-service-card">
+              <h3>Structure &amp; Governance</h3>
+              <p class="mvv-service-intro">Create clarity and ownership.</p>
+              <p>
+                I help organizations define standards, roles, and ways of working that reduce ambiguity and improve consistency.
+              </p>
+              <p class="mvv-service-outcome"><strong>Outcome:</strong> More alignment across teams and tools.</p>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="mvv-service-card">
+              <h3>Implementation &amp; Alignment</h3>
+              <p class="mvv-service-intro">Make it work in practice.</p>
+              <p>
+                I work hands-on with teams and stakeholders to make sure measurement is adopted and holds up in real organizations.
+              </p>
+              <p class="mvv-service-outcome"><strong>Outcome:</strong> A practical approach that actually sticks.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mvv-section mvv-difference row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mvv-section-heading mvv-section-heading-left">
+              <p class="mvv-kicker">Why this works</p>
+              <h2>Experience across both strategy and implementation</h2>
+            </div>
+            <p>
+              I have worked inside larger organizations where measurement challenges are as much about people and structure as they are about technology.
+            </p>
+            <p>
+              That helps me ramp up quickly, align stakeholders, and turn measurement into something practical and sustainable.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="mvv-highlight-box">
+              <h3>What you can expect</h3>
+              <ul class="mvv-check-list">
+                <li>Senior support in complex organizations</li>
+                <li>Fast ramp-up across teams and stakeholders</li>
+                <li>A balance of strategy and delivery</li>
+                <li>A measurement approach that can scale</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="mvv-section mvv-proof row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-12">
+
+    <!-- HEADER -->
+    <div class="mvv-section-heading">
+      <p class="mvv-kicker">Selected work</p>
+      <h2>Trusted in complex organizations</h2>
     </div>
+
+    <!-- LOGO STRIP -->
+    <div class="mvv-client-logos">
+      <img src="/img/portfolio/Aegon.webp" alt="Aegon">
+      <img src="/img/portfolio/Jaarbeurs.webp" alt="Jaarbeurs">
+      <img src="/img/portfolio/Hubo.webp" alt="Hubo">
+      <img src="/img/portfolio/Postcode%20Loterij.webp" alt="Postcode Loterij">
+      <img src="/img/portfolio/Kruidvat.webp" alt="Kruidvat">
+    </div>
+
+    <!-- CASES -->
+    <div class="mvv-case-grid">
+
+      <div class="mvv-case">
+        <p class="mvv-case-title">Aegon - Measurement restructuring</p>
+        <p class="mvv-case-body">
+          Brought structure to fragmented tracking and unclear ownership across teams.
+          Defined standards and aligned stakeholders to create a scalable measurement setup.
+        </p>
+      </div>
+
+      <div class="mvv-case">
+        <p class="mvv-case-title">Hubo - Data reliability</p>
+        <p class="mvv-case-body">
+          Stabilized inconsistent tracking and improved trust in dashboards.
+          Reduced ambiguity in reporting and enabled better decision-making.
+        </p>
+      </div>
+
+      <div class="mvv-case">
+        <p class="mvv-case-title">Kruidvat - Measurement governance</p>
+        <p class="mvv-case-body">
+          Introduced governance and ownership models across multiple teams and systems.
+          Ensured measurement scaled with organizational complexity.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+    <section class="mvv-section mvv-cta row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="mvv-cta-card text-center">
+          <h2>Ready to take control of your digital measurement?</h2>
+          <p>
+            I help organizations create more structure, clarity, and confidence in how measurement works.
+          </p>
+          <a class="mvv-btn mvv-btn-primary" href="/contact/">Start the conversation</a>
+        </div>
+      </div>
+    </section>
   </div>
 {{ end }}
-

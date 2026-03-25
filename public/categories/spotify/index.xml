@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>spotify on Martijn van Vreeden</title>
+    <title>Spotify on Martijn van Vreeden</title>
     <link>https://martijnvv.github.io/personal_blog/categories/spotify/</link>
-    <description>Recent content in spotify on Martijn van Vreeden</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Spotify on Martijn van Vreeden</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/categories/spotify/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://martijnvv.github.io/personal_blog/categories/spotify/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collecting Spotify data with R</title>
       <link>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://martijnvv.github.io/personal_blog/collecting-spotify-data-with-r/</guid>
-      <description>This post is part of a series of posts to analyse the digital me.
-Collecting Spotify data with RSpotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.
-To get started, you wil need to R packages to access the data and process it afterwards.</description>
+      <description>&lt;p&gt;&lt;em&gt;This post is part of a series of posts to &lt;a href=&#34;https://martijnvv.github.io/personal_blog/meet-the-digital-me/&#34;&gt;analyse the digital me&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xD;&#xA;&lt;div id=&#34;collecting-spotify-data-with-r&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;Collecting Spotify data with R&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Spotify has made its data very accessible to endusers to play with. Their API provides you with a plethora of options to get to their data, which is a ton of fun to analyse.&lt;/p&gt;&#xD;&#xA;&lt;p&gt;To get started, you wil need to R packages to access the data and process it afterwards.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

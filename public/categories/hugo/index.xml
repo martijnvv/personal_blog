@@ -1,40 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hugo on Martijn van Vreeden</title>
+    <title>Hugo on Martijn van Vreeden</title>
     <link>https://martijnvv.github.io/personal_blog/categories/hugo/</link>
-    <description>Recent content in hugo on Martijn van Vreeden</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Hugo on Martijn van Vreeden</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://martijnvv.github.io/personal_blog/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://martijnvv.github.io/personal_blog/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo shortcode to serve images in next-gen formats</title>
       <link>https://martijnvv.github.io/personal_blog/hugo-shortcode-to-serve-images-in-next-gen-formats/</link>
       <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://martijnvv.github.io/personal_blog/hugo-shortcode-to-serve-images-in-next-gen-formats/</guid>
-      <description>Hugo shortcode to serve images in next-gen formatsIn my last blogpost I shared 10 ways to improve your Hugo website performance. My last tip was to serve images in next-gen formats. This could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you, Safari!</description>
+      <description>&lt;div id=&#34;hugo-shortcode-to-serve-images-in-next-gen-formats&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;Hugo shortcode to serve images in next-gen formats&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;In my last blogpost I shared &lt;a href=&#34;https://martijnvv.github.io/personal_blog/10-ways-to-improve-your-hugo-website-performance/&#34;&gt;10 ways to improve your Hugo website performance&lt;/a&gt;. My last tip was to serve images in next-gen formats. This could improve the performance of your website significantly. Eventhough there are multiple next-gen formats you can integrate, the best browser compatibility will come by using WebP, created by Google. Unfortunately, not all browsers support this format yet (looking at you, Safari!). To make sure you will serve an alternative, normal format like jpg or png instead for those non-compatible browsers, you need to update the way you serve your images and provide both formats.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>10 Ways to improve your (Hugo) website performance</title>
       <link>https://martijnvv.github.io/personal_blog/10-ways-to-improve-your-hugo-website-performance/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://martijnvv.github.io/personal_blog/10-ways-to-improve-your-hugo-website-performance/</guid>
-      <description>10 Ways to improve your (Hugo) website performanceWebsite performance matters. Even if I would selfishly ignore all other human visitors to my website, I would be supporting Google’s mission to make the web faster and help myself climb the ranks of Google. In this article I describe 10 ways to make your Hugo website (or any other website) faster and give users a better experience.
-These are the 10 tips I will be discussing:</description>
+      <description>&lt;div id=&#34;ways-to-improve-your-hugo-website-performance&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;10 Ways to improve your (Hugo) website performance&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Website performance matters. Even if I would selfishly ignore all other human visitors to my website, I would be supporting &lt;a href=&#34;https://developers.google.com/web/fundamentals/performance/why-performance-matters&#34;&gt;Google’s mission to make the web faster&lt;/a&gt; and help myself &lt;a href=&#34;https://yoast.com/how-site-speed-influences-seo/&#34;&gt;climb the ranks of Google&lt;/a&gt;. In this article I describe 10 ways to make your Hugo website (or any other website) faster and give users a better experience.&lt;/p&gt;&#xD;&#xA;&lt;p&gt;These are the 10 tips I will be discussing:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Optimizing the Youtube Shortcode for Hugo</title>
       <link>https://martijnvv.github.io/personal_blog/optimizing-the-youtube-shortcode-for-hugo/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://martijnvv.github.io/personal_blog/optimizing-the-youtube-shortcode-for-hugo/</guid>
-      <description>How to optimize the Youtube Shortcode for HugoThe Youtube embed shortcode for Hugo allows you to embed Youtube videos in your Hugo pages. Which is a pretty neat feature they provide to you out-of-the-box. The shortcode allows you to add two additional parameters that can be managed from the standard settings:
-Unique Youtube video IDallowfullscreen (which you can set to “true”, which allows users to show the video in full screen mode)However, there are a ton of additional parameters you can include to customize your Youtube video embed.</description>
+      <description>&lt;div id=&#34;how-to-optimize-the-youtube-shortcode-for-hugo&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;How to optimize the Youtube Shortcode for Hugo&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;The Youtube embed shortcode for Hugo allows you to &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#youtube&#34;&gt;embed Youtube videos in your Hugo pages&lt;/a&gt;. Which is a pretty neat feature they provide to you out-of-the-box. The shortcode allows you to add two additional parameters that can be managed from the standard settings:&lt;/p&gt;&#xD;&#xA;&lt;ul&gt;&#xD;&#xA;&lt;li&gt;Unique Youtube video ID&lt;/li&gt;&#xD;&#xA;&lt;li&gt;allowfullscreen (which you can set to “true”, which allows users to show the video in full screen mode)&lt;/li&gt;&#xD;&#xA;&lt;/ul&gt;&#xD;&#xA;&lt;p&gt;However, there are a ton of additional parameters you can include to customize your Youtube video embed. You can find a full list of all the embed parameters on the &lt;a href=&#34;https://developers.google.com/youtube/player_parameters&#34;&gt;Youtube developers website&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

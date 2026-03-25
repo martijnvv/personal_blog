@@ -229,7 +229,7 @@ This is the code of my partial layout for the social sharing buttons
     <ul class="share">
       <!-- Twitter -->
       <li>
-        <a class="fs2" href="//twitter.com/share?url={{ .Permalink }}&amp;text={{ .Title }}&amp;via={{ .Site.Author.twitter }}" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
+        <a class="fs2" href="//twitter.com/share?url={{ .Permalink }}&amp;text={{ .Title }}&amp;via={{ hugo.Author.twitter }}" target="_blank" title="Share on Twitter" rel="noreferrer" aria-label="share article on twitter">
           <i class="icon-twitter"></i>
         </a>
       </li>

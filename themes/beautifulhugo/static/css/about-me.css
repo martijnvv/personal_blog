@@ -1,0 +1,168 @@
+.about-page {
+  max-width: 900px;
+  margin: 60px auto 90px;
+}
+
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.about-photo img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.about-intro {
+  flex: 1;
+}
+
+.about-intro h1 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.about-lead {
+  font-size: 1.25em;
+  line-height: 1.5;
+  color: #1f2d3d;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.about-intro p,
+.about-section p,
+.about-section li {
+  color: #4a5562;
+  line-height: 1.75;
+}
+
+.about-section {
+  margin-top: 56px;
+}
+
+.about-section h2 {
+  margin-bottom: 16px;
+}
+
+.about-section ul {
+  padding-left: 22px;
+  margin-top: 10px;
+}
+
+.about-section li {
+  margin-bottom: 10px;
+}
+
+.about-section.second {
+  margin-top: 70px;
+  padding-top: 24px;
+  border-top: 1px solid #e7ecf0;
+  }
+
+.about-cta {
+  margin-top: 70px;
+  padding-top: 24px;
+  border-top: 1px solid #e7ecf0;
+}
+
+.about-cta a {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-page {
+    margin: 40px auto 70px;
+  }
+
+  .about-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .about-photo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .about-lead {
+    font-size: 1.1em;
+  }
+
+  .about-section {
+    margin-top: 42px;
+  }
+ 
+}
+
+.about-cta-block {
+  margin-top: 80px;
+}
+
+.about-cta-card {
+  padding: 34px 30px;
+  border: 1px solid #e9edf2;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%);
+  text-align: center;
+}
+
+.about-cta-card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.about-cta-card p {
+  max-width: 640px;
+  margin: 0 auto 22px;
+  color: #4a5562;
+  line-height: 1.7;
+}
+
+.about-cta-actions {
+  margin-top: 10px;
+}
+
+.mvv-btn {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.mvv-btn-primary {
+    background: #0085a1;
+    color: #ffffff !important;
+    border: 1px solid #0085a1;
+}
+
+.mvv-btn-secondary {
+    background: transparent;
+    color: #404040 !important;
+    border: 1px solid #d6dde5;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-cta-card {
+    padding: 26px 20px;
+  }
+
+  .about-cta-actions .mvv-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+}
