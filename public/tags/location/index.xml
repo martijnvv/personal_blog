@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Location on Martijn van Vreeden</title>
-    <link>https://martijnvv.github.io/personal_blog/tags/location/</link>
+    <link>https://martijnvanvreeden.nl/tags/location/</link>
     <description>Recent content in Location on Martijn van Vreeden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://martijnvv.github.io/personal_blog/tags/location/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://martijnvanvreeden.nl/tags/location/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analysing Google Location data with R</title>
-      <link>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</link>
+      <link>https://martijnvanvreeden.nl/analysing-google-location-data/</link>
       <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>https://martijnvv.github.io/personal_blog/analysing-google-location-data/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This post is part of a series of posts to &lt;a href=&#34;https://martijnvv.github.io/personal_blog/meet-the-digital-me/&#34;&gt;analyse the digital me&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xD;&#xA;&lt;div id=&#34;analyse-google-location-data-with-r&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;Analyse Google Location data with R&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!&lt;/p&gt;&#xD;&#xA;&lt;p&gt;In this blog I will explore the location data Google has collected about me since 2016.&lt;/p&gt;&#xD;&#xA;&lt;p&gt;I will be using some R packages to structure the data properly and other packages to build plots:&lt;/p&gt;</description>
+      <guid>https://martijnvanvreeden.nl/analysing-google-location-data/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This post is part of a series of posts to &lt;a href=&#34;https://martijnvanvreeden.nl/meet-the-digital-me/&#34;&gt;analyse the digital me&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&#xD;&#xA;&lt;div id=&#34;analyse-google-location-data-with-r&#34; class=&#34;section level1&#34;&gt;&#xD;&#xA;&lt;h1&gt;Analyse Google Location data with R&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Google is happily tracking my every move, thanks to my Android Samsung phone and poor privacy setting skills. Google collects my data about my movement through their location tracker. A lot of data!&lt;/p&gt;&#xD;&#xA;&lt;p&gt;In this blog I will explore the location data Google has collected about me since 2016.&lt;/p&gt;&#xD;&#xA;&lt;p&gt;I will be using some R packages to structure the data properly and other packages to build plots:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

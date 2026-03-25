@@ -1,4 +1,4 @@
-baseurl = "https://martijnvv.github.io/personal_blog/"
+baseurl = "https://martijnvanvreeden.nl/"
 languageCode = "en-us"
 title = "Martijn van Vreeden"
 theme = "beautifulhugo"
