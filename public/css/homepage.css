@@ -260,6 +260,17 @@
   .mvv-cta-card {
     padding: 28px 20px;
   }
+  .mvv-problem-grid-deep {
+    margin-left: 10px;
+  }  
+  .mvv-case-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mvv-case {
+    width: 100%;
+  }
 }
 .mvv-client-logos {
   display: flex;
